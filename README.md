@@ -2,6 +2,15 @@
 
 This is new Page for DevPro. Created with Symfony and it contains a Frontend and a Backend Bundle.
 
+<h3>Features</h3>
+<ul>
+    <li>Frontend/Backend Bundle</li>
+    <li>FOSUSERBundle (Login/logout/register, protected area)</li>
+    <li>JMS Translation Bundle and UI</li>
+    
+</ul>
+
+
 <h3>Install</h3>
 
 1. Clone Project Local<br>
