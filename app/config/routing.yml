@@ -1,0 +1,13 @@
+dev_pro_frontend:
+    resource: "@DevProFrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+dev_pro_backend:
+    resource: "@DevProBackendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ # app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

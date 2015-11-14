@@ -1,0 +1,45 @@
+/* Extra-kleine Ger‰te (Smartphones, weniger als 768px) */
+/* Kein Media-Query, weil dies der Standard in Bootstrap ist */
+
+.container{
+
+}
+.topnavbar{
+    background-color: #FFFFFF;
+}
+
+
+/* Kleine Ger‰te (Tablets, 768px und breiter) */
+@media (min-width: 768px) {
+    .contact_form{
+
+    }
+}
+
+/* Mittlere Ger‰te (Desktop-PCs, 992px und breiter) */
+@media (min-width: 992px) {
+    .contact_form{
+        width: 50%;
+    }
+}
+
+/* Groﬂe Ger‰te (Desktop-PCs, 1200px und breiter) */
+@media (min-width: 1200px) {
+    .contact_form{
+        width: 50%;
+    }
+}
+
+.img_center{
+    margin: 0px auto;
+}
+
+.footer_list{
+    display: inline;
+    list-style: none;
+    padding: 5px;
+}
+
+.footer_list_ul{
+    float: left;
+}
