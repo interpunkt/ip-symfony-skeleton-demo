@@ -17,5 +17,5 @@ This is new Page for DevPro. Created with Symfony and it contains a Frontend and
 localhost:8000 -> Main Frontend Site<br>
 localhost:8000/admin/ -> Your Backend/Dashboard (you will redirected to Login /login if not logged in)<br>
 localhost:8000/register/ -> register a new User (need to set a higher ROLE if he need access to the backend<br>
-
-Language Manager (in progress)
+localhost:8000/login/ -> Login Window<br>
+localhost:8000/_trans/ -> translationUI to set your translations
