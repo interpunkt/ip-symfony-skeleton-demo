@@ -28,3 +28,11 @@ localhost:8000/admin/ -> Your Backend/Dashboard (you will redirected to Login /l
 localhost:8000/register/ -> register a new User (need to set a higher ROLE if he need access to the backend<br>
 localhost:8000/login/ -> Login Window<br>
 localhost:8000/_trans/ -> translationUI to set your translations
+
+<h3>Require</h3>
+<ul>
+    <li>Composer</li>
+    <li>Nodejs</li>
+    <li>PHP 5.3</li>
+    <li>MySQL</li>
+</ul>

@@ -1,24 +1,29 @@
 {% extends 'layout_backend.html.twig' %}
 
+{% block content_header %}{% endblock %}
+
 {% block actions %}{% endblock %}
 
 {% block login %}
     {% block fos_user_content %}
+
         <form class="form--box" action="{{ path("fos_user_security_check") }}" method="post">
-            <h2>Login Lackierwerk Rudolf Maurer AG</h2>
+
+            <h2>{% trans %}login.company.name{% endtrans %}</h2>
+
             {% if error %}
-                <div class="alert alert--false">Benutzer / Passwort Kombination unbekannt</div>
+                <div class="alert alert--false">{% trans %}login.failed.text{% endtrans %}</div>
             {% endif %}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-            <label for="username">Benutzername</label>
+            <label for="username">{% trans %}login.username.label{% endtrans %}</label>
             <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
-            <label for="password">Passwort</label>
+            <label for="password">{% trans %}login.password.label{% endtrans %}</label>
             <input class="form-control" type="password" id="password" name="_password" required="required" />
 
 
 
-            <input class="btn btn-primary form-control" type="submit" id="_submit" name="_submit" value="Login" />
+            <input class="btn btn-primary form-control" type="submit" id="_submit" name="_submit" value="{% trans %}login.button.text{% endtrans %}" />
         </form>
     {% endblock %}
 {% endblock %}

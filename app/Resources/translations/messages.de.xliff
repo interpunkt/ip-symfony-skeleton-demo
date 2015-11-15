@@ -1,56 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2015-11-15T01:49:55Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
+  <file date="2015-11-15T17:14:02Z" source-language="en" target-language="de" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
     </header>
     <body>
-      <trans-unit id="fa542b734e9302411b3973034d49b7cc7d4c5087" resname="eintragen">
-        <source>eintragen</source>
-        <target state="new">eintragen</target>
-        <jms:reference-file line="27">AppBundle/Controller/routingController.php</jms:reference-file>
-        <jms:reference-file line="19">Controller/vsv/FormController.php</jms:reference-file>
+      <trans-unit id="70b978601c13183845dd1c9952181dbfdf6541bf" resname="login.button.text">
+        <source>login.button.text</source>
+        <target state="new">login.button.text</target>
+        <jms:reference-file line="26">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="62d5564c383b885ff0de25abd24a41080499970b" resname="security.login.password">
-        <source>security.login.password</source>
-        <target>Passwort</target>
-        <jms:reference-file line="34">views/Security/login.html.twig</jms:reference-file>
+      <trans-unit id="090ba2a948551e3632c9c23876b35519c969a6f1" resname="login.company.name">
+        <source>login.company.name</source>
+        <target state="new">login.company.name</target>
+        <jms:reference-file line="12">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="d074ed9a0eb75b7f17ef2274c21d4c3d12d91634" resname="security.login.remember_me">
-        <source>security.login.remember_me</source>
-        <target state="new">security.login.remember_me</target>
-        <jms:reference-file line="43">views/Security/login.html.twig</jms:reference-file>
+      <trans-unit id="9b3a9c92b908281ed11e405662d16d9a65b1450f" resname="login.failed.text">
+        <source>login.failed.text</source>
+        <target state="new">login.failed.text</target>
+        <jms:reference-file line="15">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="79c180ac5e987e195d1dfeda857a114ed692d07f" resname="security.login.submit">
-        <source>security.login.submit</source>
-        <target state="new">security.login.submit</target>
-        <jms:reference-file line="56">views/Security/login.html.twig</jms:reference-file>
+      <trans-unit id="e38b3d20b90f1ebf1ec56e045b34901ed4253834" resname="login.password.label">
+        <source>login.password.label</source>
+        <target state="new">login.password.label</target>
+        <jms:reference-file line="21">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="64e1b2aaf6156a7e34a13fbc38801e89478efff8" resname="security.login.username">
-        <source>security.login.username</source>
-        <target>Benutzer</target>
-        <jms:reference-file line="25">views/Security/login.html.twig</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="3b15fd6f3b1795090f213c88782a71f277270318" resname="vsv.form.label.firma|trans">
-        <source>vsv.form.label.firma|trans</source>
-        <target state="new">vsv.form.label.firma|trans</target>
-        <jms:reference-file line="25">AppBundle/Controller/routingController.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="d86551f7641c26a0106e963ce43ffba43e959efd" resname="vsv.form.label.strasse">
-        <source>vsv.form.label.strasse</source>
-        <target state="new">vsv.form.label.strasse</target>
-        <jms:reference-file line="26">AppBundle/Controller/routingController.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="4469432457240ba22182eb7159833653c49434f7" resname="vsv.label.anrede">
-        <source>vsv.label.anrede</source>
-        <target state="new">vsv.label.anrede</target>
-        <jms:reference-file line="37">Controller/vsv/FormController.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="a04f2ac1928eb1c2129ab35d93908df48525f711" resname="vsv.label.strasse">
-        <source>vsv.label.strasse</source>
-        <target state="new">vsv.label.strasse</target>
-        <jms:reference-file line="40">Controller/vsv/FormController.php</jms:reference-file>
+      <trans-unit id="32bede972a20fe82d22c5f10b549ae06684f1810" resname="login.username.label">
+        <source>login.username.label</source>
+        <target state="new">login.username.label</target>
+        <jms:reference-file line="18">views/Security/login.html.twig</jms:reference-file>
       </trans-unit>
     </body>
   </file>

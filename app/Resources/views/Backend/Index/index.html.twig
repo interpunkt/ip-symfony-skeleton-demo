@@ -1,1 +1,11 @@
-Willkommen im Devpro Backend
+{% extends 'layout_backend.html.twig' %}
+
+{% block content_header_username %}
+    {{ user.username }}
+{% endblock %}
+
+{% block content %}
+    Willkommen im Backend {{ user.username }}
+
+    {{ dump(user) }}
+{% endblock %}

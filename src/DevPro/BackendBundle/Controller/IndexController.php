@@ -14,8 +14,13 @@ class IndexController extends Controller
      */
     public function indexAction()
     {
+        $user = $this->getUser();
+
         $html = $this->container->get('templating')->render(
-            'Backend/Index/index.html.twig'
+            'Backend/Index/index.html.twig',
+            array(
+                'user' => $user
+            )
         );
 
         return new Response($html);

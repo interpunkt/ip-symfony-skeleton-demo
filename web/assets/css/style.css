@@ -1,0 +1,359 @@
+/**
+*   Rudolf Maurer AG – Backend Styles
+*   © 2015 by inter-punkt.ag
+*   Autor: Selim Imoberdorf
+*   Last Changes: 9.11.2015
+**/
+
+/*------------------------------------*\
+    Default Settings
+\*------------------------------------*/
+
+    html,
+    html * {
+        margin: 0;
+        padding: 0;
+    }
+
+    header,
+    main,
+    div {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: inherit;
+    }
+
+    .page-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .gutter {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+
+/*------------------------------------*\
+    Font Styles
+    Default: 14px / 1.4
+\*------------------------------------*/
+
+    body {
+        color: #323232;
+        font-size: 140%;
+        line-height: 1.4;
+    }
+
+    p {
+        font-size: 100%;
+        margin: 0 0 20px 0;
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: normal;
+        font-size: 100%;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 200%; /* 32px */
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 150%; /* 24px */
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: 125%; /* 20px */
+        font-weight: bold;
+    }
+
+
+/*------------------------------------*\
+    Link Styles
+\*------------------------------------*/
+
+    a,
+    a:active,
+    a:focus,
+    a:hover {
+        text-decoration: none;
+        outline: none;
+        border: none;
+    }
+
+    a {
+        color: #3498DB;
+    }
+
+    a:active,
+    a:focus,
+    a:hover {
+        color: #2980B9;
+    }
+
+
+/*------------------------------------*\
+    Button Styles
+\*------------------------------------*/
+
+    button,
+    button:active,
+    button:focus,
+    button:hover {
+        outline: none;
+        border: none;
+    }
+
+    .button {
+        padding: 8px 10px;
+        display: inline-block;
+        overflow: hidden;
+        background: #FFF;
+        border: 1px solid #BDC3C7;
+        border-radius: 6px;
+    }
+
+    .button:active,
+    .button:focus,
+    .button:hover {
+        color: #FFF;
+        border: 1px solid #2980B9;
+        background: #3498DB;
+    }
+
+/*  Individual Styles */
+    .button--important {
+        color: #FFF;
+        border-color: #2980B9;
+        background: #3498DB;
+
+        min-width: 160px;
+        font-weight: bold;
+        text-align: center;      
+    }
+
+    .button--important:active,
+    .button--important:focus,
+    .button--important:hover {
+        border-color: #2C3E50;
+        background: #34495E;
+    }
+
+    .button--warning:active,
+    .button--warning:focus,
+    .button--warning:hover {
+        border-color: #C0392B;
+        background: #E74C3C;
+    }
+
+    .button--success:active,
+    .button--success:focus,
+    .button--success:hover {
+        border-color: #27AE60;
+        background: #27AE60;
+    }
+
+
+/*------------------------------------*\
+    Alert Styles
+\*------------------------------------*/
+
+    .alert {
+        padding: 8px 14px;
+        display: block;
+        overflow: hidden;
+        background: #FFF;
+        border: 1px solid #BDC3C7;
+        border-radius: 6px;        
+    }
+
+    .alert--false {
+        color: #FFF;
+        background: #E74C3C;
+        border-color: #C0392B;
+    }
+
+    .alert--success {
+        color: #323232;
+        background: #2ECC71;
+        border-color: #27AE60;
+    }
+
+
+/*------------------------------------*\
+    Input Default Styles
+\*------------------------------------*/
+
+    input,
+    label,
+    select,
+    button,
+    textarea {
+        outline: none;
+        border: none;
+        display: inline-block;
+        vertical-align: middle;
+        white-space: normal;
+        background: #FFF;
+
+        font-size: 100%;
+        line-height: 1.4;
+    }
+
+    label {
+        margin-bottom: 4px;
+    }
+
+    input {
+        margin-bottom: 20px;
+    }
+
+    textarea {
+        min-height: 240px;
+        margin-bottom: 20px;
+    }
+
+    #form_attachment {
+        margin: 0 0 20px;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+    .form--box {
+        max-width: 520px;
+        margin: 80px auto 0;
+        padding: 20px;
+        background: #FFF;
+        border: 1px solid #BDC3C7;
+        border-radius: 6px;
+    }
+
+
+/*------------------------------------*\
+    Header Layout
+\*------------------------------------*/
+
+    .header {
+        display: block;
+        overflow: hidden;
+        background: #F5F5F5;
+        border-bottom: 1px solid #BDC3C7;
+    }
+
+/*  Logo Settings */
+    .logo {
+        max-width: 190px;
+        float: left;
+    }
+
+    a.logo__link {
+        padding: 20px;
+        display: block;
+        overflow: hidden;
+    }
+
+    .logo__img {
+        display: block;
+    }
+
+/*  Topnav Settings */
+    .topnav {
+        margin: 16px 0;
+        float: right;
+    }
+
+    .topnav .button {
+        margin: 0 20px 0 0;
+    }
+
+
+/*------------------------------------*\
+    Actionbar Layout
+\*------------------------------------*/
+    
+    .actionbar {
+        margin: 0 20px;
+        padding: 40px 0;
+    }
+
+
+/*------------------------------------*\
+    backendTable Layout
+\*------------------------------------*/
+
+    table,
+    table.tablesorter {
+        font-size: 100%;
+    }
+
+    .bootstrap-table {
+        margin: 0 20px 20px;
+    }
+
+    #backendTable {
+        margin: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .table>caption+thead>tr:first-child>th,
+    .table>colgroup+thead>tr:first-child>th,
+    .table>thead:first-child>tr:first-child>th,
+    .table>caption+thead>tr:first-child>td,
+    .table>colgroup+thead>tr:first-child>td,
+    .table>thead:first-child>tr:first-child>td {
+        display: table-cell;
+        height: 38px;
+    }
+
+    table.tablesorter thead tr th,
+    table.tablesorter tfoot tr th {
+        background-color: #F5F5F5;
+    }
+
+    table.tablesorter thead tr .headerSortDown,
+    table.tablesorter thead tr .headerSortUp {
+        background-color: #BDC3C7;
+    }
+
+    .fixed-table-container tbody tr td:first-child {
+        min-width: 60px;
+        vertical-align: middle;
+    }
+
+    .fixed-table-container tbody tr td:nth-child(2) {
+        min-width: 140px;
+    }
+
+
+    .fixed-table-container tbody tr td:last-child {
+        min-width: 180px;
+        vertical-align: middle;
+    }
+
+    .button--table {
+        width: 49%;
+        float: left;
+    }
+
+    .button--table:last-child {
+        float: right;
+    }
+
