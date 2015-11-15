@@ -1,0 +1,24 @@
+{% extends 'layout_backend.html.twig' %}
+
+{% block actions %}{% endblock %}
+
+{% block login %}
+    {% block fos_user_content %}
+        <form class="form--box" action="{{ path("fos_user_security_check") }}" method="post">
+            <h2>Login Lackierwerk Rudolf Maurer AG</h2>
+            {% if error %}
+                <div class="alert alert--false">Benutzer / Passwort Kombination unbekannt</div>
+            {% endif %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <label for="username">Benutzername</label>
+            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+            <label for="password">Passwort</label>
+            <input class="form-control" type="password" id="password" name="_password" required="required" />
+
+
+
+            <input class="btn btn-primary form-control" type="submit" id="_submit" name="_submit" value="Login" />
+        </form>
+    {% endblock %}
+{% endblock %}

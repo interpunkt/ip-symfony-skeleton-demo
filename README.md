@@ -7,7 +7,7 @@ This is new Page for DevPro. Created with Symfony and it contains a Frontend and
     <li>Frontend/Backend Bundle</li>
     <li>FOSUSERBundle (Login/logout/register, protected area)</li>
     <li>JMS Translation Bundle and UI</li>
-    
+    <li>JMS Routing  Bundle </li>
 </ul>
 
 
