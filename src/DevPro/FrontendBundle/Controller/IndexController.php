@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class IndexController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="index" options={"sitemap" = true})
      */
     public function homepageAction()
     {

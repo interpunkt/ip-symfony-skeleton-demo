@@ -113,3 +113,5 @@ jms_i18n_routing:
 PrestaSitemapBundle:
     resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
     prefix:   /
+    timetolive: 3600
+    items_by_set: 50000
