@@ -47,6 +47,14 @@
 
 {% endblock %}
 
+{% block navbar %}
+    <ul>
+        <li><a href="{{ path('admin_index') }}">index</a> </li>
+        <li><a href="{{ path('admin_settings') }}">settings</a> </li>
+        <li></li>
+    </ul>
+{% endblock %}
+
 {% block content %}
 
     <main class="page-wrapper">
