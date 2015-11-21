@@ -114,3 +114,15 @@ presta_sitemap:
     timetolive: 3600
     items_by_set: 50000
     dumper_base_url: "http://www.example.com/"
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        product_image:
+            uri_prefix:         /img/uploads
+            upload_destination: %kernel.root_dir%/../web/assets/images/uploads
+            namer:              vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   false
+            delete_on_remove:   false
