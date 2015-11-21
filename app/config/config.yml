@@ -110,8 +110,7 @@ jms_i18n_routing:
     locales: [de, en]
     strategy: prefix_except_default
 
-PrestaSitemapBundle:
-    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
-    prefix:   /
+presta_sitemap:
     timetolive: 3600
     items_by_set: 50000
+    dumper_base_url: "http://www.example.com/"
