@@ -30,7 +30,8 @@
         "jms/i18n-routing-bundle": "^1.1",
         "twbs/bootstrap": "^3.3",
         "components/jquery": "^2.1",
-        "mopa/bootstrap-bundle": "^2.3"
+        "mopa/bootstrap-bundle": "^2.3",
+        "presta/sitemap-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

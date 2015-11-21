@@ -1,7 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: benjamin
- * Date: 15.11.2015
- * Time: 17:36
- */
+namespace DevPro\BackendBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
+class IndexController extends Controller
+{
+
+    /**
+     * @Route("/admin/settings", name="admin_settings")
+     */
+    public function indexAction()
+    {
+        $user = $this->getUser();
+
+        $html = $this->container->get('templating')->render(
+            'Backend/Settings/index.html.twig',
+            array(
+                'user' => $user
+            )
+        );
+
+        return new Response($html);
+    }
+}
