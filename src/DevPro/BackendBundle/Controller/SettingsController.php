@@ -2,6 +2,7 @@
 namespace DevPro\BackendBundle\Controller;
 
 use DevPro\BackendBundle\Entity\Imageupload;
+use DevPro\BackendBundle\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -67,12 +68,18 @@ class SettingsController extends Controller
             // perform some action, such as saving the task to the database
             $data = $this->get('request')->request->get('form');
             $Imageupload = new Imageupload();
+
+
+
             // get uploaded pic
             $files = $request->files->get('form');
             if (isset($files['attachment'])) {
                 $file_image = $files['attachment'];
                 $Imageupload->setImageFile($file_image);
+
             }
+
+
 
             //var_dump($files_2);
             // generate random image name
@@ -88,7 +95,34 @@ class SettingsController extends Controller
             //var_dump($files['attachment']);
             //echo '</pre>';
 
+            $settings = new Settings();
+            $settings->setLogopath($Imageupload->getImageName());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($settings);
+            $em->flush();
+
             return $this->redirect('/admin/settings');
         }
+    }
+
+    public function getlogo()
+    {
+        $settings = $this->getDoctrine()
+            ->getRepository('BackendBundle:Settings')
+            ->find(1);
+
+        if (!$settings) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        return $settings;
+
+        return $this->render(
+            'Frontend/layout_backend.html.twig',
+            array('settings_logo' => $settings)
+        );
     }
 }
