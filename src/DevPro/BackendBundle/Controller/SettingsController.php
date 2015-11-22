@@ -1,7 +1,7 @@
 <?php
 namespace DevPro\BackendBundle\Controller;
 
-use Devpro\BackendBundle\Entity\Imageupload;
+use DevPro\BackendBundle\Entity\Imageupload;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;

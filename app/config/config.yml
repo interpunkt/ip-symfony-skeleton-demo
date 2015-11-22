@@ -118,9 +118,9 @@ presta_sitemap:
 vich_uploader:
     db_driver: orm
     mappings:
-        product_image:
+        imageupload_image:
             uri_prefix:         /img/uploads
-            upload_destination: %kernel.root_dir%/../web/assets/images/uploads
+            upload_destination: %kernel.root_dir%/../web/assets/img/uploads
             namer:              vich_uploader.namer_uniqid
 
             inject_on_load:     false

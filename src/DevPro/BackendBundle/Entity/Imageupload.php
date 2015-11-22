@@ -1,6 +1,6 @@
 <?php
-
-namespace Devpro\BackendBundle\Entity;
+// src/DevPro/BackendBundle/Entity/Imageupload.php
+namespace DevPro\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -24,7 +24,7 @@ class Imageupload
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="imageupload_image", fileNameProperty="imageName")
      *
      * @var File
      */
