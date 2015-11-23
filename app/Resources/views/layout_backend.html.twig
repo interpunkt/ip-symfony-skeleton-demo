@@ -57,8 +57,12 @@
 {% block navbar %}
     <ul>
         <li><a href="{{ path('admin_index') }}">index</a> </li>
-        <li><a href="{{ path('admin_settings') }}">settings</a> </li>
-        <li></li>
+        <li><a href="">Link</a></li>
+        <li><a href="">Link</a></li>
+        <li><a href="">Link</a></li>
+        {% if user.roles[0] == 'ROLE_SUPER_ADMIN' %}
+            <li><a href="{{ path('admin_settings') }}">settings</a></li>
+        {% endif %}
     </ul>
 {% endblock %}
 
