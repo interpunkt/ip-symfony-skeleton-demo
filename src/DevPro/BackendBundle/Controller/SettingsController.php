@@ -95,7 +95,10 @@ class SettingsController extends Controller
             //var_dump($files['attachment']);
             //echo '</pre>';
 
-            $settings = new Settings();
+            $settings = $this->getDoctrine()
+                ->getRepository('DevProBackendBundle:Settings')
+                ->find(1);
+
             $settings->setLogopath($Imageupload->getImageName());
 
             $em = $this->getDoctrine()->getManager();
@@ -106,23 +109,27 @@ class SettingsController extends Controller
         }
     }
 
-    public function getlogo()
+    /**
+     * @Route("/admin/logo", name="admin_logo")
+     */
+    public function getlogoAction()
     {
-        $settings = $this->getDoctrine()
-            ->getRepository('BackendBundle:Settings')
+         $settings = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Settings')
             ->find(1);
 
         if (!$settings) {
             throw $this->createNotFoundException(
-                'No product found for id '.$id
+                'No product found for id '
             );
         }
 
-        return $settings;
+        $path = $settings->getLogopath();
+        return new Response('<img src="../assets/img/uploads/' . $path . '" alt="Logo">');
 
-        return $this->render(
-            'Frontend/layout_backend.html.twig',
-            array('settings_logo' => $settings)
-        );
+        //return $this->render(
+        //    'Frontend/layout_backend.html.twig',
+        //    array('settings_logo' => $settings)
+        //);
     }
 }

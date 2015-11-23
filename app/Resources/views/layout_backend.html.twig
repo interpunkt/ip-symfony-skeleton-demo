@@ -28,10 +28,13 @@
                 <a href="#" class="logo__link">
                     {% block logo %}
                         {# Get the Logo #}
-                        {{ render(controller(
-                            'DevProBackendBundle:Settings:getlogo'
+                        {{ render(url(
+                        'admin_logo'
                         )) }}
-                        <img src="{{ asset('assets/images/aufbau/inter-punkt-logo.png') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
+
+                        {#
+                            <img src="{{ asset('assets/images/aufbau/') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
+                        #}
                     {% endblock %}
                 </a>
             </div>
