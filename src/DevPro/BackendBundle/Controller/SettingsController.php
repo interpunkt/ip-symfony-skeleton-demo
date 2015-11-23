@@ -70,7 +70,6 @@ class SettingsController extends Controller
             $Imageupload = new Imageupload();
 
 
-
             // get uploaded pic
             $files = $request->files->get('form');
             if (isset($files['attachment'])) {
@@ -80,20 +79,9 @@ class SettingsController extends Controller
             }
 
 
-
-            //var_dump($files_2);
-            // generate random image name
-            //$imageName = rand(1000000, 9999999);
-            //$product->setImageName($imageName);
-            //$product->setImageFile($file_image);
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($Imageupload);
             $em->flush();
-            //$files =  $request->files->all();
-            //echo '<pre>';
-            //var_dump($files['attachment']);
-            //echo '</pre>';
 
             $settings = $this->getDoctrine()
                 ->getRepository('DevProBackendBundle:Settings')
@@ -120,12 +108,12 @@ class SettingsController extends Controller
 
         if (!$settings) {
             throw $this->createNotFoundException(
-                'No product found for id '
+                'No Logo found for id 1'
             );
         }
 
         $path = $settings->getLogopath();
-        return new Response('<img src="../assets/img/uploads/' . $path . '" alt="Logo">');
+        return new Response($path);
 
         //return $this->render(
         //    'Frontend/layout_backend.html.twig',
