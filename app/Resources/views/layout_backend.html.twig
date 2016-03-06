@@ -60,7 +60,7 @@
 {% block navbar %}
     <ul>
         <li><a href="{{ path('admin_index') }}">index</a> </li>
-        <li><a href="">Link</a></li>
+        <li><a href="{{ path('backend_blog') }}">Blog/News</a></li>
         <li><a href="">Link</a></li>
         <li><a href="">Link</a></li>
         {% if is_granted("ROLE_SUPER_ADMIN") %}
