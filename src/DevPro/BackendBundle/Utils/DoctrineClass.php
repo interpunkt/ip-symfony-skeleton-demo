@@ -42,9 +42,7 @@ class DoctrineClass
             ));
 
         if (!$object) {
-            throw $this->createNotFoundException(
-                'Keine Datensätze gefunden mit ID: ' . $id
-            );
+            return false;
         }
 
         return $object;

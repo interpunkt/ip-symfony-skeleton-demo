@@ -10,4 +10,33 @@
     {# Tabelle mit Einträgen aus Table Blog, wenn keine Einträge vorhanden Nachricht ausgeben das keine News vorhanden sind #}
     {{ dump(data) }}
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titel</th>
+                <th>sort</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for items in data %}
+                <tr>
+                    <td>{{ items.id }}</td>
+                    <td>{{ items.titel }}</td>
+                    <td>sorter</td>
+                    <td>
+                        <button title="Beitrag nach oben verschieben"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
+                        <button title="Beitrag nach unten verschieben"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
+                        <button title="Beitrag bearbeiten"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                        <button title="Beitrag löschen"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
 {% endblock %}
