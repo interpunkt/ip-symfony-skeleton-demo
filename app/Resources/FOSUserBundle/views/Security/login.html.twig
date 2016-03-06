@@ -1,4 +1,4 @@
-{% extends 'layout_backend.html.twig' %}
+{% extends 'layout_login.html.twig' %}
 
 {% block content_header %}{% endblock %}
 
@@ -6,26 +6,43 @@
 
 {% block navbar %}{% endblock %}
 
-{% block login %}
+{% block body %}
     {% block fos_user_content %}
 
-        <form class="form--box" action="{{ path("fos_user_security_check") }}" method="post">
-
-            <h2>{% trans %}login.company.name{% endtrans %}</h2>
-
-            {% if error %}
-                <div class="alert alert--false">{% trans %}login.failed.text{% endtrans %}</div>
-            {% endif %}
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-            <label for="username">{% trans %}login.username.label{% endtrans %}</label>
-            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-
-            <label for="password">{% trans %}login.password.label{% endtrans %}</label>
-            <input class="form-control" type="password" id="password" name="_password" required="required" />
+        <div class="container-fluid container-login">
 
 
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
 
-            <input class="btn btn-primary form-control" type="submit" id="_submit" name="_submit" value="{% trans %}login.button.text{% endtrans %}" />
-        </form>
+                    <form class="form--box login-box" action="{{ path("fos_user_security_check") }}" method="post">
+
+                        <h2>{% trans %}login.company.name{% endtrans %}</h2>
+
+                        {% if error %}
+                            <div class="alert alert--false">{% trans %}login.failed.text{% endtrans %}</div>
+                        {% endif %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        <label for="username">{% trans %}login.username.label{% endtrans %}</label>
+                        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+                        <label for="password">{% trans %}login.password.label{% endtrans %}</label>
+                        <input class="form-control" type="password" id="password" name="_password" required="required" />
+
+
+
+                        <input class="btn btn-primary form-control login-btn" type="submit" id="_submit" name="_submit" value="{% trans %}login.button.text{% endtrans %}" />
+                    </form>
+
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+
+
+
+        </div>
+
+
     {% endblock %}
 {% endblock %}

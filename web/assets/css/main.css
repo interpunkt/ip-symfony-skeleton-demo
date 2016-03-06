@@ -1,4 +1,4 @@
-/* Extra-kleine Geräte (Smartphones, weniger als 768px) */
+/* Extra-kleine Gerï¿½te (Smartphones, weniger als 768px) */
 /* Kein Media-Query, weil dies der Standard in Bootstrap ist */
 
 .container{
@@ -9,21 +9,21 @@
 }
 
 
-/* Kleine Geräte (Tablets, 768px und breiter) */
+/* Kleine Gerï¿½te (Tablets, 768px und breiter) */
 @media (min-width: 768px) {
     .contact_form{
 
     }
 }
 
-/* Mittlere Geräte (Desktop-PCs, 992px und breiter) */
+/* Mittlere Gerï¿½te (Desktop-PCs, 992px und breiter) */
 @media (min-width: 992px) {
     .contact_form{
         width: 50%;
     }
 }
 
-/* Große Geräte (Desktop-PCs, 1200px und breiter) */
+/* Groï¿½e Gerï¿½te (Desktop-PCs, 1200px und breiter) */
 @media (min-width: 1200px) {
     .contact_form{
         width: 50%;
@@ -42,4 +42,22 @@
 
 .footer_list_ul{
     float: left;
+}
+
+.backend-login{
+    background-color: #EEEEEE;
+    min-height: 100%;
+    height: 100%;
+}
+
+.login-box{
+    margin-top: 40%;
+    border: 1px solid #3c3c3c;
+    border-radius: 5px;
+    padding: 25px;
+    background-color: #ffffff;
+}
+
+.login-btn{
+    margin-top: 10px;
 }
