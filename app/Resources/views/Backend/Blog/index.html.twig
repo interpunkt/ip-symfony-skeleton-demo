@@ -10,6 +10,11 @@
     {# Tabelle mit Einträgen aus Table Blog, wenn keine Einträge vorhanden Nachricht ausgeben das keine News vorhanden sind #}
     {{ dump(data) }}
 
+    {# Leist mit defaul actions #}
+    <div>
+        <a href="{{ path('backend_blog_new') }}">Neuen Artikel erstellen</a>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>

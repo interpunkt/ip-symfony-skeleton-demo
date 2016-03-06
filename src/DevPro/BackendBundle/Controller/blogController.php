@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use DevPro\BackendBundle\Form\Type\BlogType;
 
 
 
@@ -44,11 +45,19 @@ class blogController extends Controller
     public function newAction(Request $request)
     {
         $blog = new Blog();
-        $form = $this->createForm();
+        $form = $this->createForm(BlogType::class, $blog);
+
+        $result = $this->handleFormUpload($form, $request, $blog);
+
+        if($result)
+        {
+            return $this->redirectToRoute('backend_blog');
+        }
 
         $html = $this->container->get('templating')->render(
             'Backend/Blog/new.html.twig', array(
-                "data" => ''
+                "data" => '',
+                "form" => $form->createView()
             )
         );
 
@@ -75,5 +84,19 @@ class blogController extends Controller
     public function deleteAction()
     {
 
+    }
+
+    public function handleFormUpload($form, $request, $task)
+    {
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+            $dataObject = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($dataObject);
+            $em->flush();
+            return true;
+        }
     }
 }
