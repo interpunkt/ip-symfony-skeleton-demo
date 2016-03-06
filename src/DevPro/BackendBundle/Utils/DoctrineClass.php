@@ -2,7 +2,7 @@
 /*
  * The Doctrine Class is used from the Controllers to perform some Entity Functions like fetch, update, ...
  */
-namespace BackendBundle\Utils;
+namespace DevPro\BackendBundle\Utils;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,7 +21,7 @@ class DoctrineClass
     public function fetch($id)
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('BackendBundle:' . $this->entity)->find($id);
+        $object = $em->getRepository('DevProBackendBundle:' . $this->entity)->find($id);
 
         if (!$object) {
             throw $this->createNotFoundException(
@@ -35,7 +35,7 @@ class DoctrineClass
     public function fetchAll()
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('BackendBundle:' . $this->entity)->findby(
+        $object = $em->getRepository('DevProBackendBundle:' . $this->entity)->findby(
             array(),
             array(
                 "sort" => "ASC"

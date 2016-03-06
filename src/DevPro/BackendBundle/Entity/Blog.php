@@ -24,7 +24,7 @@ class Blog
     protected $titel;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     protected $content;
 

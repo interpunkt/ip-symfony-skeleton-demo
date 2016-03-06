@@ -1,7 +1,7 @@
 <?php
 namespace DevPro\BackendBundle\Controller;
 
-use BackendBundle\Utils\DoctrineClass;
+use DevPro\BackendBundle\Utils\DoctrineClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,12 +23,14 @@ class blogController extends Controller
          * Übersicht aller Artikel
          * Datatables
          */
-        $repository = new DoctrineClass($this->container, 'blog');
-        $repository->fetch();
+        $get_repository = new DoctrineClass($this->container, 'Blog');
+        $repository = $get_repository->fetchAll();
 
 
         $html = $this->container->get('templating')->render(
-            'Backend/Blog/index.html.twig'
+            'Backend/Blog/index.html.twig', array(
+                "data" => $repository
+            )
         );
 
         return new Response($html);
