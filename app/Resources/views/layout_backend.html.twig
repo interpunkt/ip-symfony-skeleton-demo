@@ -29,13 +29,13 @@
                 <a href="#" class="logo__link">
                     {% block logo %}
                         {# Get the Logo #}
-                    <img src="../assets/img/uploads/{{ render(url(
-                        'admin_logo'
-                        )) }}" alt="Logo">
+                        <img src="../assets/img/uploads/{{ render(url(
+                            'admin_logo'
+                            )) }}" alt="Logo">
 
-                        {#
-                            <img src="{{ asset('assets/images/aufbau/') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
-                        #}
+                            {#
+                                <img src="{{ asset('assets/images/aufbau/') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
+                            #}
                     {% endblock %}
                 </a>
             </div>

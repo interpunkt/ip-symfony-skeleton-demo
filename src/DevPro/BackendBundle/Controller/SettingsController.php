@@ -107,9 +107,7 @@ class SettingsController extends Controller
             ->find(1);
 
         if (!$settings) {
-            throw $this->createNotFoundException(
-                'No Logo found for id 1'
-            );
+            return new Response('placeholder.jpg');
         }
 
         $path = $settings->getLogopath();

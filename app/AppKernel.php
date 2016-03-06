@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
             new Presta\SitemapBundle\PrestaSitemapBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
