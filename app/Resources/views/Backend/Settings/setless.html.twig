@@ -4,12 +4,16 @@
 {% block content %}
 
     <div class="container">
-        <h1>Hier default LESS Settings einstellen, do magic..</h1>
+        <h1>Hier LESS Settings einstellen, do some magic..</h1>
 
         <p>Ich bin ein Text...</p>
 
         {{ form_start(form) }}
-        {{ form_widget(form) }}
+        <div class="input-group demo1">
+            {{ form_row(form.primary_color) }}
+            <span class="input-group-addon"><i></i></span>
+        </div>
+        {{ form_row(form.secondary_color) }}
         {{ form_end(form) }}
 
     </div>
