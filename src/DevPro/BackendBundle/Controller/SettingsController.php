@@ -2,11 +2,13 @@
 namespace DevPro\BackendBundle\Controller;
 
 use DevPro\BackendBundle\Entity\Imageupload;
+use DevPro\BackendBundle\Entity\Less;
 use DevPro\BackendBundle\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use DevPro\BackendBundle\Form\Type\LessType;
 
 
 class SettingsController extends Controller
@@ -121,6 +123,30 @@ class SettingsController extends Controller
     }
 
     /**
+     * @Route("/admin/setless", name="admin_setless")
+     */
+    public function setLessTestAction(Request $request)
+    {
+        $lessEntity = new Less();
+        $form = $this->createForm(LessType::class, $lessEntity);
+
+        $result = $this->handleFormUploadLess($form, $request, $lessEntity);
+
+        if($result)
+        {
+            return $this->redirectToRoute('admin_setless');
+        }
+
+        $html = $this->container->get('templating')->render(
+            'Backend/Settings/setless.html.twig',array(
+                "form" => $form->createView()
+            )
+        );
+
+        return new Response($html);
+    }
+
+    /**
      * @Route("/admin/less", name="admin_less")
      */
     public function setLessAction()
@@ -138,5 +164,25 @@ class SettingsController extends Controller
         file_put_contents("assets/less/main.css", $less->compile($lesscode));
 
         return new Response('<p class="magic">compiled, foo</p>');
+    }
+
+    public function handleFormUploadLess($form, $request, $task)
+    {
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+            $dataObject = $form->getData();
+
+            $less = new \lessc();
+            $lesscode = file_get_contents("assets/less/layout.less");
+            $lesscode .= '@primary-color: '. $dataObject->getPrimaryColor() .';';
+            $lesscode .= '@secondary-color: '. $dataObject->getSecondaryColor() .';';
+            file_put_contents("assets/less/main.css", $less->compile($lesscode));
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($dataObject);
+            $em->flush();
+            return true;
+        }
     }
 }
