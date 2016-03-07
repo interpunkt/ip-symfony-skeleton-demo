@@ -12,10 +12,17 @@
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+    {% stylesheets filter='lessphp' output='assets/less/main.css'
+        'assets/less/all.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="all" />
+    {% endstylesheets %}
+
     {% stylesheets
         'assets/vendor/bootstrap/css/bootstrap.min.css'
         'assets/vendor/bootstrap-table/bootstrap-table.css'
         'assets/css/main.css'
+        'assets/less/main.css'
     filter='cssrewrite' output='assets/vendor/css/compiled/app.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

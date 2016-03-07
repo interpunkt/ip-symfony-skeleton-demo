@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class SettingsController extends Controller
 {
 
@@ -117,5 +118,25 @@ class SettingsController extends Controller
         //    'Frontend/layout_backend.html.twig',
         //    array('settings_logo' => $settings)
         //);
+    }
+
+    /**
+     * @Route("/admin/less", name="admin_less")
+     */
+    public function setLessAction()
+    {
+        $less = new \lessc();
+
+        $less->setVariables(array(
+            "color" => "green",
+            "base" => "960px"
+        ));
+
+        $lesscode = file_get_contents("assets/less/layout.less");
+        $lesscode .= "@color: #000055;";
+
+        file_put_contents("assets/less/main.css", $less->compile($lesscode));
+
+        return new Response('<p class="magic">compiled, foo</p>');
     }
 }

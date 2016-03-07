@@ -1,0 +1,25 @@
+// main.less
+@import "layout.less"; // will import the file if it can be found
+
+@family: "verdana";
+
+@color: blue;
+@primary-color: red;
+@secondary-color: blue;
+
+body {
+  @mycolor: red;
+  font-family: @family;
+  color: @primary-color;
+  border-bottom: 1px solid @primary-color;
+}
+
+.test{
+  color: @primary-color;
+}
+
+.magic{
+  border: 5px solid black;
+  padding: 25px;
+  color: @color;
+}
