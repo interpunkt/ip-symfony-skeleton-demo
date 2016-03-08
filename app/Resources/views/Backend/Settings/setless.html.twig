@@ -14,6 +14,10 @@
     <div class="container">
         <h1>Hier LESS Settings einstellen, do some magic..</h1>
 
+        {% if save is defined %}
+            <div class="alert alert-success highlight-succes" role="alert">Settings erfolgreich gespeichert</div>
+        {% endif %}
+
         <h3>Basiskonfiguration</h3>
         {{ form_start(form) }}
         <div class="row">

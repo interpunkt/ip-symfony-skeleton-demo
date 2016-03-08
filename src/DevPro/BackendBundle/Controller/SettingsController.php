@@ -123,18 +123,28 @@ class SettingsController extends Controller
     }
 
     /**
-     * @Route("/admin/setless", name="admin_setless")
+     * @Route("/admin/settings/less/edit/{id}", name="admin_settings_less_edit")
      */
-    public function setLessTestAction(Request $request)
+    public function setLessTestAction(Request $request, $id)
     {
-        $lessEntity = new Less();
+        $lessEntity = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Less')
+            ->find($id);
+
         $form = $this->createForm(LessType::class, $lessEntity);
 
         $result = $this->handleFormUploadLess($form, $request, $lessEntity);
 
         if($result)
         {
-            return $this->redirectToRoute('admin_setless');
+            $html = $this->container->get('templating')->render(
+                'Backend/Settings/setless.html.twig',array(
+                "form" => $form->createView(),
+                "save" => true
+                )
+            );
+
+            return new Response($html);
         }
 
         $html = $this->container->get('templating')->render(
@@ -147,7 +157,7 @@ class SettingsController extends Controller
     }
 
     /**
-     * @Route("/admin/less", name="admin_less")
+     * @Route("/admin/less", name="admin_setless")
      */
     public function setLessAction()
     {
@@ -177,6 +187,7 @@ class SettingsController extends Controller
             $lesscode = file_get_contents("assets/less/layout.less");
             $lesscode .= '@primary-color: '. $dataObject->getPrimaryColor() .';';
             $lesscode .= '@secondary-color: '. $dataObject->getSecondaryColor() .';';
+            $lesscode .= '@highlight-success: '. $dataObject->getHighlightSuccess() .';';
             file_put_contents("assets/less/main.css", $less->compile($lesscode));
 
             $em = $this->getDoctrine()->getManager();
