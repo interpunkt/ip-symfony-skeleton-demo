@@ -13,30 +13,30 @@
 
 
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
+                <div class="col-md-8"></div>
+                <div class="col-md-3">
 
                     <form class="form--box login-box" action="{{ path("fos_user_security_check") }}" method="post">
 
-                        <h2>{% trans %}login.company.name{% endtrans %}</h2>
 
+
+                        <h2>Login <span style="float: right;" class="glyphicon glyphicon-user" aria-hidden="true"></span></h2>
+                        <p>Mit deiner Email Adresse und Passwort einloggen.</p>
+                        <hr>
+                        <br>
                         {% if error %}
                             <div class="alert alert--false">{% trans %}login.failed.text{% endtrans %}</div>
                         {% endif %}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                        <label for="username">{% trans %}login.username.label{% endtrans %}</label>
-                        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 
-                        <label for="password">{% trans %}login.password.label{% endtrans %}</label>
-                        <input class="form-control" type="password" id="password" name="_password" required="required" />
+                        <input placeholder="Email" class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                        <input placeholder="Passwort" style="margin-top: 5px;" class="form-control" type="password" id="password" name="_password" required="required" />
 
-
-
-                        <input class="btn btn-primary form-control login-btn" type="submit" id="_submit" name="_submit" value="{% trans %}login.button.text{% endtrans %}" />
+                        <input class="btn btn-default form-control login-btn" type="submit" id="_submit" name="_submit" value="einloggen" />
                     </form>
 
                 </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-1"></div>
             </div>
 
 

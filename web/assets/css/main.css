@@ -51,15 +51,19 @@
 }
 
 .login-box{
-    margin-top: 40%;
-    border: 1px solid #3c3c3c;
+    margin-top: 20%;
+    border: 1px solid silver;
     border-radius: 5px;
-    padding: 25px;
+    padding: 10% 5% 30% 5%;
     background-color: #ffffff;
 }
 
 .login-btn{
     margin-top: 10px;
+}
+
+span.glyphicon-user {
+    font-size: 1.5em;
 }
 
 
