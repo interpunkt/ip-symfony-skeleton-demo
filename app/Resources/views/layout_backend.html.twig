@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +25,7 @@
         'assets/css/main.css'
         'assets/less/main.css'
         'assets/vendor/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css'
+        'assets/css/nav.css'
     filter='cssrewrite' output='assets/vendor/css/compiled/app.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -41,69 +42,84 @@
 <body class="backend">
 
 {% block content_header %}
-    <div class="row" style="background-color:#e0e0e0">
-        <div class="col-md-4">
-            <div class="logo">
 
-                {% set asset_base = '/assets/img/uploads/' %}
-                <a href="#" class="logo__link">
-                    {% block logo %}
-                        {# Get the Logo #}
-                        <img src="{{ asset_base }}{{ render(url(
-                            'admin_logo'
-                            )) }}" alt="Logo">
-
-                            {#
-                                <img src="{{ asset('assets/images/aufbau/') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
-                            #}
-                    {% endblock %}
-                </a>
-            </div>
-        </div>
-        <div class="col-md-4">
-
-        </div>
-        <div class="col-md-4">
-            <a href="http://inter-punkt.ch" target="_blank" class="button"><span class="glyphicon glyphicon-question-sign" style="margin-right:5px; vertical-align:text-top;"></span>Support</a>
-                {% block content_header_username %}
-
-                {% endblock %}
-                <a href="{{ path('fos_user_security_logout') }}" class="button button--icon"><span class="glyphicon glyphicon-user" style="margin-right:5px; vertical-align:text-top;"></span>Logout</a>
-
-        </div>
-    </div>
 
 {% endblock %}
 
 
 
 {% block navbar %}
-    <ul class="nav nav-tabs">
-        <li><a href="{{ path('admin_index') }}">index</a> </li>
-        <li><a href="{{ path('backend_blog') }}">Blog/News</a></li>
-        <li><a href="">Link</a></li>
-        <li><a href="">Link</a></li>
-        {% if is_granted("ROLE_SUPER_ADMIN") %}
-            <li><a href="{{ path('admin_settings') }}">settings</a></li>
-            <li><a href="{{ path('admin_settings_less_edit', { id : 3 }) }}">LESS Settings</a></li>
-        {% endif %}
-    </ul>
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                    {% set asset_base = '/assets/img/uploads/' %}
+                    <a href="#" class="logo__link">
+                        {% block logo %}
+                            {# Get the Logo #}
+                            <img src="{{ asset_base }}{{ render(url(
+                            'admin_logo'
+                            )) }}" alt="Logo">
+
+                            {#
+                                <img src="{{ asset('assets/images/aufbau/') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
+                            #}
+                        {% endblock %}
+                    </a>
+
+            </li>
+            <br><br><br><br><br>
+            <li><a href="{{ path('admin_index') }}">index</a> </li>
+            <li><a href="{{ path('backend_blog') }}">Blog/News</a></li>
+            <li><a href="">Einstellungen</a></li>
+            <li><a href="">Media Manager</a></li>
+            {% if is_granted("ROLE_SUPER_ADMIN") %}
+                <li><a href="{{ path('admin_settings') }}">IP Einstellungen</a></li>
+                <li><a href="{{ path('admin_settings_less_edit', { id : 3 }) }}">IP LESS Settings</a></li>
+            {% endif %}
+        </ul>
+    </div>
 {% endblock %}
+
+    <div id="page-content-wrapper">
+    <div class="content-header" style="height: 170px; margin-top: 0px; padding-top: 0px;;">
+        <div class="row">
+                <div class="col-md-4" style="padding-top: 15px;">
+                    Schön Dich wiederzusehen
+                    {% block content_header_username %}
+
+                    {% endblock %}
+                </div>
+                <div class="col-md-4" style="padding-top: 15px;">
+
+                </div>
+                <div class="col-md-4" style="padding-top: 15px;">
+                   <span style="float: right; padding-right: 25px;">Bis zum nächsten mal <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right:5px; vertical-align:text-top;"></span>Logout</a></span>
+                </div>
+        </div>
+
+
+    </div>
 
 {% block content %}
 
-    <main class="page-wrapper">
-        <!-- LoginForm -->
-        {% block login %}{% endblock %}
-        
-        <!-- Actionbar -->
-        {% block actionBar %}{% endblock %}
+            <main class="page-wrapper">
 
-        <!-- Block Content -->
-        {% block body %}{% endblock %} 
-    </main>
+
+
+                <!-- LoginForm -->
+                {% block login %}{% endblock %}
+
+                <!-- Actionbar -->
+                {% block actionBar %}{% endblock %}
+
+                <!-- Block Content -->
+                {% block body %}{% endblock %}
+            </main>
 
 {% endblock %}
-    
+    </div>
+</div>
+
 </body>
 </html>
