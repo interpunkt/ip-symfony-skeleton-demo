@@ -44,10 +44,12 @@
     <div class="row" style="background-color:#e0e0e0">
         <div class="col-md-4">
             <div class="logo">
+
+                {% set asset_base = '/assets/img/uploads/' %}
                 <a href="#" class="logo__link">
                     {% block logo %}
                         {# Get the Logo #}
-                        <img src="../assets/img/uploads/{{ render(url(
+                        <img src="{{ asset_base }}{{ render(url(
                             'admin_logo'
                             )) }}" alt="Logo">
 
