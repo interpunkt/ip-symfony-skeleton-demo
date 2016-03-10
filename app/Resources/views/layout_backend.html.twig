@@ -54,6 +54,22 @@
 <body class="hold-transition skin-blue sidebar-mini">
 
 {% block navbar %}
+{# Custom Logo from Uploader ...
+    {% set asset_base = '/assets/img/uploads/' %}
+                    <a href="#" class="logo__link">
+                        {% block logo %}
+                            {# Get the Logo
+    <img src="{{ asset_base }}{{ render(url(
+    'admin_logo'
+    )) }}" alt="Logo">
+
+    {
+        <img src="{{ asset('assets/images/aufbau/') }}" alt="inter-punkt. Logo" title="Seite ansehen" class="logo__img">
+    #}
+{% endblock %}
+#}
+
+
 <div class="wrapper">
 
     <!-- Main Header -->
