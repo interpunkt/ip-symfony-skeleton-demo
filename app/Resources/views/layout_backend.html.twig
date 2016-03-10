@@ -8,7 +8,7 @@
     {% javascripts
         'assets/vendor/js/jquery.js'
         'assets/vendor/bootstrap/js/bootstrap.min.js'
-        'assets/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js'
+        'assets/vendor/bootstrap-colorpicker-bundle/Resources/public/js/bootstrap-colorpicker.min.js'
         output='assets/vendor/js/compiled/app.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -24,7 +24,7 @@
         'assets/vendor/bootstrap-table/bootstrap-table.css'
         'assets/css/main.css'
         'assets/less/main.css'
-        'assets/vendor/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css'
+        'assets/vendor/bootstrap-colorpicker-bundle/Resources/public/css/bootstrap-colorpicker.min.css'
         'assets/css/nav.css'
     filter='cssrewrite' output='assets/vendor/css/compiled/app.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
@@ -41,13 +41,8 @@
 </head>
 <body class="backend">
 
-{% block content_header %}
 
-
-{% endblock %}
-
-
-
+{# Linke Navigation #}
 {% block navbar %}
 <div id="wrapper">
     <div id="sidebar-wrapper">
@@ -85,15 +80,13 @@
     <div class="content-header" style="height: 170px; margin-top: 0px; padding-top: 0px;;">
         <div class="row">
                 <div class="col-md-4" style="padding-top: 15px;">
-                    Schön Dich wiederzusehen
-                    {% block content_header_username %}
 
-                    {% endblock %}
                 </div>
                 <div class="col-md-4" style="padding-top: 15px;">
 
                 </div>
                 <div class="col-md-4" style="padding-top: 15px;">
+
                    <span style="float: right; padding-right: 25px;">Bis zum nächsten mal <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right:5px; vertical-align:text-top;"></span>Logout</a></span>
                 </div>
         </div>
