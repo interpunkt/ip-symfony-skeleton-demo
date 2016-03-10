@@ -11,62 +11,117 @@
 
 {% block content %}
 
-    <div class="container">
-        <h1>Hier LESS Settings einstellen, do some magic..</h1>
 
-        {% if save is defined %}
-            <div class="alert alert-success highlight-succes" role="alert">Settings erfolgreich gespeichert</div>
-        {% endif %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
 
-        <h3>Basiskonfiguration</h3>
-        {{ form_start(form) }}
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(form.primary_color) }}
-                {{ form_row(form.secondary_color) }}
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+
+            <h1>Hier LESS Settings einstellen, do some magic..</h1>
+
+            {% if save is defined %}
+                <div class="alert alert-success highlight-succes" role="alert">Settings erfolgreich gespeichert</div>
+            {% endif %}
+
+            <h3>Basiskonfiguration</h3>
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Brand</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.primary_color) }}
+                            {{ form_row(form.secondary_color) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Brand light/darken</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.primary_color_light) }}
+                            {{ form_row(form.secondary_color_dark) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Links</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.link_color) }}
+                            {{ form_row(form.link_color_hover) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <div class="col-md-3">
+                    {{ form_row(form.text_color) }}
+                </div>
             </div>
-            <div class="col-md-6">
-                {{ form_row(form.primary_color_light) }}
-                {{ form_row(form.secondary_color_dark) }}
+
+            <h3>Hinweis Farben</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    {{ form_row(form.highlight_success) }}
+                    {{ form_row(form.highlight_info) }}
+                </div>
+                <div class="col-md-3">
+                    {{ form_row(form.highlight_notice) }}
+                    {{ form_row(form.highlight_error) }}
+                </div>
+                <div class="col-md-3">
+                    {{ form_row(form.highlight_success) }}
+                    {{ form_row(form.highlight_info) }}
+                </div>
+                <div class="col-md-3">
+                    {{ form_row(form.highlight_notice) }}
+                    {{ form_row(form.highlight_error) }}
+                </div>
             </div>
-        </div>
-
-        <h3>Hinweis Farben</h3>
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(form.highlight_success) }}
-                {{ form_row(form.highlight_info) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_row(form.highlight_notice) }}
-                {{ form_row(form.highlight_error) }}
-            </div>
-        </div>
-
-        <h3>Grundgerüst</h3>
-        <div class="row">
-            <div class="col-md-6">
-                {{ form_row(form.text_color) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_row(form.link_color) }}
-                {{ form_row(form.link_color_hover) }}
-            </div>
-        </div>
-
-
-        {{ form_end(form) }}
-        <div class="border">
 
 
 
-        </div>
-
-        <p>Ich bin ein Text...</p>
+            {{ form_end(form) }}
 
 
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
 
-    </div>
+
 
 
 {% endblock %}

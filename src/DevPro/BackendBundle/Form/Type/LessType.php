@@ -17,12 +17,10 @@ class LessType extends AbstractType
         $builder
             ->add('primary_color', TextType::class, array(
                 'label' => 'Primary-Color',
-                'required' => true,
-                'data' => '#626363'
+                'required' => true
             ))
             ->add('secondary_color', TextType::class, array(
-                'label' => 'Secondary-Color',
-                'data' => '#df12e3'
+                'label' => 'Secondary-Color'
             ))
             ->add('primary_color_light', TextType::class, array(
                 'label' => 'Primary-Color-Light',
