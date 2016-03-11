@@ -2,6 +2,7 @@
 namespace DevPro\BackendBundle\Controller;
 
 use DevPro\BackendBundle\Entity\Blog;
+use DevPro\BackendBundle\Entity\BlogSeo;
 use DevPro\BackendBundle\Utils\DoctrineClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use DevPro\BackendBundle\Form\Type\BlogType;
+use DevPro\BackendBundle\Form\Type\BlogSeoType;
 
 
 
@@ -78,12 +80,42 @@ class blogController extends Controller
         return new Response($html);
     }
 
+
     /**
      * @Route("/admin/blog/delete", name="backend_blog_delete")
      */
     public function deleteAction()
     {
 
+    }
+
+
+    /**
+     * @Route("/admin/blog/seo", name="backend_blog_seo")
+     */
+    public function seoAction(Request $request)
+    {
+        $blog = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:BlogSeo')
+            ->find(1);
+
+        $form = $this->createForm(BlogSeoType::class, $blog);
+
+        $result = $this->handleFormUpload($form, $request, $blog);
+
+        if($result)
+        {
+            return $this->redirectToRoute('backend_blog_seo');
+        }
+
+        $html = $this->container->get('templating')->render(
+            'Backend/Blog/seo.html.twig', array(
+                "data" => '',
+                "form" => $form->createView()
+            )
+        );
+
+        return new Response($html);
     }
 
     public function handleFormUpload($form, $request, $task)

@@ -1,0 +1,40 @@
+{% extends 'layout_backend.html.twig' %}
+
+
+{% block title %}Blog SEO Einstellungen{% endblock %}
+
+{# Navbar Side + active Link #}
+{% block navbar %}
+    {{ parent() }}
+    {% block navActiveBlog %}class="active"{% endblock %}
+{% endblock %}
+
+{# Content-Header, hier Titel und optionalen Text setzen #}
+{% block pageHeader %}
+    {{ parent() }}
+    {% block pageHeaderDescription %} - get find by Google{% endblock %}
+    {% block pageHeaderTitel %}Blog SEO{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="callout callout-info lead">
+                <h4>Tip!</h4>
+                <p class="text-color-class">Deine Seo Description sollte ca.  <code>165 Zeichen</code> enthalten.</p>
+            </div>
+
+            <!-- Your Page Content Here -->
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+
+
+
+        </section><!-- /.content -->
+
+
+{% endblock %}

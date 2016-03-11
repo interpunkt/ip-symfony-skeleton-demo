@@ -1,5 +1,8 @@
 {% extends 'layout_backend.html.twig' %}
 
+
+{% block title %}Base Layout{% endblock %}
+
 {% block content_header_username %}
 
 {% endblock %}
@@ -29,6 +32,7 @@
             {# Leist mit defaul actions #}
             <div class="info-box">
                 <a class="btn btn-default" href="{{ path('backend_blog_new') }}">Neuer Artikel</a>
+                <a class="btn btn-default" href="{{ path('backend_blog_seo') }}">Seo Einstellungen</a>
             </div>
 
 

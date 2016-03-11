@@ -187,6 +187,8 @@ class SettingsController extends Controller
             $lesscode = file_get_contents("assets/less/layout.less");
             $lesscode .= '@primary-color: '. $dataObject->getPrimaryColor() .' !important;';
             $lesscode .= '@secondary-color: '. $dataObject->getSecondaryColor() .';';
+            $lesscode .= '@text-color: '. $dataObject->getTextColor() .';';
+            $lesscode .= '@text-color-class: '. $dataObject->getTextColorClass() .';';
             $lesscode .= '@highlight-success: '. $dataObject->getHighlightSuccess() .';';
             $lesscode .= '@h1: '. $dataObject->getHighlightSuccess() .';';
             file_put_contents("assets/less/main.css", $less->compile($lesscode));

@@ -46,6 +46,9 @@ class LessType extends AbstractType
             ->add('text_color', TextType::class, array(
                 'label' => 'Text-Color',
             ))
+            ->add('text_color_class', TextType::class, array(
+                'label' => 'Text-Color-Class',
+            ))
             ->add('link_color', TextType::class, array(
                 'label' => 'Link-Color',
             ))

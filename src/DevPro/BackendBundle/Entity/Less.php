@@ -66,6 +66,11 @@ class Less
     /**
      * @ORM\Column(type="string", length=255)
      */
+    protected $text_color_class;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     protected $link_color;
 
     /**
@@ -394,5 +399,51 @@ class Less
         $this->h1 = $h1;
 
         return $this;
+    }
+
+    /**
+     * Set text_color_classt
+     *
+     * @param string $textColorClasst
+     * @return Less
+     */
+    public function setTextColorClasst($textColorClasst)
+    {
+        $this->text_color_classt = $textColorClasst;
+
+        return $this;
+    }
+
+    /**
+     * Get text_color_classt
+     *
+     * @return string 
+     */
+    public function getTextColorClasst()
+    {
+        return $this->text_color_classt;
+    }
+
+    /**
+     * Set text_color_class
+     *
+     * @param string $textColorClass
+     * @return Less
+     */
+    public function setTextColorClass($textColorClass)
+    {
+        $this->text_color_class = $textColorClass;
+
+        return $this;
+    }
+
+    /**
+     * Get text_color_class
+     *
+     * @return string 
+     */
+    public function getTextColorClass()
+    {
+        return $this->text_color_class;
     }
 }

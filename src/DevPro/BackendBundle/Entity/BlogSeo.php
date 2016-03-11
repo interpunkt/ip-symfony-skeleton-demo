@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="blog")
+ * @ORM\Table(name="blog_seo")
  */
-class Blog
+class BlogSeo
 {
     /**
      * @ORM\Id
@@ -21,17 +21,14 @@ class Blog
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $titel;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $content;
+    protected $seo_titel;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $sort;
+    protected $seo_description;
+
+
 
     /**
      * Get id
@@ -44,79 +41,10 @@ class Blog
     }
 
     /**
-     * Set titel
-     *
-     * @param string $titel
-     * @return Blog
-     */
-    public function setTitel($titel)
-    {
-        $this->titel = $titel;
-
-        return $this;
-    }
-
-    /**
-     * Get titel
-     *
-     * @return string 
-     */
-    public function getTitel()
-    {
-        return $this->titel;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Blog
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
-     * Set sort
-     *
-     * @param string $sort
-     * @return Blog
-     */
-    public function setSort($sort)
-    {
-        $this->sort = $sort;
-
-        return $this;
-    }
-
-    /**
-     * Get sort
-     *
-     * @return string 
-     */
-    public function getSort()
-    {
-        return $this->sort;
-    }
-
-    /**
      * Set seo_titel
      *
      * @param string $seoTitel
-     * @return Blog
+     * @return BlogSeo
      */
     public function setSeoTitel($seoTitel)
     {
@@ -139,7 +67,7 @@ class Blog
      * Set seo_description
      *
      * @param string $seoDescription
-     * @return Blog
+     * @return BlogSeo
      */
     public function setSeoDescription($seoDescription)
     {
