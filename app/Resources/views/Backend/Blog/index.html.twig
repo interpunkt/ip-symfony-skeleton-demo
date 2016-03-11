@@ -30,10 +30,13 @@
 
             <!-- Your Page Content Here -->
             {# Leist mit defaul actions #}
-            <div class="info-box">
-                <a class="btn btn-default" href="{{ path('backend_blog_new') }}">Neuer Artikel</a>
-                <a class="btn btn-default" href="{{ path('backend_blog_seo') }}">Seo Einstellungen</a>
-            </div>
+
+                <div class="btn-group btn-group-justified">
+                    <a class="btn btn-info" href="{{ path('backend_blog_new') }}">Neuer Artikel</a>
+                    <a class="btn btn-default" href="{{ path('backend_blog_seo') }}">Seo Einstellungen</a>
+                </div>
+
+            <br><br><br>
 
 
             <table id="blogTable" class="table table-striped">
