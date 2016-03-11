@@ -277,7 +277,7 @@
                     <a href="#"><i class="fa fa-link"></i> <span>LESS</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         {% if is_granted("ROLE_SUPER_ADMIN") %}
-                            <li><a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><i class="fa fa-link"></i> <span>Basiskonfiguratio</span></a></li>
+                            <li><a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><i class="fa fa-link"></i> <span>Basiskonfiguration</span></a></li>
                             <li><a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><i class="fa fa-link"></i> <span>Typographie</span></a></li>
                         {% endif %}
                     </ul>
@@ -297,8 +297,22 @@
 
 {% endblock %}
 
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
-
+{% block contentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {% block pageHeaderTitel %}Page Header{% endblock %}
+            <small>{% block pageHeaderDescription %}Optional description{% endblock %}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+            <li class="active">Here</li>
+        </ol>
+    </section>
+{% endblock %}
 
 {% block content %}
 
