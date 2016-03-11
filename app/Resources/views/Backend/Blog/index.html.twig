@@ -31,12 +31,11 @@
                 <a class="btn btn-default" href="{{ path('backend_blog_new') }}">Neuen Artikel erstellen</a>
             </div>
 
-            <table class="table table-striped">
+            <table id="blogTable" class="table table-striped">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Titel</th>
-                    <th>sort</th>
                     <th>actions</th>
                 </tr>
                 </thead>
@@ -46,7 +45,6 @@
                     <tr>
                         <td>{{ items.id }}</td>
                         <td>{{ items.titel }}</td>
-                        <td>sorter</td>
                         <td>
                             <button data-tooltip="Beitrag nach oben verschieben" data-tooltip-position="top"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></button>
                             <button data-tooltip="Beitrag nach unten verschieben" data-tooltip-position="top"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></button>
