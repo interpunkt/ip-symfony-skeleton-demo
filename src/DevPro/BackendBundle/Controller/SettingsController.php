@@ -188,6 +188,12 @@ class SettingsController extends Controller
             $lesscode .= '@primary-color: '. $dataObject->getPrimaryColor() .';';
             $lesscode .= '@secondary-color: '. $dataObject->getSecondaryColor() .';';
             $lesscode .= '@highlight-success: '. $dataObject->getHighlightSuccess() .';';
+            $lesscode .= '@font-family: '. $dataObject->getFontFamily() .';';
+            $lesscode .= '@h1: '. $dataObject->getHighlightSuccess() .';';
+            $lesscode .= '@font-size: '. $dataObject->getFontSize() .';';
+            $lesscode .= '@h1: '. $dataObject->getH1() .';';
+            $lesscode .= '@h2: '. $dataObject->getH2() .';';
+            $lesscode .= '@h3: '. $dataObject->getH3() .';';
             file_put_contents("assets/less/main.css", $less->compile($lesscode));
 
             $em = $this->getDoctrine()->getManager();

@@ -73,6 +73,7 @@ class Less
      */
     protected $link_color_hover;
 
+
     /**
      * Get id
      *
@@ -380,5 +381,189 @@ class Less
     public function getLinkColorHover()
     {
         return $this->link_color_hover;
+    }
+
+    /**
+     * Set h1
+     *
+     * @param string $h1
+     * @return Less
+     */
+    public function setH1($h1)
+    {
+        $this->h1 = $h1;
+
+        return $this;
+    }
+
+    /**
+     * Get h1
+     *
+     * @return string 
+     */
+    public function getH1()
+    {
+        return $this->h1;
+    }
+
+    /**
+     * Set h2
+     *
+     * @param string $h2
+     * @return Less
+     */
+    public function setH2($h2)
+    {
+        $this->h2 = $h2;
+
+        return $this;
+    }
+
+    /**
+     * Get h2
+     *
+     * @return string 
+     */
+    public function getH2()
+    {
+        return $this->h2;
+    }
+
+    /**
+     * Set h3
+     *
+     * @param string $h3
+     * @return Less
+     */
+    public function setH3($h3)
+    {
+        $this->h3 = $h3;
+
+        return $this;
+    }
+
+    /**
+     * Get h3
+     *
+     * @return string 
+     */
+    public function getH3()
+    {
+        return $this->h3;
+    }
+
+    /**
+     * Set font_size
+     *
+     * @param string $fontSize
+     * @return Less
+     */
+    public function setFontSize($fontSize)
+    {
+        $this->font_size = $fontSize;
+
+        return $this;
+    }
+
+    /**
+     * Get font_size
+     *
+     * @return string 
+     */
+    public function getFontSize()
+    {
+        return $this->font_size;
+    }
+
+    /**
+     * Set font
+     *
+     * @param string $font
+     * @return Less
+     */
+    public function setFont($font)
+    {
+        $this->font = $font;
+
+        return $this;
+    }
+
+    /**
+     * Get font
+     *
+     * @return string 
+     */
+    public function getFont()
+    {
+        return $this->font;
+    }
+
+    /**
+     * Set font_style
+     *
+     * @param string $fontStyle
+     * @return Less
+     */
+    public function setFontStyle($fontStyle)
+    {
+        $this->font_style = $fontStyle;
+
+        return $this;
+    }
+
+    /**
+     * Get font_style
+     *
+     * @return string 
+     */
+    public function getFontStyle()
+    {
+        return $this->font_style;
+    }
+
+    /**
+     * Set font_family
+     *
+     * @param string $fontFamily
+     * @return Less
+     */
+    public function setFontFamily($fontFamily)
+    {
+        $this->font_family = $fontFamily;
+
+        return $this;
+    }
+
+    /**
+     * Get font_family
+     *
+     * @return string 
+     */
+    public function getFontFamily()
+    {
+        return $this->font_family;
+    }
+
+    /**
+     * Set font_weight
+     *
+     * @param string $fontWeight
+     * @return Less
+     */
+    public function setFontWeight($fontWeight)
+    {
+        $this->font_weight = $fontWeight;
+
+        return $this;
+    }
+
+    /**
+     * Get font_weight
+     *
+     * @return string 
+     */
+    public function getFontWeight()
+    {
+        return $this->font_weight;
     }
 }

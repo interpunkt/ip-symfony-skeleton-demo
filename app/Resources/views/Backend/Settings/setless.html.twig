@@ -17,8 +17,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                LESS Einstellungen
+                <small>Siteadmin Farben, Typographie, ..</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -30,8 +30,6 @@
         <section class="content">
 
             <!-- Your Page Content Here -->
-
-            <h1>Hier LESS Settings einstellen, do some magic..</h1>
 
             {% if save is defined %}
                 <div class="alert alert-success highlight-succes" role="alert">Settings erfolgreich gespeichert</div>
@@ -89,19 +87,44 @@
                     </div><!-- /.box -->
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.text_color) }}
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Texte</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.text_color) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
                 </div>
             </div>
 
             <h3>Hinweis Farben</h3>
             <div class="row">
                 <div class="col-md-3">
-                    {{ form_row(form.highlight_success) }}
-                    {{ form_row(form.highlight_info) }}
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Hinweise</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.highlight_success) }}
+                            {{ form_row(form.highlight_info) }}
+                            {{ form_row(form.highlight_notice) }}
+                            {{ form_row(form.highlight_error) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
                 </div>
                 <div class="col-md-3">
-                    {{ form_row(form.highlight_notice) }}
-                    {{ form_row(form.highlight_error) }}
+
                 </div>
                 <div class="col-md-3">
                     {{ form_row(form.highlight_success) }}
@@ -112,8 +135,6 @@
                     {{ form_row(form.highlight_error) }}
                 </div>
             </div>
-
-
 
             {{ form_end(form) }}
 

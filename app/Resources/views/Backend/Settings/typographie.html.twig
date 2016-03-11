@@ -1,0 +1,76 @@
+{% extends 'layout_backend.html.twig' %}
+
+
+{% block content %}
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            {# Typographie #}
+            {# #}
+            {# #}
+            <h1>Typographie</h1>
+
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Überschriften</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.h_one) }}
+                            {{ form_row(form.h_two) }}
+                            {{ form_row(form.h_three) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <div class="col-md-3">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Font</h3>
+                            <div class="box-tools pull-right">
+                                <!-- Buttons, labels, and many other things can be placed here! -->
+                                <!-- Here is a label for example -->
+
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            {{ form_row(form.font_size) }}
+                            {{ form_row(form.font_family) }}
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div><!-- Grid-row -->
+            {{ form_end(form) }}
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+{% endblock %}
