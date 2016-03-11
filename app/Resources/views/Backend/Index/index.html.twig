@@ -4,6 +4,13 @@
     {{ user.username }}
 {% endblock %}
 
+
+{# Navbar Side + active Link #}
+{% block navbar %}
+    {{ parent() }}
+    {% block navActiveIndex %}class="active"{% endblock %}
+{% endblock %}
+
 {# Content-Header, hier Titel und optionalen Text setzen #}
 {% block pageHeader %}
     {{ parent() }}

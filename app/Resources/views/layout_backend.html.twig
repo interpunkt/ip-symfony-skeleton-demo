@@ -265,15 +265,15 @@
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="{{ path('admin_index') }}"><i class="fa fa-link"></i> <span>Index</span></a> </li>
-                <li><a href="{{ path('backend_blog') }}"><i class="fa fa-link"></i> <span>Blog News</span></a></li>
-                <li><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
-                <li><a href=""><i class="fa fa-link"></i> <span>Media Manager</span></a></li>
-                <li><a href=""><i class="fa fa-link"></i> <span>SEO</span></a></li>
+                <li {% block navActiveIndex %}{% endblock %}><a href="{{ path('admin_index') }}"><i class="fa fa-link"></i> <span>Index</span></a> </li>
+                <li {% block navActiveBlog %}{% endblock %}><a href="{{ path('backend_blog') }}"><i class="fa fa-link"></i> <span>Blog News</span></a></li>
+                <li {% block navActiveEinstellungen %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
+                <li {% block navActiveMediaManager %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Media Manager</span></a></li>
+                <li {% block navActiveSeo %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>SEO</span></a></li>
 
                 {# Interpunkt internes Menu für ROLE_SUPER_ADMIN #}
                 <li class="header">Interpunkt</li>
-                <li class="treeview">
+                <li {% block navActiveLess %}{% endblock %} class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>LESS</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         {% if is_granted("ROLE_SUPER_ADMIN") %}
@@ -314,24 +314,11 @@
     </section>
 {% endblock %}
 
+
+{# Main-Content #}
 {% block content %}
-
-            <main class="page-wrapper">
-
-
-
-                <!-- LoginForm -->
-                {% block login %}{% endblock %}
-
-                <!-- Actionbar -->
-                {% block actionBar %}{% endblock %}
-
-                <!-- Block Content -->
-                {% block body %}{% endblock %}
-            </main>
-
 {% endblock %}
-
+    </div><!-- ./ Content Wrapper -->
 
 {% block footer %}
     <!-- Main Footer -->

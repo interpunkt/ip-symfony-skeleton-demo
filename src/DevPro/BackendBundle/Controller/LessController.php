@@ -2,7 +2,7 @@
 namespace DevPro\BackendBundle\Controller;
 
 use DevPro\BackendBundle\Entity\Imageupload;
-use DevPro\BackendBundle\Entity\Less;
+use DevPro\BackendBundle\Entity\LessTypographie;
 use DevPro\BackendBundle\Entity\Settings;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
