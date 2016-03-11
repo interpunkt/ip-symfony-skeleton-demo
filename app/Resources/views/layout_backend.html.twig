@@ -11,6 +11,7 @@
         'assets/vendor/bootstrap-colorpicker-bundle/Resources/public/js/bootstrap-colorpicker.min.js'
         'assets/js/app.min.js'
         'assets/vendor/datatables.net/js/jquery.dataTables.min.js'
+        'assets/vendor/datatables.net/js/dataTables.bootstrap.min.js'
         'assets/js/dataTables.js'
         output='assets/vendor/js/compiled/app.js' %}
     <script src="{{ asset_url }}"></script>
@@ -26,12 +27,13 @@
     {% stylesheets
         'assets/vendor/bootstrap/css/bootstrap.min.css'
         'assets/vendor/bootstrap-table/bootstrap-table.css'
-        'assets/css/main.css'
-        'assets/less/main.css'
         'assets/vendor/bootstrap-colorpicker-bundle/Resources/public/css/bootstrap-colorpicker.min.css'
         'assets/css/nav.css'
         'assets/css/AdminLTE.min.css'
         'assets/css/skins/skin-blue.min.css'
+        'assets/vendor$7datatables.net/css/dataTables.min.css'
+        'assets/css/main.css'
+        'assets/less/main.css'
     filter='cssrewrite' output='assets/vendor/css/compiled/app.css' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
