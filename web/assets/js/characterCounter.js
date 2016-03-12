@@ -147,4 +147,9 @@ $(document).ready(function () {
         maximumCharacters: 160,
         chopText: true
     });
+
+    $('#blog_seo_seo_titel').characterCounter({
+        maximumCharacters: 60,
+        chopText: true
+    });
 });
