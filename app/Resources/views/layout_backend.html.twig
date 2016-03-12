@@ -19,6 +19,9 @@
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
+
 
     {% stylesheets filter='lessphp' output='assets/less/main.css'
         'assets/less/all.less'

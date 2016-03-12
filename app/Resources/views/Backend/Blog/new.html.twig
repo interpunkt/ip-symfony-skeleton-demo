@@ -1,14 +1,32 @@
 {% extends 'layout_backend.html.twig' %}
 
-{% block content_header_username %}
 
+{% block title %}Blog - Neuer Artikel{% endblock %}
+
+{# Navbar Side + active Link #}
+{% block navbar %}
+    {{ parent() }}
+    {% block navActiveBlog %}class="active"{% endblock %}
+{% endblock %}
+
+{# Content-Header, hier Titel und optionalen Text setzen #}
+{% block pageHeader %}
+    {{ parent() }}
+    {% block pageHeaderDescription %}neuen Artikel erstellen{% endblock %}
+    {% block pageHeaderTitel %}Blog - {% endblock %}
 {% endblock %}
 
 {% block content %}
-    <p>Hier Blog Index</p>
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+    </section><!-- /.content -->
+
 
 {% endblock %}

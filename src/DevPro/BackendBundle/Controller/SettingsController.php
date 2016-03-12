@@ -37,6 +37,7 @@ class SettingsController extends Controller
         return new Response($html);
     }
 
+
     // Logo upload
     public function uploadLogo()
     {
