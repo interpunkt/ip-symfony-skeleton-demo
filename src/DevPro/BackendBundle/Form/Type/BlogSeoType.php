@@ -22,7 +22,7 @@ class BlogSeoType extends AbstractType
             ->add('seo_description', TextareaType::class, array(
                 'label' => 'Seo Description',
                 'required' => true,
-                'attr' => array('rows' => '10'),
+                'attr' => array('rows' => '10', 'id' => 'seoCharCounter'),
             ))
             ->add('save', SubmitType::class, array(
                 'label' => 'speichern',
