@@ -36,3 +36,18 @@ localhost:8000/_trans/ -> translationUI to set your translations
     <li>PHP 5.3</li>
     <li>MySQL</li>
 </ul>
+
+<h3>Google Settings</h3>
+<p>Meta Titel und Beschreibung können in den verschiedenen Seiten im Backend gesetzt werden</p>
+<p>Zeichenzähler für neue Seo Elemente einbinden:</p>
+<p>File: assets/js/charCounter.js</p>
+<p>ID des Elements unten einbinden und Parameter setzen.</p>
+
+Beispiel:
+
+<pre>
+    $('#second_textfield').characterCounter({
+            maximumCharacters: 20,
+            chopText: true
+        });
+</pre>
