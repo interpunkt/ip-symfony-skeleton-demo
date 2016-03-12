@@ -21,7 +21,8 @@ class BlogSeoType extends AbstractType
             ))
             ->add('seo_description', TextareaType::class, array(
                 'label' => 'Seo Description',
-                'required' => true
+                'required' => true,
+                'attr' => array('rows' => '10'),
             ))
             ->add('save', SubmitType::class, array(
                 'label' => 'speichern',
