@@ -38,7 +38,28 @@
             {{ form_widget(form) }}
             {{ form_end(form) }}
 
-
+            <div class="box box-widget">
+                <div class="box-header with-border">
+                    <div class="user-block">
+                        <h3>Beispiel auf Google</h3>
+                    </div>
+                    <!-- /.user-block -->
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+                            <i class="fa fa-circle-o"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {% set asset_google_seo_image = '/assets/img/google/' %}
+                    <img class="img-responsive pad" src="{{ asset_google_seo_image }}/interpunktag-google.jpg" alt="Interpunkt AG Google Beispiel">
+                </div>
+                <!-- /.box-body -->
+            </div>
 
 
         </section><!-- /.content -->
