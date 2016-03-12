@@ -34,14 +34,36 @@
             </div>
 
             <!-- Your Page Content Here -->
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
 
             <div class="box box-widget">
                 <div class="box-header with-border">
                     <div class="user-block">
-                        <h3>Beispiel auf Google</h3>
+                        <h3 class="box-title">Seo Titel & Description</h3>
+                    </div>
+                    <!-- /.user-block -->
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
+                            <i class="fa fa-circle-o"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+
+            <div class="box box-widget">
+                <div class="box-header with-border">
+                    <div class="user-block">
+                        <h3 class="box-title">Beispiel auf Google</h3>
                     </div>
                     <!-- /.user-block -->
                     <div class="box-tools">

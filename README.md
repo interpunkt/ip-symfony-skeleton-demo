@@ -51,3 +51,8 @@ Beispiel:
             chopText: true
         });
 </pre>
+
+
+Tinymce
+
+Um den Tinymce zu aktivieren bei einem textarea Feld einfach Class "tinymce" mitgeben."
