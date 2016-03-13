@@ -1,7 +1,8 @@
 {# app/Resources/views/demo/about/base.html.twig #}
 {% extends 'layout.html.twig' %}
 
-{% block title %}DevPro Blog & News{% endblock %}
+{% block seoDescription %}{{ seodescription }}{% endblock %}
+{% block title %}{{ seotitel }}{% endblock %}
 
 {% block navbar %}
     {{ parent() }}

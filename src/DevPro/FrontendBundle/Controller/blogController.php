@@ -1,6 +1,7 @@
 <?php
 namespace DevPro\FrontendBundle\Controller;
 
+use Proxies\__CG__\DevPro\BackendBundle\Entity\BlogSeo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,9 +21,15 @@ class blogController extends Controller
             ->getRepository('DevProBackendBundle:Blog')
             ->findAll();
 
+        $seo = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:BlogSeo')
+            ->findAll();
+
         $html = $this->container->get('templating')->render(
             'Frontend/Blog/index.html.twig', array(
-                "data" => $blog
+                "data" => $blog,
+                "seotitel" => $seo[0]->getSeoTitel(),
+                "seodescription" => $seo[0]->getSeoDescription()
             )
         );
 
