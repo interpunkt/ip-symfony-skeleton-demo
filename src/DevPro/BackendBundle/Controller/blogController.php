@@ -1,6 +1,7 @@
 <?php
 namespace DevPro\BackendBundle\Controller;
 
+use AppBundle\DependencyInjection\singleSorter;
 use DevPro\BackendBundle\Entity\Blog;
 use DevPro\BackendBundle\Entity\BlogSeo;
 use DevPro\BackendBundle\Utils\DoctrineClass;
@@ -27,13 +28,13 @@ class blogController extends Controller
          * Übersicht aller Artikel
          * Datatables
          */
-        $get_repository = new DoctrineClass($this->container, 'Blog');
-        $repository = $get_repository->fetchAll();
-
+        $blogdata = $this->getDoctrine()
+            ->getRepository("DevProBackendBundle:Blog")
+            ->findBy([], ['sort' => 'DESC']);
 
         $html = $this->container->get('templating')->render(
             'Backend/Blog/index.html.twig', array(
-                "data" => $repository
+                "data" => $blogdata
             )
         );
 
@@ -128,6 +129,18 @@ class blogController extends Controller
         );
 
         return new Response($html);
+    }
+
+    /**
+     * @Route("/admin/blog/sortup/{id}", name="backend_blog_sortup")
+     */
+    public function sortupAction($id)
+    {
+        $sorter = new singleSorter($this->container, 'Blog');
+        $sorter->setSort('sortup');
+        $sorter->flushSort();
+
+        return $this->redirectToRoute('backend_blog');
     }
 
     public function handleFormUpload($form, $request, $task, $action)
