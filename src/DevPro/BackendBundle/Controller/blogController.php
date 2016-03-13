@@ -147,6 +147,22 @@ class blogController extends Controller
         return $this->redirectToRoute('backend_blog');
     }
 
+    /**
+     * @Route("/admin/blog/sortdown/{id}", name="backend_blog_sortdown")
+     */
+    public function sortdownAction($id)
+    {
+        $data = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Blog')
+            ->find($id);
+
+        $sorter = new singleSorter($this->container, 'Blog', 'DevProBackendBundle');
+        $sorter->setSort($data, 'sortdown');
+        $sorter->flushSort();
+
+        return $this->redirectToRoute('backend_blog');
+    }
+
     public function handleFormUpload($form, $request, $task, $action)
     {
         $form->handleRequest($request);
