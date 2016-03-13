@@ -4,6 +4,7 @@ $(document).ready(function() {
 
     var table = $('#blogTable').DataTable({
         "bSort" : true,
+        "bLengthChange": false,
         "order": [[ 0, "desc" ]],
         "language": {
             "decimal":        "",
