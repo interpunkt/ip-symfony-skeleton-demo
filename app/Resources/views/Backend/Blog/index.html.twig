@@ -18,7 +18,7 @@
 {# Content-Header, hier Titel und optionalen Text setzen #}
     {% block pageHeader %}
         {{ parent() }}
-        {% block pageHeaderDescription %}ein Text{% endblock %}
+        {% block pageHeaderDescription %} - übersicht{% endblock %}
         {% block pageHeaderTitel %}Blog{% endblock %}
         {% block BreadcrumbMainLevel %}<li><a href="{{ path('backend_blog') }}"><i class="fa fa-dashboard"></i> Blog</a></li>{% endblock %}
         {% block BreadcrumbMainLevelSubOne %}{% endblock %} {# No Sublevel here #}
