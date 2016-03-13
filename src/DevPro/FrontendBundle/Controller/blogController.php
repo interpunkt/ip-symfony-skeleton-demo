@@ -18,7 +18,7 @@ class blogController extends Controller
     public function homepageAction(Request $request)
     {
         $em    = $this->get('doctrine.orm.entity_manager');
-        $dql   = 'SELECT a FROM DevProBackendBundle:Blog a ORDER BY a.id DESC' ;
+        $dql   = 'SELECT a FROM DevProBackendBundle:Blog a ORDER BY a.sort DESC' ;
         $query = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
