@@ -49,7 +49,7 @@ class blogController extends Controller
         $blog = new Blog();
         $form = $this->createForm(BlogType::class, $blog);
 
-        $result = $this->handleFormUpload($form, $request, $blog);
+        $result = $this->handleFormUpload($form, $request, $blog, 'neu');
 
         if($result)
         {
@@ -67,13 +67,25 @@ class blogController extends Controller
     }
 
     /**
-     * @Route("/admin/blog/edit", name="backend_blog_edit")
+     * @Route("/admin/blog/edit/{id}", name="backend_blog_edit")
      */
-    public function editAction()
+    public function editAction(Request $request, $id)
     {
+        $blog = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Blog')
+            ->find($id);
+
+        $form = $this->createForm(BlogType::class, $blog);
+
+        $result = $this->handleFormUpload($form, $request, $blog, 'edit');
+        if($result)
+        {
+            return $this->redirectToRoute('backend_blog');
+        }
+
         $html = $this->container->get('templating')->render(
             'Backend/Blog/edit.html.twig', array(
-                "data" => ''
+                "form" => $form->createView()
             )
         );
 
@@ -101,7 +113,7 @@ class blogController extends Controller
 
         $form = $this->createForm(BlogSeoType::class, $blog);
 
-        $result = $this->handleFormUpload($form, $request, $blog);
+        $result = $this->handleFormUpload($form, $request, $blog, 'edit');
 
         if($result)
         {
@@ -118,16 +130,20 @@ class blogController extends Controller
         return new Response($html);
     }
 
-    public function handleFormUpload($form, $request, $task)
+    public function handleFormUpload($form, $request, $task, $action)
     {
         $form->handleRequest($request);
         if ($form->isValid()) {
 
             $dataObject = $form->getData();
 
-            $sort = $this->getSetSort();
-            $sort++;
-            $dataObject->setSort($sort);
+            if($action == 'neu')
+            {
+                $sort = $this->getSetSort();
+                $sort++;
+                $dataObject->setSort($sort);
+            }
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($dataObject);
