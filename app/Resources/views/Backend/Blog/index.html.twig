@@ -20,6 +20,8 @@
         {{ parent() }}
         {% block pageHeaderDescription %}ein Text{% endblock %}
         {% block pageHeaderTitel %}Blog{% endblock %}
+        {% block BreadcrumbMainLevel %}<li><a href="{{ path('backend_blog') }}"><i class="fa fa-dashboard"></i> Blog</a></li>{% endblock %}
+        {% block BreadcrumbMainLevelSubOne %}{% endblock %} {# No Sublevel here #}
     {% endblock %}
 
 

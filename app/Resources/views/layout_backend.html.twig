@@ -338,8 +338,8 @@
             <small>{% block pageHeaderDescription %}Optional description{% endblock %}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
+            {% block BreadcrumbMainLevel %}<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>{% endblock %}
+            {% block BreadcrumbMainLevelSubOne %}<li class="active">Here</li>{% endblock %}
         </ol>
     </section>
 {% endblock %}
@@ -355,7 +355,7 @@
     <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Anything you want
+            Version 1.0.0 Beta
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2016 <a href="#">Interpunkt AG</a>.</strong> All rights reserved. Development by Benjamin Knecht
