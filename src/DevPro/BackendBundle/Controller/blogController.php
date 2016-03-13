@@ -95,11 +95,19 @@ class blogController extends Controller
 
 
     /**
-     * @Route("/admin/blog/delete", name="backend_blog_delete")
+     * @Route("/admin/blog/delete/{id}", name="backend_blog_delete")
      */
-    public function deleteAction()
+    public function deleteAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $data = $em
+            ->getRepository('DevProBackendBundle:Blog')
+            ->find($id);
 
+        $em->remove($data);
+        $em->flush();
+
+        return $this->redirectToRoute('backend_blog');
     }
 
 
