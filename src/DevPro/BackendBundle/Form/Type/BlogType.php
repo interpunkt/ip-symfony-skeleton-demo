@@ -26,7 +26,8 @@ class BlogType extends AbstractType
             ->add('save', SubmitType::class, array(
                 'label' => 'speichern',
                 'attr' => array(
-                    'class' => 'btn btn--important '
+                    'class' => 'btn btn--important',
+                    'formnovalidate'=> true,
                 )
             ))
         ;

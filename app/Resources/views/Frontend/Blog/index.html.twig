@@ -7,14 +7,21 @@
     {{ parent() }}
 {% endblock %}
 
-{% block body %}
+{% block content %}
+
 
     <div class="container">
-
+        <p>Hello world</p>
+        {{ dump(data) }}
             {#
             Hier werden die Blog Einträge aus der Table Blog angezeigt
             #}
-
+            {% if data is defined %}
+              {% for items in data %}
+                  <h2>{{ items.titel }}</h2>
+                  {{ items.content|raw }}
+              {% endfor %}
+            {% endif %}
 
     </div>
 

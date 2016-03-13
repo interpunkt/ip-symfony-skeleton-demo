@@ -11,12 +11,22 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Blog
 {
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $date;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -156,5 +166,28 @@ class Blog
     public function getSeoDescription()
     {
         return $this->seo_description;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \Datetime $date
+     * @return Blog
+     */
+    public function setDate(\Datetime $date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \Datetime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

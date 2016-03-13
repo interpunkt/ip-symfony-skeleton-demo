@@ -128,25 +128,7 @@ class SettingsController extends Controller
      */
     public function setLessTestAction(Request $request, $id)
     {
-        $lessEntity = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Less')
-            ->find($id);
 
-        $form = $this->createForm(LessType::class, $lessEntity);
-
-        $result = $this->handleFormUploadLess($form, $request, $lessEntity);
-
-        if($result)
-        {
-            $html = $this->container->get('templating')->render(
-                'Backend/Settings/setless.html.twig',array(
-                "form" => $form->createView(),
-                "save" => true
-                )
-            );
-
-            return new Response($html);
-        }
 
         $html = $this->container->get('templating')->render(
             'Backend/Settings/setless.html.twig',array(

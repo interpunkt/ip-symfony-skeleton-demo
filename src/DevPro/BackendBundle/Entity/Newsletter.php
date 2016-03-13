@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="newsletter")
  */
-class Seo
+class Newsletter
 {
     /**
      * @ORM\Id
@@ -23,4 +23,14 @@ class Seo
     protected $text;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

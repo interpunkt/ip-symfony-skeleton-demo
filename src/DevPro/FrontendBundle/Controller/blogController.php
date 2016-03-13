@@ -16,8 +16,14 @@ class blogController extends Controller
      */
     public function homepageAction()
     {
+        $blog = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Blog')
+            ->findAll();
+
         $html = $this->container->get('templating')->render(
-            'Frontend/Blog/index.html.twig'
+            'Frontend/Blog/index.html.twig', array(
+                "data" => $blog
+            )
         );
 
         return new Response($html);

@@ -125,10 +125,25 @@ class blogController extends Controller
 
             $dataObject = $form->getData();
 
+            $sort = $this->getSetSort();
+            $sort++;
+            $dataObject->setSort($sort);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($dataObject);
             $em->flush();
             return true;
         }
+    }
+
+    public function getSetSort()
+    {
+        $blog = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Blog')
+            ->findOneby([], ["id" => "DESC"]);
+
+        $sort = $blog->getSort();
+
+        return $sort;
     }
 }
