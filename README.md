@@ -56,3 +56,8 @@ Beispiel:
 Tinymce
 
 Um den Tinymce zu aktivieren bei einem textarea Feld einfach Class "tinymce" mitgeben."
+
+
+Frontend Paginator
+
+Set Number of Displayed Items in Controller
