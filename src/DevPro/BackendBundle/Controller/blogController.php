@@ -1,7 +1,7 @@
 <?php
 namespace DevPro\BackendBundle\Controller;
 
-use AppBundle\DependencyInjection\singleSorter;
+use DevPro\BackendBundle\DependencyInjection\singleSorter;
 use DevPro\BackendBundle\Entity\Blog;
 use DevPro\BackendBundle\Entity\BlogSeo;
 use DevPro\BackendBundle\Utils\DoctrineClass;
@@ -136,8 +136,12 @@ class blogController extends Controller
      */
     public function sortupAction($id)
     {
-        $sorter = new singleSorter($this->container, 'Blog');
-        $sorter->setSort('sortup');
+        $data = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:Blog')
+            ->find($id);
+
+        $sorter = new singleSorter($this->container, 'Blog', 'DevProBackendBundle');
+        $sorter->setSort($data, 'sortup');
         $sorter->flushSort();
 
         return $this->redirectToRoute('backend_blog');

@@ -1,5 +1,6 @@
 <?php
-namespace AppBundle\DependencyInjection;
+namespace DevPro\BackendBundle\DependencyInjection;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,15 +13,18 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class singleSorter
 {
     private $container;
-    public function __construct(ContainerInterface $container, $entity)
+    public function __construct(ContainerInterface $container, $entity, $namespace)
     {
         $this->container = $container;
         $this->entity = $entity;
+        $this->namespace = $namespace;
     }
     public $error; // Error Meldungen
     private $entity; // table Name
     private $direction; // Hier ist definiert ob "up" oder "down" sort
     private $anzahlSort;
+    private $namespace;
+
     // erstes Object
     public  $object_1_id;
     public $object_1_sort_number;
@@ -50,14 +54,14 @@ class singleSorter
     private function flushObjectOne()
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('AppBundle:' . $this->entity)->find($this->object_1_id);
+        $object = $em->getRepository($this->namespace.':' . $this->entity)->find($this->object_1_id);
         $object->setSort($this->object_1_new_sort_number);
         $em->flush();
     }
     private function flushObjectTwo()
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('AppBundle:' . $this->entity)->find($this->object_2_id);
+        $object = $em->getRepository($this->namespace.':' . $this->entity)->find($this->object_2_id);
         $object->setSort($this->object_2_new_sort_number);
         $em->flush();
     }
@@ -80,11 +84,11 @@ class singleSorter
         $em = $this->container->get('doctrine.orm.entity_manager');
         if($this->direction == 'sortup')
         {
-            $object = $em->getRepository('AppBundle:'.$this->entity)->findby([], ["sort" => "ASC"]);
+            $object = $em->getRepository($this->namespace.':'.$this->entity)->findby([], ["sort" => "ASC"]);
         }
         else
         {
-            $object = $em->getRepository('AppBundle:'.$this->entity)->findby([], ["sort" => "DESC"]);
+            $object = $em->getRepository($this->namespace.':'.$this->entity)->findby([], ["sort" => "DESC"]);
         }
         foreach($object as $value)
         {
@@ -117,7 +121,7 @@ class singleSorter
     private function getSecondObject()
     {
         $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('AppBundle:'.$this->entity)->findby(["sort" => $this->object_1_new_sort_number]);
+        $object = $em->getRepository($this->namespace.':'.$this->entity)->findby(["sort" => $this->object_1_new_sort_number]);
         $this->object_2_id = $object[0]->getId();
         $this->object_2_sort_number = $object[0]->getSort();
         $this->object_2_new_sort_number = $this->object_1_sort_number;
