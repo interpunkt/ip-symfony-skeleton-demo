@@ -27,6 +27,10 @@ class AppKernel extends Kernel
             new Presta\SitemapBundle\PrestaSitemapBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
