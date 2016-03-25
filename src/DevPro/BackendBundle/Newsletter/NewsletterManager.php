@@ -23,12 +23,12 @@ class NewsletterManager
         $this->templating = $templating;
     }
 
-    public function sendmail($mail, $htmlbody)
+    public function sendmail($htmlbody, $from, $recipient)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
+            ->setSubject($htmlbody)
+            ->setFrom($from)
+            ->setTo($recipient)
             ->setBody(
                 // Render the Mesagge from DB set with TinyMCE in Backend...
                 $htmlbody
@@ -47,7 +47,6 @@ class NewsletterManager
             */
         ;
         $this->mailer->send($message);
-
 
     }
 }

@@ -26,8 +26,11 @@ class KontaktformularController extends Controller
     {
 
         $htmlbody = '<p>Hello World</p>';
+        $from = 'devmaster@foorbar.com';
+        $recipient = array("foo@bar.com", "geil@richtiggeil.com");
+
         $mailer = $this->get('app.mailer');
-        $mailer->sendmail('ryan@foobar.net', $htmlbody);
+        $mailer->sendmail($htmlbody, $from, $recipient);
 
         /*$result = $this->handleFormUpload($form, $request, $data, 'neu');
 

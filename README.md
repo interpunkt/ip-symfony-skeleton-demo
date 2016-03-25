@@ -66,5 +66,8 @@ Set Number of Displayed Items in Controller
 
 <h3>Newsletter Manager</h3>
 
+USE in Controller:
+
+
 to USE the Newsletter Manager define in the Backend the Newsletter, add recipents and use the Send Function.
 Configuration via Backend.
