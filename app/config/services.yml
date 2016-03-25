@@ -4,6 +4,9 @@ parameters:
 #    parameter_name: value
 
 services:
+    app.mailer:
+        class:        DevPro\BackendBundle\Newsletter\NewsletterManager
+        arguments: ['@mailer', '@templating']
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
