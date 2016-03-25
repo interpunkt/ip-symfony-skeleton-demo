@@ -67,6 +67,7 @@ Set Number of Displayed Items in Controller
 <h3>Newsletter Manager</h3>
 
 USE example in Controller:
+// body, from, recipent has to get from DB ..
 <pre>
    $htmlbody = '<p>Hello World</p>';
    $from = 'devmaster@foorbar.com';
