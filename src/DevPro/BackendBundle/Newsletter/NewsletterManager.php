@@ -25,28 +25,33 @@ class NewsletterManager
 
     public function sendmail($htmlbody, $from, $recipient)
     {
-        $message = \Swift_Message::newInstance()
-            ->setSubject($htmlbody)
-            ->setFrom($from)
-            ->setTo($recipient)
-            ->setBody(
+        foreach($recipient as $value)
+        {
+            $message = \Swift_Message::newInstance()
+                ->setSubject($htmlbody)
+                ->setFrom($from)
+                ->setTo($value)
+                ->setBody(
                 // Render the Mesagge from DB set with TinyMCE in Backend...
-                $htmlbody
-               ,
-                'text/html'
-            )
-            /*
-             * If you also want to include a plaintext version of the message
-            ->addPart(
-                $this->renderView(
-                    'Emails/registration.txt.twig',
-                    array('name' => $name)
-                ),
-                'text/plain'
-            )
-            */
-        ;
-        $this->mailer->send($message);
+                    $htmlbody
+                    ,
+                    'text/html'
+                )
+                /*
+                 * If you also want to include a plaintext version of the message
+                ->addPart(
+                    $this->renderView(
+                        'Emails/registration.txt.twig',
+                        array('name' => $name)
+                    ),
+                    'text/plain'
+                )
+                */
+            ;
+            $this->mailer->send($message);
+        }
+
+
 
     }
 }
