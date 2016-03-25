@@ -293,13 +293,23 @@
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">NAVIGATION</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li {% block navActiveIndex %}{% endblock %}><a href="{{ path('admin_index') }}"><i class="fa fa-link"></i> <span>Index</span></a> </li>
                 <li {% block navActiveBlog %}{% endblock %}><a href="{{ path('backend_blog') }}"><i class="fa fa-link"></i> <span>Blog News</span></a></li>
                 <li {% block navActiveEinstellungen %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
                 <li {% block navActiveMediaManager %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Media Manager</span></a></li>
                 <li {% block navActiveSeo %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>SEO</span></a></li>
+                <!-- Newsletter Manager -->
+                <li {% block navActiveNewsletter %}{% endblock %} class="treeview">
+                    <a href="#"><i class="fa fa-link"></i> <span>Newsletter Manager</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <ul class="treeview-menu">
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}
+                            <li><a href="#"><i class="fa fa-link"></i> <span>Blacklist</span></a></li>
+                            <li><a href="#"><i class="fa fa-link"></i> <span>Newsletter</span></a></li>
+                        {% endif %}
+                    </ul>
+                </li>
 
                 {# Interpunkt internes Menu für ROLE_SUPER_ADMIN #}
                 <li class="header">Interpunkt</li>

@@ -11,6 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Newsletter
 {
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -18,9 +24,20 @@ class Newsletter
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $date;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     protected $titel;
 
-    protected $text;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $content;
 
 
 
@@ -32,5 +49,74 @@ class Newsletter
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Newsletter
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set titel
+     *
+     * @param string $titel
+     * @return Newsletter
+     */
+    public function setTitel($titel)
+    {
+        $this->titel = $titel;
+
+        return $this;
+    }
+
+    /**
+     * Get titel
+     *
+     * @return string 
+     */
+    public function getTitel()
+    {
+        return $this->titel;
+    }
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     * @return Newsletter
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string 
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 }

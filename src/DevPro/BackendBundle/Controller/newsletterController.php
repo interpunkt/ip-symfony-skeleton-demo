@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use DevPro\BackendBundle\Form\Type\LessType;
 
 
-class newsletterController extends Controller
+class NewsletterController extends Controller
 {
 
     /**
