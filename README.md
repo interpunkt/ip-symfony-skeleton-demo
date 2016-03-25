@@ -66,7 +66,15 @@ Set Number of Displayed Items in Controller
 
 <h3>Newsletter Manager</h3>
 
-USE in Controller:
+USE example in Controller:
+<pre>
+   $htmlbody = '<p>Hello World</p>';
+   $from = 'devmaster@foorbar.com';
+   $recipient = array("foo@bar.com", "geil@richtiggeil.com");
+
+   $mailer = $this->get('app.mailer');
+   $mailer->sendmail($htmlbody, $from, $recipient);
+</pre>
 
 
 to USE the Newsletter Manager define in the Backend the Newsletter, add recipents and use the Send Function.
