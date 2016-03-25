@@ -23,18 +23,16 @@ class NewsletterManager
         $this->templating = $templating;
     }
 
-    public function sendmail($mail)
+    public function sendmail($mail, $htmlbody)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject('Hello Email')
             ->setFrom('send@example.com')
             ->setTo('recipient@example.com')
             ->setBody(
-                $this->templating->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                    'Backend/index.html.twig',
-                    array('name' => 'foo')
-                ),
+                // Render the Mesagge from DB set with TinyMCE in Backend...
+                $htmlbody
+               ,
                 'text/html'
             )
             /*

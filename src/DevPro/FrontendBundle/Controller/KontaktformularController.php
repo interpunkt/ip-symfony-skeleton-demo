@@ -25,8 +25,9 @@ class KontaktformularController extends Controller
     public function indexAction()
     {
 
+        $htmlbody = '<p>Hello World</p>';
         $mailer = $this->get('app.mailer');
-        $mailer->sendmail('ryan@foobar.net');
+        $mailer->sendmail('ryan@foobar.net', $htmlbody);
 
         /*$result = $this->handleFormUpload($form, $request, $data, 'neu');
 

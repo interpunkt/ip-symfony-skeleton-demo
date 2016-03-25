@@ -1,9 +1,10 @@
 # devpro_page
 
-This is new Page for DevPro. Created with Symfony and it contains a Frontend and a Backend Bundle.
+This is new Page for DevPro. Created with Symfony and it contains a Frontend and a Backend Bundle with some features.
 
 <h3>Features</h3>
 <ul>
+    <li>NewsletterManager</li>
     <li>Frontend/Backend Bundle</li>
     <li>FOSUSERBundle (Login/logout/register, protected area)</li>
     <li>JMS Translation Bundle and UI</li>
@@ -53,11 +54,17 @@ Beispiel:
 </pre>
 
 
-Tinymce
+<h3>Tinymce</h3>
 
 Um den Tinymce zu aktivieren bei einem textarea Feld einfach Class "tinymce" mitgeben."
 
 
-Frontend Paginator
+<h3>Frontend Paginator</h3>
 
 Set Number of Displayed Items in Controller
+
+
+<h3>Newsletter Manager</h3>
+
+to USE the Newsletter Manager define in the Backend the Newsletter, add recipents and use the Send Function.
+Configuration via Backend.
