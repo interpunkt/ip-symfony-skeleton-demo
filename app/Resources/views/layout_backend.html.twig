@@ -306,7 +306,7 @@
                     <ul class="treeview-menu">
                         {% if is_granted("ROLE_SUPER_ADMIN") %}
                             <li><a href="#"><i class="fa fa-link"></i> <span>Blacklist</span></a></li>
-                            <li><a href="#"><i class="fa fa-link"></i> <span>Newsletter</span></a></li>
+                            <li><a href="{{ path('backend_newsletter') }}"><i class="fa fa-link"></i> <span>Newsletter</span></a></li>
                         {% endif %}
                     </ul>
                 </li>

@@ -39,6 +39,11 @@ class Newsletter
      */
     protected $content;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $sort;
+
 
 
     /**
@@ -118,5 +123,28 @@ class Newsletter
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set sort
+     *
+     * @param string $sort
+     * @return Newsletter
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+
+        return $this;
+    }
+
+    /**
+     * Get sort
+     *
+     * @return string 
+     */
+    public function getSort()
+    {
+        return $this->sort;
     }
 }

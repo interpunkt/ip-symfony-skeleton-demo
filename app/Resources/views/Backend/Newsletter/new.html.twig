@@ -1,7 +1,7 @@
 {% extends 'layout_backend.html.twig' %}
 
 
-{% block title %}Blog - Neuer Artikel{% endblock %}
+{% block title %}Newsletter - erstellen{% endblock %}
 
 {# Navbar Side + active Link #}
 {% block navbar %}
@@ -12,10 +12,10 @@
 {# Content-Header, hier Titel und optionalen Text setzen #}
 {% block pageHeader %}
     {{ parent() }}
-    {% block pageHeaderDescription %}neuen Artikel erstellen{% endblock %}
-    {% block pageHeaderTitel %}Blog - {% endblock %}
-    {% block BreadcrumbMainLevel %}<li><a href="{{ path('backend_blog') }}"><i class="fa fa-dashboard"></i> Blog</a></li>{% endblock %}
-    {% block BreadcrumbMainLevelSubOne %}<li class="active">Neuer Artikel</li>{% endblock %}
+    {% block pageHeaderDescription %}erstellen{% endblock %}
+    {% block pageHeaderTitel %}Newsletter - {% endblock %}
+    {% block BreadcrumbMainLevel %}<li><a href="{{ path('backend_newsletter') }}"><i class="fa fa-dashboard"></i> Newsletter</a></li>{% endblock %}
+    {% block BreadcrumbMainLevelSubOne %}<li class="active">erstellen</li>{% endblock %}
 {% endblock %}
 
 {% block content %}
