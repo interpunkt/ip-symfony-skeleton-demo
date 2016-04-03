@@ -67,6 +67,8 @@ Set Number of Displayed Items in Controller
 <h3>Newsletter Manager</h3>
 
 USE example in Controller:
+First add: use DevPro\BackendBundle\Newsletter\NewsletterManager;
+
 // body, from, recipent has to get from DB ..
 <pre>
    $htmlbody = '<p>Hello World</p>';
@@ -80,3 +82,8 @@ USE example in Controller:
 
 to USE the Newsletter Manager define in the Backend the Newsletter, add recipents and use the Send Function.
 Configuration via Backend.
+
+NewsletterPersonenController.php
+
+Hier hat man eine Übersicht der Empfänger für den Newsletter. Es können neue Personen hinzu gefügt werden und
+Personen können entfernt werden. Eine Person besteht aus "Vorname, Nachname, Anrede, Email Adresse."
