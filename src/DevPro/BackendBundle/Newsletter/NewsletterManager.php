@@ -30,7 +30,7 @@ class NewsletterManager
             $message = \Swift_Message::newInstance()
                 ->setSubject($htmlbody)
                 ->setFrom($from)
-                ->setTo($value)
+                ->setTo($value->getEmail())
                 ->setBody(
                 // Render the Mesagge from DB set with TinyMCE in Backend...
                     $htmlbody
@@ -48,10 +48,11 @@ class NewsletterManager
                 )
                 */
             ;
-            $this->mailer->send($message);
+            $result[] = $this->mailer->send($message, $failures);
+
         }
 
-
+        return $result;
 
     }
 }
