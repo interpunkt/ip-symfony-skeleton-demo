@@ -12,6 +12,7 @@ use DevPro\BackendBundle\Entity\Newsletter;;
 use DevPro\BackendBundle\Form\Type\NewsletterType;
 use DevPro\BackendBundle\Newsletter\NewsletterManager;
 use DevPro\BackendBundle\Entity\NewsletterEmpfaenger;
+use DevPro\BackendBundle\Form\Type\NewsletterPersonenType;
 
 
 
@@ -45,7 +46,7 @@ class NewsletterPersonenController extends Controller
     public function newAction(Request $request)
     {
         $data = new NewsletterEmpfaenger();
-        $form = $this->createForm(NewsletterType::class, $data);
+        $form = $this->createForm(NewsletterPersonenType::class, $data);
 
         $result = $this->handleFormUpload($form, $request, $data, 'neu');
 
@@ -115,13 +116,6 @@ class NewsletterPersonenController extends Controller
         if ($form->isValid()) {
 
             $dataObject = $form->getData();
-
-            if($action == 'neu')
-            {
-                $sort = $this->getSetSort();
-                $sort++;
-                $dataObject->setSort($sort);
-            }
 
 
             $em = $this->getDoctrine()->getManager();
