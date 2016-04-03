@@ -3,10 +3,13 @@
 namespace DevPro\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="newsletter_recipient")
+ * @UniqueEntity("email")
  */
 class NewsletterEmpfaenger
 {
@@ -29,7 +32,7 @@ class NewsletterEmpfaenger
     protected $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     protected $email;
 
