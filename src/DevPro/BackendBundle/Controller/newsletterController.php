@@ -115,10 +115,27 @@ class NewsletterController extends Controller
             ->getRepository('DevProBackendBundle:Newsletter')
             ->find($id);
 
+        // get Newsletter Personen
+        $recipient = $this->getNewsletterPersonen();
+
         $mailer = $this->get('app.mailer');
         $mailer->sendmail($htmlbody, $from, $recipient);
 
         return $this->redirectToRoute('backend_newsletter');
+    }
+
+    protected function getNewsletterPersonen()
+    {
+        $data = $this->getDoctrine()
+            ->getRepository('DevProBackendBundle:NewsletterEmpfaenger')
+            ->findAll();
+
+        foreach($data as $value)
+        {
+            $empfaenger[] = $value['email'];
+        }
+
+        return $data;
     }
 
     /**

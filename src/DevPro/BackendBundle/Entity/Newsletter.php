@@ -32,6 +32,11 @@ class Newsletter
     /**
      * @ORM\Column(type="string", length=255)
      */
+    protected $absender;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     protected $titel;
 
     /**
@@ -146,5 +151,28 @@ class Newsletter
     public function getSort()
     {
         return $this->sort;
+    }
+
+    /**
+     * Set absender
+     *
+     * @param string $absender
+     * @return Newsletter
+     */
+    public function setAbsender($absender)
+    {
+        $this->absender = $absender;
+
+        return $this;
+    }
+
+    /**
+     * Get absender
+     *
+     * @return string 
+     */
+    public function getAbsender()
+    {
+        return $this->absender;
     }
 }
