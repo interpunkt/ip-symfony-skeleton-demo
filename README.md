@@ -104,6 +104,7 @@ Personen können entfernt werden. Eine Person besteht aus "Vorname, Nachname, An
 ## Globals
 
 Um Daten Global auf verschiedenen Seiten zur Verfügung zu stellen wird die Globals.php im DepencyInjection Folder genutzt.
+Hier Funktionen definieren die ein Return Value haben welches dann in Twig global verfügbar ist.
 
 In der Config.yml
 ```
