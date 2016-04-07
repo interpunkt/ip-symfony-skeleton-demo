@@ -13,6 +13,7 @@ This is new Page for DevPro. Created with Symfony and it contains a Frontend and
 
 # Duplicate Repository
 Um Skeleton für ein neues Projekt zu benutzen wie folgt Vorgehen:
+
 git clone --bare https://github.com/exampleuser/old-repository.git
 // Make a bare clone of the repository
 
@@ -99,3 +100,13 @@ NewsletterPersonenController.php
 
 Hier hat man eine Übersicht der Empfänger für den Newsletter. Es können neue Personen hinzu gefügt werden und
 Personen können entfernt werden. Eine Person besteht aus "Vorname, Nachname, Anrede, Email Adresse."
+
+## Globals
+
+Um Daten Global auf verschiedenen Seiten zur Verfügung zu stellen wird die Globals.php im DepencyInjection Folder genutzt.
+
+In der Config.yml
+```
+globals:
+            mailnotification: '@app.notification'
+```                

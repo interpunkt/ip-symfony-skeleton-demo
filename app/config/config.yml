@@ -34,6 +34,8 @@ framework:
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
+    globals:
+                mailnotification: '@app.notification'
     strict_variables: "%kernel.debug%"
     form:
             resources: ['bootstrap_3_layout.html.twig']
