@@ -119,9 +119,16 @@ class NewsletterController extends Controller
         $recipient = $this->getNewsletterPersonen();
 
         $mailer = $this->get('app.mailer');
-        $mailer->sendmail($htmlbody, $from, $recipient);
+        $result = $mailer->sendmail($data->getContent(), $data->getAbsender(), $recipient);
 
-        return $this->redirectToRoute('backend_newsletter');
+        $html = $this->container->get('templating')->render(
+            'Backend/Newsletter/sendStatus.html.twig', array(
+                'result' => $result
+            )
+        );
+
+        return new Response($html);
+        //return $this->redirectToRoute('backend_newsletter');
     }
 
     protected function getNewsletterPersonen()
@@ -129,11 +136,6 @@ class NewsletterController extends Controller
         $data = $this->getDoctrine()
             ->getRepository('DevProBackendBundle:NewsletterEmpfaenger')
             ->findAll();
-
-        foreach($data as $value)
-        {
-            $empfaenger[] = $value['email'];
-        }
 
         return $data;
     }

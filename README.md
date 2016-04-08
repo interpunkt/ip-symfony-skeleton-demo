@@ -110,4 +110,8 @@ In der Config.yml (Beispiel)
 ```
 globals:
             mailnotification: '@app.notification'
-```                
+```
+
+## Error Pages
+
+Die error Pages sind zu finden in Resource/TwigBundle/views/Exeption.
