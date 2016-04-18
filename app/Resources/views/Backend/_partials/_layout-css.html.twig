@@ -1,0 +1,27 @@
+{################################################ 
+    Partial: CSS files for layout
+#################################################}
+
+{# Font Awesome #}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{# Ionicons #}
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+{# Backend CSS files #}
+{% stylesheets filter='cssrewrite' output='assets/backend/css/app.min.css'
+    'assets/bower_components/bootstrap/dist/css/bootstrap.css'
+    'assets/bower_components/bootstrap-table/dist/bootstrap-table.css'
+    'assets/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
+    'assets/bower_components/datatables/media/css/jquery.dataTables.css'
+    'assets/backend/dist/css/AdminLTE.min.css'
+    'assets/backend/dist/css/skins/skin-interpunkt.min.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}">
+{% endstylesheets %}
+
+{# Backend CSS: color file #}
+{% stylesheets filter='lessphp' output='assets/backend/css/colors.min.css'
+    'assets/backend/less/all.less'
+%}
+<link rel="stylesheet" href="{{ asset_url }}">
+{% endstylesheets %}

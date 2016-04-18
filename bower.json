@@ -1,0 +1,30 @@
+{
+  "name": "benjamin/devpro_demo",
+  "homepage": "http://inter-punkt.ch",
+  "authors": [
+    "Selim Imoberdorf <selim.imoberdorf@inter-punkt.ch>",
+    "Benjamin Knecht <benjamin.knecht@inter-punkt.ch>"
+  ],
+  "description": "Admin dashboard and control panel template",
+  "main": [
+    "index2.html",
+    "dist/css/AdminLTE.css",
+    "dist/js/app.js",
+    "build/less/AdminLTE.less"
+  ],
+  "ignore": [
+    "/.*",
+    "node_modules",
+    "bower_components",
+    "composer.json",
+    "documentation"
+  ],
+  "devDependencies": {
+    "jquery": "^2.2.3",
+    "bootstrap": "^3.3.6",
+    "mjolnic-bootstrap-colorpicker": "bootstrap-colorpicker#^2.3.3",
+    "datatables.net": "^1.10.11",
+    "datatables-bootstrap": "^1.0.0",
+    "bootstrap-table": "^1.10.1"
+  }
+}

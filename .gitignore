@@ -11,3 +11,10 @@
 /web/bundles/
 /.idea/*
 
+# Sublime
+devpro_page.sublime-project
+devpro_page.sublime-workspace
+
+# Package Manager
+node_modules
+web/assets/bower_components

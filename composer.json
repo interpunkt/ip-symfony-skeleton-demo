@@ -1,5 +1,13 @@
 {
     "name": "benjamin/devpro_demo",
+    "authors": [
+        {
+            "name": "Benjamin Knecht",
+            "email": "benjamin.knecht@inter-punkt.ch",
+            "name": "Selim Imoberdorf",
+            "email": "selim-imoberdorf@inter-punkt.ch"
+        }
+    ],
     "license": "proprietary",
     "type": "project",
     "autoload": {
