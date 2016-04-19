@@ -67,13 +67,13 @@ gulp.task('styles', function () {
 
 //  build-task: scripts
 gulp.task('scripts', function () {
-  gulp.src(['web/assets/backend/_build/**/*.js'])
+  gulp.src(['web/assets/backend/_build/js/**/*.js'])
     .pipe(concat('app.js'))
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('web/assets/backend/scripts'));
+    .pipe(gulp.dest('web/assets/backend/js'));
 });
 
 //  tasks: gulp

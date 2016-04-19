@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ee088e0b0d0aa4f6f584efc182776f8",
-    "content-hash": "d94e060988670abebf55e5b285a0d8f6",
+    "hash": "8c3ca81de284ab6a2a9bc2b96ec0bb08",
+    "content-hash": "4c9a9d4e3832321135b46172920b2877",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1509,7 +1509,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/3f9d4b06df6a9554cfef0654ad0ea5ee6d737350",
+                "url": "https://api.github.com/repos/schmittjoh/JMSDiExtraBundle/zipball/27c3fc7150550ccc0731290b2c1ceb57449f909d",
                 "reference": "3f9d4b06df6a9554cfef0654ad0ea5ee6d737350",
                 "shasum": ""
             },
@@ -4858,52 +4858,6 @@
                 "framework"
             ],
             "time": "2016-03-27 12:57:53"
-        },
-        {
-            "name": "tinymce/tinymce",
-            "version": "4.3.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tinymce/tinymce-dist.git",
-                "reference": "ee747f1bc97ec8380e7fd8a1ce827be5e735a10b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/ee747f1bc97ec8380e7fd8a1ce827be5e735a10b",
-                "reference": "ee747f1bc97ec8380e7fd8a1ce827be5e735a10b",
-                "shasum": ""
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "tinymce.js",
-                        "plugins/*/plugin.js",
-                        "themes/*/theme.js"
-                    ],
-                    "files": [
-                        "tinymce.min.js",
-                        "plugins/*/plugin.min.js",
-                        "themes/*/theme.min.js",
-                        "skins/**"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "description": "Web based JavaScript HTML WYSIWYG editor control.",
-            "homepage": "http://www.tinymce.com",
-            "keywords": [
-                "editor",
-                "html",
-                "javascript",
-                "richtext",
-                "tinymce",
-                "wysiwyg"
-            ],
-            "time": "2016-04-12 13:26:22"
         },
         {
             "name": "twbs/bootstrap",

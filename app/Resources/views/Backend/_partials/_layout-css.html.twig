@@ -4,20 +4,21 @@
 
 {# Check for DEV mode #}
 {% if app.environment == "dev" %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    {# DEV FILES #}
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-table/dist/bootstrap-table.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables/media/css/jquery.dataTables.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/_build/css/AdminLTE.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/_build/css/skin-interpunkt.css') }}">
-{% else %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+{% else %}
+
+    {# PROD FILE #}
     {% stylesheets filter='cssrewrite' output='assets/backend/css/app.min.css'
+        'assets/bower_components/font-awesome/css/font-awesome.css'
         'assets/bower_components/bootstrap/dist/css/bootstrap.css'
         'assets/bower_components/bootstrap-table/dist/bootstrap-table.css'
         'assets/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
@@ -27,7 +28,7 @@
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
-    
+
     {% stylesheets filter='lessphp' output='assets/backend/css/colors.min.css'
         'assets/backend/less/all.less'
     %}

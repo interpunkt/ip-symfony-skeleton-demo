@@ -2,43 +2,39 @@
     Partial: JS files for layout
 #################################################}
 
-{% javascripts
-    'assets/bower_components/jquery/dist/jquery.js'
-    'assets/bower_components/bootstrap/dist/js/bootstrap.js'
-    'assets/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js'
-    'assets/bower_components/datatables.net/js/jquery.dataTables.js'
-    'assets/bower_components/datatables-bootstrap/3/dataTables.bootstrap.js'
-    'assets/backend/build/js/datatables/dataTables.js'
-    'assets/backend/build/js/characterCounter/characterCounter.js'
-    'assets/backend/build/js/backend.js'
-    output='assets/backend/js/app.min.js' %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
+{# Check for DEV mode #}
+{% if app.environment == "dev" %}
 
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<script>
-    tinymce.init({
-        mode : "specific_textareas",
-        editor_selector : "tinymce",
-        height: 500,
-        plugins: [
-            'autolink lists link image print preview anchor',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table contextmenu paste code'
-        ],
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
-        menubar: false,
-        content_css: [
-            '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
-            '//www.tinymce.com/css/codepen.min.css'
-        ]
-    });
-</script>
+    {# DEV FILES: Vendor #}
+    <script src="{{ asset('assets/bower_components/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/tinymce/tinymce.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/bower_components/datatables-bootstrap/3/dataTables.bootstrap.js') }}"></script>
 
-<script>
+    {# DEV FILES: Own #}
+    <script src="{{ asset('assets/backend/_build/js/bootstrap-colorpicker/bootstrap-colorpicker.js') }}"></script>
+    <script src="{{ asset('assets/backend/_build/js/characterCounter/characterCounter.js') }}"></script>
+    <script src="{{ asset('assets/backend/_build/js/datatables/dataTables.js') }}"></script>
+    <script src="{{ asset('assets/backend/_build/js/tinymce/tinymce.js') }}"></script>
+    <script src="{{ asset('assets/backend/_build/js/backend.js') }}"></script>
 
-    $(function(){
-        $('.demo2').colorpicker();
-    });
+{% else %}
 
-</script>
+    {# PROD FILE: Vendor & Own #}
+    {% javascripts
+        'assets/bower_components/jquery/dist/jquery.js'
+        'assets/bower_components/bootstrap/dist/js/bootstrap.js'
+        'assets/bower_components/tinymce/jquery.tinymce.min.js'
+        'assets/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js'
+        'assets/bower_components/datatables.net/js/jquery.dataTables.js'
+        'assets/bower_components/datatables-bootstrap/3/dataTables.bootstrap.js'
+        'assets/backend/build/js/datatables/dataTables.js'
+        'assets/backend/build/js/characterCounter/characterCounter.js'
+        'assets/backend/build/js/backend.js'
+        output='assets/backend/js/app.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endif %}

@@ -3,9 +3,7 @@
     "authors": [
         {
             "name": "Benjamin Knecht",
-            "email": "benjamin.knecht@inter-punkt.ch",
-            "name": "Selim Imoberdorf",
-            "email": "selim-imoberdorf@inter-punkt.ch"
+            "email": "benjamin.knecht@inter-punkt.ch"
         }
     ],
     "license": "proprietary",
@@ -42,7 +40,6 @@
         "hwi/oauth-bundle": "^0.4.0",
         "leafo/lessphp": "^0.5.0",
         "jimigrunge/bootstrap-colorpicker-bundle": "^2.3",
-        "tinymce/tinymce": "^4.3",
         "knplabs/knp-paginator-bundle": "^2.5",
         "sonata-project/core-bundle": "~2.2@dev",
         "sonata-project/media-bundle": "~2.3@dev",
