@@ -1,8 +1,10 @@
+//  Datatables init
+//  
+//  Copyright 2016 by inter-punkt.ag
+//  Autor: Selim Imoberdorf
+//  --------------------------------------------------------
 
-// Blog / News
-$(document).ready(function() {
-
-    var table = $('#blogTable').DataTable({
+    var table = $('.table-data').DataTable({
         "bSort" : true,
         "bLengthChange": false,
         "order": [[ 0, "desc" ]],
@@ -15,8 +17,8 @@ $(document).ready(function() {
             "infoPostFix":    "",
             "thousands":      "'",
             "lengthMenu":     "_MENU_ Einträge anzeigen",
-            "loadingRecords": "Laden…",
-            "processing":     "Verarbeiten…",
+            "loadingRecords": "Laden …",
+            "processing":     "Verarbeiten …",
             "search":         "Suchen:",
             "zeroRecords":    "Keine Resultate gefunden.",
             "paginate": {
@@ -27,5 +29,3 @@ $(document).ready(function() {
             }
         }
     });
-
-});

@@ -116,7 +116,10 @@ globals:
 
 Die error Pages sind zu finden in Resource/TwigBundle/views/Exeption.
 
-# ToDo Frontend
+## ToDo Backend
+- Variable `user` global freigeben
+
+## ToDo Frontend
 - TinyMCE
   - Übersetzung 
   - content__css > File mitgeben

@@ -14,6 +14,7 @@
       .navbar-variant(@light-blue; #fff);
       .sidebar-toggle {
         color: #fff;
+        border-right: 1px solid darken(@light-blue, 5%);
         &:hover {
           background-color: darken(@light-blue, 5%);
         }
@@ -41,6 +42,13 @@
 
     li.user-header {
       background-color: @light-blue;
+    }
+  }
+
+  //Navbar Custom
+  .navbar-custom-menu {
+    li {
+        border-left: 1px solid darken(@light-blue, 5%);
     }
   }
 

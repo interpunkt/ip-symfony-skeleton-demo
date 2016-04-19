@@ -24,9 +24,9 @@
                 <!-- Logo -->
                 <a href="index2.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>IP</b></span>
+                    <span class="logo-mini"><b>ip</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Interpunkt</b> AG</span>
+                    <span class="logo-lg"><b>inter-punkt.</b> ag</span>
                 </a>
 
                 <!-- Header Navbar -->
@@ -39,39 +39,6 @@
                     <!-- Navbar Right Menu -->
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
-                            <!-- Messages: style can be found in dropdown.less-->
-                            <li class="dropdown messages-menu">
-                                <!-- Menu toggle button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="label label-success">4</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 4 messages</li>
-                                    <li>
-                                        <!-- inner menu: contains the messages -->
-                                        <ul class="menu">
-                                            <li><!-- start message -->
-                                                <a href="#">
-                                                    <div class="pull-left">
-                                                        <!-- User Image -->
-                                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                                    </div>
-                                                    <!-- Message title and timestamp -->
-                                                    <h4>
-                                                        Support Team
-                                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                    </h4>
-                                                    <!-- The message -->
-                                                    <p>Why not buy a new awesome theme?</p>
-                                                </a>
-                                            </li><!-- end message -->
-                                        </ul><!-- /.menu -->
-                                    </li>
-                                    <li class="footer"><a href="#">See All Messages</a></li>
-                                </ul>
-                            </li><!-- /.messages-menu -->
-
                             <!-- Notifications Menu -->
                             <li class="dropdown notifications-menu">
                                 <!-- Menu toggle button -->
@@ -94,71 +61,23 @@
                                     <li class="footer"><a href="#">View all</a></li>
                                 </ul>
                             </li>
-                            <!-- Tasks Menu -->
-                            <li class="dropdown tasks-menu">
-                                <!-- Menu Toggle Button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-flag-o"></i>
-                                    <span class="label label-danger">9</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 9 tasks</li>
-                                    <li>
-                                        <!-- Inner menu: contains the tasks -->
-                                        <ul class="menu">
-                                            <li><!-- Task item -->
-                                                <a href="#">
-                                                    <!-- Task title and progress text -->
-                                                    <h3>
-                                                        Design some buttons
-                                                        <small class="pull-right">20%</small>
-                                                    </h3>
-                                                    <!-- The progress bar -->
-                                                    <div class="progress xs">
-                                                        <!-- Change the css width attribute to simulate progress -->
-                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="sr-only">20% Complete</span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li><!-- end task item -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer">
-                                        <a href="#">View all tasks</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            {% set asset_user_avatar = '/assets/img/avatar/' %}
                             <!-- User Account Menu -->
                             <li class="dropdown user user-menu">
                                 <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <!-- The user image in the navbar-->
-                                    <img src="{{ asset_user_avatar }}/avatar5.png" class="user-image" alt="User Image">
+                                    <img src="{{ asset('assets/backend/img/avatar.png') }}" class="user-image" alt="User Image">
                                     <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="hidden-xs">Benjamin Knecht</span>
+                                    <span class="hidden-xs">Benjamin Knecht{# {{ user.username }} #}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- The user image in the menu -->
                                     <li class="user-header">
-                                        <img src="{{ asset_user_avatar }}/avatar5.png" class="img-circle" alt="User Image">
+                                        <img src="{{ asset('assets/backend/img/avatar.png') }}" class="img-circle" alt="User Image">
                                         <p>
-                                            Benjamin Knecht - Web Developer
-                                            <small>Siteadmin</small>
+                                            {# {{ user.username }} #}Benjamin Knecht
+                                            <small>{# {{ user.email }} #}benjamin.knecht@inter-punkt.ch</small>
                                         </p>
-                                    </li>
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
                                     </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
@@ -173,7 +92,7 @@
                             </li>
                             <!-- Control Sidebar Toggle Button -->
                             <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-sign-out"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -190,24 +109,26 @@
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
 
-                    <!-- search form (Optional) -->
-                    <form action="#" method="get" class="sidebar-form">
+                    <!-- search form (default: disabled) -->
+                    {# <form action="#" method="get" class="sidebar-form">
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search...">
-                      <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                      </span>
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
                         </div>
-                    </form>
+                    </form> #}
                     <!-- /.search form -->
 
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
-                        <li class="header">NAVIGATION</li>
+                        <li class="header">Seiten</li>
                         <!-- Optionally, you can add icons to the links -->
-                        <li {% block navActiveIndex %}{% endblock %}><a href="{{ path('admin_index') }}"><i class="fa fa-link"></i> <span>Index</span></a> </li>
-                        <li {% block navActiveBlog %}{% endblock %}><a href="{{ path('backend_blog') }}"><i class="fa fa-link"></i> <span>Blog News</span></a></li>
-                        <li {% block navActiveEinstellungen %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
+                        <li {% block navActiveIndex %}{% endblock %}><a href="{{ path('admin_index') }}"><i class="fa fa-newspaper-o"></i> <span>Startseite</span></a> </li>
+                        <li {% block navActiveBlog %}{% endblock %}><a href="{{ path('backend_blog') }}"><i class="fa fa-newspaper-o"></i> <span>Blog</span></a></li>
+
+                        {# Weitere Seiten, die aktiviert werden können #}
+                        {# <li {% block navActiveEinstellungen %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
                         <li {% block navActiveMediaManager %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Media Manager</span></a></li>
                         <li {% block navActiveSeo %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>SEO</span></a></li>
                         <!-- Newsletter Manager -->
@@ -218,27 +139,27 @@
                                     <li><a href="{{ path('backend_newsletter') }}"><i class="fa fa-link"></i> <span>Newsletter</span></a></li>
                                 <li><a href="{{ path('backend_newsletter_personen') }}"><i class="fa fa-link"></i> <span>Newsletter Empfänger</span></a></li>
                             </ul>
-                        </li>
+                        </li> #}
 
                         {# Interpunkt internes Menu für ROLE_SUPER_ADMIN #}
-                        <li class="header">Interpunkt</li>
+                        <li class="header">Einstellugnen</li>
                         <li {% block navActiveLess %}{% endblock %} class="treeview">
-                            <a href="#"><i class="fa fa-link"></i> <span>LESS</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
                                 {% if is_granted("ROLE_SUPER_ADMIN") %}
-                                    <li><a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><i class="fa fa-link"></i> <span>Basiskonfiguration</span></a></li>
-                                    <li><a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><i class="fa fa-link"></i> <span>Typographie</span></a></li>
+                                    <li><a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><span>Basiskonfiguration</span></a></li>
+                                    <li><a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><span>Typographie</span></a></li>
                                 {% endif %}
                             </ul>
                         </li>
                         <li class="treeview">
-                            <a href="#"><i class="fa fa-link"></i> <span>SEO</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <a href="#"><i class="fa fa-cogs"></i> <span>SEO</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-                                    <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+                                <li><a href="#"><span>Link</span></a></li>
                             </ul>
                         </li>
                     </ul><!-- /.sidebar-menu -->
+
                 </section>
                 <!-- /.sidebar -->
             </aside>
@@ -257,7 +178,7 @@
                         <small>{% block pageHeaderDescription %}Optional description{% endblock %}</small>
                     </h1>
                     <ol class="breadcrumb">
-                        {% block BreadcrumbMainLevel %}<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>{% endblock %}
+                        {% block BreadcrumbMainLevel %}<li><a href="#"><i class="fa fa-sitemap"></i> Level</a></li>{% endblock %}
                         {% block BreadcrumbMainLevelSubOne %}<li class="active">Here</li>{% endblock %}
                     </ol>
                 </section>
