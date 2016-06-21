@@ -13,7 +13,24 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use DevPro\BackendBundle\Form\Type\BlogType;
 use DevPro\BackendBundle\Form\Type\BlogSeoType;
 
-
+/*
+ * Skeleton Überarbeitung
+ * Arbeiten mit Doctrine erfolgt über neues naming, dabei verwendet wir selbe begrifflichkeiten wie wenn
+ * wir einen SQL query performen.
+ *
+ * insert -> Datensatz in DB einfügen
+ * update -> Datensatz in DB updaten
+ * delete -> Datensatz in DB löschen
+ * select -> Datensatz aus DB holen
+ *
+ * Nutzung der Live Templates, muss man sich selber anlegen.
+ * action ->
+ * render ->
+ * insert
+ * update
+ * delete
+ * select
+ */
 
 
 class blogController extends Controller
@@ -41,7 +58,22 @@ class blogController extends Controller
         return new Response($html);
     }
 
+    /**
+     * @Route("/admin/blog/insert", name="backend_blog_insert")
+     */
+    public function insertAction(Request $request)
+    {
+        $data = new Blog();
+        $form = $this->createForm(BlogType::class, $data);
 
+        $result = $this->handleFormUpload($form, $request, $data);
+
+        if($result)
+        {
+            return $this->redirectToRoute('backend_blog');
+        }
+    }
+    
     /**
      * @Route("/admin/blog/new", name="backend_blog_new")
      */
