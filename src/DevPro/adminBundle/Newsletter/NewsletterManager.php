@@ -32,7 +32,7 @@ class NewsletterManager
                 ->setFrom($from)
                 ->setTo($value->getEmail())
                 ->setBody(
-                // Render the Mesagge from DB set with TinyMCE in Backend...
+                // Render the Mesagge from DB set with TinyMCE in admin...
                     $htmlbody
                     ,
                     'text/html'

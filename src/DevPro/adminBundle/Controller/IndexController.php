@@ -17,7 +17,7 @@ class IndexController extends Controller
         $user = $this->getUser();
 
         $html = $this->container->get('templating')->render(
-            'Backend/Index/index.html.twig',
+            'admin/Index/index.html.twig',
             array(
                 'user' => $user
             )

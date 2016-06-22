@@ -28,7 +28,7 @@ class newsletterController extends Controller
             ->findBy([], ['sort' => 'DESC']);
 
         $html = $this->container->get('templating')->render(
-            'Backend/Newsletter/index.html.twig', array(
+            'admin/Newsletter/index.html.twig', array(
                 "data" => $data
             )
         );
@@ -53,7 +53,7 @@ class newsletterController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'Backend/Blog/new.html.twig', array(
+            'admin/Blog/new.html.twig', array(
                 "data" => '',
                 "form" => $form->createView()
             )
@@ -80,7 +80,7 @@ class newsletterController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'Backend/Blog/edit.html.twig', array(
+            'admin/Blog/edit.html.twig', array(
                 "form" => $form->createView()
             )
         );
@@ -122,7 +122,7 @@ class newsletterController extends Controller
         $result = $mailer->sendmail($data->getContent(), $data->getAbsender(), $recipient);
 
         $html = $this->container->get('templating')->render(
-            'Backend/Newsletter/sendStatus.html.twig', array(
+            'admin/Newsletter/sendStatus.html.twig', array(
                 'result' => $result
             )
         );

@@ -27,7 +27,7 @@ class SettingsController extends Controller
 
 
         $html = $this->container->get('templating')->render(
-            'Backend/Settings/index.html.twig',
+            'admin/Settings/index.html.twig',
             array(
                 'user' => $user,
                 'form' => $form->createView(),
@@ -131,7 +131,7 @@ class SettingsController extends Controller
 
 
         $html = $this->container->get('templating')->render(
-            'Backend/Settings/setless.html.twig',array(
+            'admin/Settings/setless.html.twig',array(
                 "form" => $form->createView()
             )
         );

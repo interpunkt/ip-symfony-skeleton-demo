@@ -99,7 +99,7 @@ class blogController extends Controller
             }
 
             $html = $this->renderView(
-                'Backend/blog/update.html.twig', array(
+                'admin/blog/update.html.twig', array(
                     "form" => $form->createView()
                 )
             );
@@ -142,7 +142,7 @@ class blogController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'Backend/Blog/seo.html.twig', array(
+            'admin/Blog/seo.html.twig', array(
                 "data" => '',
                 "form" => $form->createView()
             )

@@ -30,7 +30,7 @@ class LessController extends Controller
         if($result)
         {
             $html = $this->container->get('templating')->render(
-                'Backend/Settings/typographie.html.twig',array(
+                'admin/Settings/typographie.html.twig',array(
                     "form" => $form->createView(),
                     "save" => true
                 )
@@ -40,7 +40,7 @@ class LessController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'Backend/Settings/typographie.html.twig',array(
+            'admin/Settings/typographie.html.twig',array(
                 "form" => $form->createView()
             )
         );
