@@ -35,28 +35,25 @@ use DevPro\BackendBundle\Form\Type\BlogSeoType;
 
 class blogController extends Controller
 {
+    
     /**
-     * @Route("/admin/blog", name="backend_blog")
+     * @Route("/admin/blog", name="admin_blog")
      */
-    public function indexAction()
-    {
-        /*
-         * Neue Blog Artikel anlegen, bearbeiten, löschen
-         * Übersicht aller Artikel
-         * Datatables
-         */
-        $blogdata = $this->getDoctrine()
-            ->getRepository("DevProBackendBundle:Blog")
-            ->findBy([], ['sort' => 'DESC']);
+     public function indexAction()
+     {
+        $data = $this->getDoctrine()->getRepository('DevProadminBundle:blog')
+                ->findBy(array(), array(
+                    'sort' => 'DESC'
+                ));
 
-        $html = $this->container->get('templating')->render(
-            'Backend/Blog/index.html.twig', array(
-                "data" => $blogdata
-            )
-        );
+                $html = $this->renderView(
+                    'admin/blog/index.html.twig', array(
+                        'data' => $data
+                    )
+                );
 
-        return new Response($html);
-    }
+                return new Response($html);
+     }
 
     /**
      * @Route("/admin/blog/insert", name="backend_blog_insert")
