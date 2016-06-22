@@ -63,7 +63,7 @@ class blogController extends Controller
      */
     public function insertAction(Request $request)
     {
-        $data = new Blog();
+        $data = new blog();
         $form = $this->createForm(BlogType::class, $data);
 
         $result = $this->handleFormUpload($form, $request, $data);
@@ -84,28 +84,28 @@ class blogController extends Controller
     }
 
     /**
-      * @Route("/admin/Blog/edit/{id}", name="backend_Blog_edit")
+      * @Route("/admin/blog/update/{id}", name="backend_blog_update")
       */
       public function updateAction(Request $request, $id)
       {
         $data = $this->getDoctrine()
-                ->getRepository('DevProBackendBundle:Blog')
+                ->getRepository('DevProBackendBundle:blog')
                 ->find($id);
-    
-            $form = $this->createForm(BlogType::class, $data);
-    
+
+            $form = $this->createForm(blogType::class, $data);
+
             $result = $this->handleFormUpload($form, $request, $data);
             if($result)
             {
                 return $this->redirectToRoute('backend_blog');
             }
-    
+
             $html = $this->renderView(
-                'Backend/Blog/update.html.twig', array(
+                'Backend/blog/update.html.twig', array(
                     "form" => $form->createView()
                 )
             );
-    
+
             return new Response($html);
         }
     
