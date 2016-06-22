@@ -82,7 +82,7 @@ class blogController extends Controller
      }
 
     /**
-      * @Route("/admin/blog/update/{id}", name="backend_blog_update")
+      * @Route("/admin/blog/update/{id}", name="admin_blog_update")
       */
       public function updateAction(Request $request, $id)
       {

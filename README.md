@@ -2,16 +2,16 @@
 
 This is new Page for DevPro. Created with Symfony and it contains a Frontend and a Backend Bundle with some features.
 
-<h3>Features</h3>
-<ul>
-    <li>NewsletterManager</li>
-    <li>Frontend/Backend Bundle</li>
-    <li>FOSUSERBundle (Login/logout/register, protected area)</li>
-    <li>JMS Translation Bundle and UI</li>
-    <li>JMS Routing  Bundle </li>
-</ul>
+### Features
 
-# Duplicate Repository
+NewsletterManager
+Frontend/Backend Bundle
+FOSUSERBundle (Login/logout/register, protected area)
+JMS Translation Bundle and UI
+JMS Routing  Bundle 
+
+
+### Duplicate Repository
 Um Skeleton für ein neues Projekt zu benutzen wie folgt Vorgehen:
 
 git clone --bare https://github.com/exampleuser/old-repository.git
@@ -29,10 +29,10 @@ rm -rf old-repository.git
 
 1. Clone Project Local with a --bare Clone
 2. Run Composer & Bower to install Depencies
-3. Install Assetic
-4. Create a Database called "devpro"
-5. Create Database Tables -> console Command "php app/console doctrine:schema:update --force"
-6. create a Admin User -> console Command "php app/console fos:user:create USERNAME --super-admin"
+3. Install Assetic & run Assetic Dump
+4. Write your Entities
+5. Create Database & Tables via Console -> console Command "php app/console doctrine:schema:update --force"
+6. Create a Admin User via Console -> console Command "php app/console fos:user:create USERNAME --super-admin"
 7. Start local Server -> console Command "php app/console server:run"
 
 

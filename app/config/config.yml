@@ -83,7 +83,7 @@ doctrine:
                         mappings:
                             SonataMediaBundle: ~
                             FOSUserBundle: ~
-                            DevProBackendBundle: ~
+                            DevProadminBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:

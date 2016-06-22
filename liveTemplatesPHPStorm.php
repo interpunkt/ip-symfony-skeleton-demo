@@ -73,7 +73,7 @@ class foo
 
 // updateAction
     /**
-     * @Route("/admin/$repo$/update/{id}", name="backend_$repo$_update")
+     * @Route("/admin/$repo$/update/{id}", name="$path$_$repo$_update")
      */
     public function updateAction(Request $request, $id)
     {
