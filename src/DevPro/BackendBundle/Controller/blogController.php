@@ -72,32 +72,44 @@ class blogController extends Controller
         {
             return $this->redirectToRoute('backend_blog');
         }
-    }
-    
-    /**
-     * @Route("/admin/blog/new", name="backend_blog_new")
-     */
-    public function newAction(Request $request)
-    {
-        $blog = new Blog();
-        $form = $this->createForm(BlogType::class, $blog);
 
-        $result = $this->handleFormUpload($form, $request, $blog, 'neu');
-
-        if($result)
-        {
-            return $this->redirectToRoute('backend_blog');
-        }
-
-        $html = $this->container->get('templating')->render(
-            'Backend/Blog/new.html.twig', array(
-                "data" => '',
+        $html = $this->renderView(
+            'Backend/Blog/insert.html.twig', array(
+                "data" => $data,
                 "form" => $form->createView()
             )
         );
 
         return new Response($html);
     }
+
+    /**
+      * @Route("/admin/Blog/edit/{id}", name="backend_Blog_edit")
+      */
+      public function updateAction(Request $request, $id)
+      {
+        $data = $this->getDoctrine()
+                ->getRepository('DevProBackendBundle:Blog')
+                ->find($id);
+    
+            $form = $this->createForm(BlogType::class, $data);
+    
+            $result = $this->handleFormUpload($form, $request, $data);
+            if($result)
+            {
+                return $this->redirectToRoute('backend_blog');
+            }
+    
+            $html = $this->renderView(
+                'Backend/Blog/update.html.twig', array(
+                    "form" => $form->createView()
+                )
+            );
+    
+            return new Response($html);
+        }
+    
+    
 
     /**
      * @Route("/admin/blog/edit/{id}", name="backend_blog_edit")

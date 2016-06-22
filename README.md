@@ -25,59 +25,59 @@ cd ..
 rm -rf old-repository.git
 // Remove our temporary local repository
 
-<h3>Install</h3>
+### Install
 
-1. Clone Project Local<br>
-2. Run Composer to install Depencys<br>
-3. Install Assetic<br>
-4. Create a Database called "devpro"<br>
-5. Create Database Tables -> console Command "php app/console doctrine:schema:update --force"<br>
-6. create a Admin User -> console Command "php app/console fos:user:create USERNAME --super-admin"<br>
+1. Clone Project Local with a --bare Clone
+2. Run Composer & Bower to install Depencies
+3. Install Assetic
+4. Create a Database called "devpro"
+5. Create Database Tables -> console Command "php app/console doctrine:schema:update --force"
+6. create a Admin User -> console Command "php app/console fos:user:create USERNAME --super-admin"
 7. Start local Server -> console Command "php app/console server:run"
 
 
-<h3>Use</h3>
-localhost:8000 -> Main Frontend Site<br>
-localhost:8000/admin/ -> Your Backend/Dashboard (you will redirected to Login /login if not logged in)<br>
-localhost:8000/register/ -> register a new User (need to set a higher ROLE if he need access to the backend<br>
-localhost:8000/login/ -> Login Window<br>
+### Use
+localhost:8000 -> Main Frontend Site
+localhost:8000/admin/ -> Your Backend/Dashboard (you will redirected to Login /login if not logged in)
+localhost:8000/register/ -> register a new User (need to set a higher ROLE if he need access to the backend
+localhost:8000/login/ -> Login Window
 localhost:8000/_trans/ -> translationUI to set your translations
 
-<h3>Require</h3>
-<ul>
-    <li>Composer</li>
-    <li>Nodejs</li>
-    <li>PHP 5.3</li>
-    <li>MySQL</li>
-</ul>
+### Require
 
-<h3>Google Settings</h3>
-<p>Meta Titel und Beschreibung können in den verschiedenen Seiten im Backend gesetzt werden</p>
-<p>Zeichenzähler für neue Seo Elemente einbinden:</p>
-<p>File: assets/js/charCounter.js</p>
-<p>ID des Elements unten einbinden und Parameter setzen.</p>
+Composer
+Nodejs
+PHP 5.3
+MySQL
+
+
+### Google Settings
+Meta Titel und Beschreibung können in den verschiedenen Seiten im Backend gesetzt werden
+Zeichenzähler für neue Seo Elemente einbinden:
+File: assets/js/charCounter.js
+ID des Elements unten einbinden und Parameter setzen.
 
 Beispiel:
 
-<pre>
+```
     $('#second_textfield').characterCounter({
             maximumCharacters: 20,
             chopText: true
         });
-</pre>
+```
 
 
-<h3>Tinymce</h3>
+### Tinymce
 
 Um den Tinymce zu aktivieren bei einem textarea Feld einfach Class "tinymce" mitgeben."
 
 
-<h3>Frontend Paginator</h3>
+### Frontend Paginator
 
 Set Number of Displayed Items in Controller
 
 
-<h3>Newsletter Manager</h3>
+### Newsletter Manager
 
 USE example in Controller:
 First add: use DevPro\BackendBundle\Newsletter\NewsletterManager;
