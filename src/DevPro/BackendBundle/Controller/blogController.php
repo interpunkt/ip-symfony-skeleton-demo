@@ -64,7 +64,7 @@ class blogController extends Controller
         $data = new admin();
         $form = $this->createForm(blogType::class, $data);
         
-        $result = $this->handleFormUpload($form, $request, $data);
+        $result = $this->handleFormUpload($form, $request);
         
         if($result)
         {
@@ -92,7 +92,7 @@ class blogController extends Controller
 
             $form = $this->createForm(blogType::class, $data);
 
-            $result = $this->handleFormUpload($form, $request, $data);
+            $result = $this->handleFormUpload($form, $request);
             if($result)
             {
                 return $this->redirectToRoute('backend_blog');
@@ -124,23 +124,6 @@ class blogController extends Controller
 
 
     /**
-     * @Route("/admin/blog/delete/{id}", name="backend_blog_delete")
-     */
-    public function deleteAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $data = $em
-            ->getRepository('DevProBackendBundle:Blog')
-            ->find($id);
-
-        $em->remove($data);
-        $em->flush();
-
-        return $this->redirectToRoute('backend_blog');
-    }
-
-
-    /**
      * @Route("/admin/blog/seo", name="backend_blog_seo")
      */
     public function seoAction(Request $request)
@@ -167,6 +150,34 @@ class blogController extends Controller
 
         return new Response($html);
     }
+
+    /**
+     * @return bool
+     */
+    public function handleFormUploadInsert($form, $request)
+        {
+            $form->handleRequest($request);
+            if ($form->isValid() && $form->isSubmitted())
+            {
+                $data = $form->getData();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($data);
+                $em->flush();
+
+                return true;
+            }
+        }
+
+
+
+
+
+
+
+
+    //
+    // Sorter old Stuff, Remove maybe
 
     /**
      * @Route("/admin/blog/sortup/{id}", name="backend_blog_sortup")
@@ -198,28 +209,6 @@ class blogController extends Controller
         $sorter->flushSort();
 
         return $this->redirectToRoute('backend_blog');
-    }
-
-    public function handleFormUpload($form, $request, $task, $action)
-    {
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-
-            $dataObject = $form->getData();
-
-            if($action == 'neu')
-            {
-                $sort = $this->getSetSort();
-                $sort++;
-                $dataObject->setSort($sort);
-            }
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($dataObject);
-            $em->flush();
-            return true;
-        }
     }
 
     public function getSetSort()

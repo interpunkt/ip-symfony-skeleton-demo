@@ -53,7 +53,7 @@ class foo
         $data = new $path$();
     $form = $this->createForm($repo$Type::class, $data);
 
-    $result = $this->handleFormUpload($form, $request, $data);
+    $result = $this->handleFormUpload($form, $request);
 
     if($result)
     {
@@ -83,7 +83,7 @@ class foo
 
         $form = $this->createForm($repo$Type::class, $data);
 
-        $result = $this->handleFormUpload($form, $request, $data);
+        $result = $this->handleFormUpload($form, $request);
         if($result)
         {
             return $this->redirectToRoute('$path$_$repo$');
