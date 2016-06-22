@@ -13,14 +13,14 @@
     {{ parent() }}
 
     {# Seitentitel #}
-    {% block pageHeaderTitel %}Blog{% endblock %}
+    {% block pageHeaderTitel %}{{ title }}{% endblock %}
 
     {# Beschreibung neben Seitentitel #}
     {% block pageHeaderDescription %}Eine Beschreibung{% endblock %}
 
     {# Breadcrumb: Toplevel #}
     {% block BreadcrumbMainLevel %}
-        <li><a href="{{ path('admin_blog') }}"><i class="fa fa-sitemap"></i> Blog</a></li>
+        <li><a href="{{ path('admin_blog') }}"><i class="fa fa-sitemap"></i> {{ title }}</a></li>
     {% endblock %}
 
     {# Breadcrumb: Sublevel #}
@@ -33,6 +33,7 @@
 #################################################}
 
 {% block content %}
+
     <!-- Main content -->
     <section class="content">
 
@@ -63,7 +64,7 @@
             <div class="col-sm-12">
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Blogartikel</h3>
+                        <h3 class="box-title">{{ title }}</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <table class="table table-striped table-data">

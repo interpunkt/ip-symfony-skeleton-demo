@@ -48,7 +48,8 @@ class blogController extends Controller
 
                 $html = $this->renderView(
                     'admin/blog/index.html.twig', array(
-                        'data' => $data
+                        'data' => $data,
+                        'title' => 'blog'
                     )
                 );
 
