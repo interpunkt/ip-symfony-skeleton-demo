@@ -2,6 +2,10 @@
 
 This is new Page for DevPro. Created with Symfony and it contains a Frontend and a Backend Bundle with some features.
 
+### Docs
+
+https://github.com/benblub/devpro_page/wiki
+
 ### Features
 
 NewsletterManager
