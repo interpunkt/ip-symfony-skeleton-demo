@@ -1,10 +1,10 @@
 <?php
 namespace DevPro\FrontendBundle\Controller;
 
-use DevPro\BackendBundle\DependencyInjection\singleSorter;
-use DevPro\BackendBundle\Entity\Blog;
-use DevPro\BackendBundle\Entity\BlogSeo;
-use DevPro\BackendBundle\Utils\DoctrineClass;
+use DevPro\adminBundle\DependencyInjection\singleSorter;
+use DevPro\adminBundle\Entity\Blog;
+use DevPro\adminBundle\Entity\BlogSeo;
+use DevPro\adminBundle\Utils\DoctrineClass;
 use DevPro\FrontendBundle\Entity\Kontaktformular;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use DevPro\FrontendBundle\Form\Type\KontaktformularType;
-use DevPro\BackendBundle\Form\Type\BlogSeoType;
+use DevPro\adminBundle\Form\Type\BlogSeoType;
 
 
 

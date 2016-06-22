@@ -103,7 +103,7 @@ services:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: DevPro\BackendBundle\Entity\User
+    user_class: DevPro\adminBundle\Entity\User
 
 jms_translation:
     configs:

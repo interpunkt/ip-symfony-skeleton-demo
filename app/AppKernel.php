@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new DevPro\BackendBundle\DevProBackendBundle(),
+            new DevPro\adminBundle\DevProadminBundle(),
             new DevPro\FrontendBundle\DevProFrontendBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),

@@ -5,9 +5,9 @@ parameters:
 
 services:
     app.mailer:
-        class:        DevPro\BackendBundle\Newsletter\NewsletterManager
+        class:        DevPro\adminBundle\Newsletter\NewsletterManager
         arguments: ['@mailer', '@templating']
     app.notification:
-              class: DevPro\BackendBundle\Controller\LayoutController
+              class: DevPro\adminBundle\Controller\LayoutController
               arguments:
                       entityManager: "@doctrine.orm.entity_manager"
