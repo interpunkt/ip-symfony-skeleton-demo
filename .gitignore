@@ -10,6 +10,7 @@
 /vendor/
 /web/bundles/
 /.idea/*
+composer.lock
 
 # Sublime
 devpro_page.sublime-project
