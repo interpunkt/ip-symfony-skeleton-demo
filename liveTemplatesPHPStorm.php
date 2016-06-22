@@ -72,6 +72,35 @@ class foo
 
 
 // updateAction
+    /**
+     * @Route("/admin/$repo$/update/{id}", name="backend_$repo$_update")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $data = $this->getDoctrine()
+            ->getRepository('DevPro$path$Bundle:$repo$')
+            ->find($id);
+
+        $form = $this->createForm($repo$Type::class, $data);
+
+        $result = $this->handleFormUpload($form, $request, $data);
+        if($result)
+        {
+            return $this->redirectToRoute('$path$_$repo$');
+        }
+
+        $html = $this->renderView(
+            '$path$/$repo$/update.html.twig', array(
+                "form" => $form->createView()
+            )
+        );
+
+        return new Response($html);
+    }
+
+
+
+
 // deleteAction
 }
 
