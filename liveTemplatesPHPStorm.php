@@ -98,9 +98,23 @@ class foo
         return new Response($html);
     }
 
-
-
-
 // deleteAction
+    /**
+     * @Route("/$path$/$repo$/delete/{id}", name="$path$_$repo$_delete")
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $data = $em->getRepository('DevPro$path$Bundle:$repo$')
+            ->find($id);
+
+        $em->remove($data);
+        $em->flush();
+
+        return $this->redirectToRoute('$path$_$repo$');
+    }
+
+
+
 }
 

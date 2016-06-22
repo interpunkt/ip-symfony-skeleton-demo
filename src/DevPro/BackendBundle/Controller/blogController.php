@@ -106,34 +106,21 @@ class blogController extends Controller
 
             return new Response($html);
         }
-    
-    
 
-    /**
-     * @Route("/admin/blog/edit/{id}", name="backend_blog_edit")
-     */
-    public function editAction(Request $request, $id)
-    {
-        $blog = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
-            ->find($id);
+     /**
+       * @Route("/admin/blog/delete/{id}", name="admin_blog_delete")
+       */
+       public function deleteAction($id)
+       {
+           $em = $this->getDoctrine()->getManager();
+           $data = $em->getRepository('DevProadminBundle:blog')
+                   ->find($id);
 
-        $form = $this->createForm(BlogType::class, $blog);
+           $em->remove($data);
+           $em->flush();
 
-        $result = $this->handleFormUpload($form, $request, $blog, 'edit');
-        if($result)
-        {
-            return $this->redirectToRoute('backend_blog');
-        }
-
-        $html = $this->container->get('templating')->render(
-            'Backend/Blog/edit.html.twig', array(
-                "form" => $form->createView()
-            )
-        );
-
-        return new Response($html);
-    }
+           return $this->redirectToRoute('admin_blog');
+       }
 
 
     /**
