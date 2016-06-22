@@ -24,7 +24,6 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new DevPro\BackendBundle\DevProBackendBundle(),
             new DevPro\FrontendBundle\DevProFrontendBundle(),
-            new Presta\SitemapBundle\PrestaSitemapBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Sonata\MediaBundle\SonataMediaBundle(),

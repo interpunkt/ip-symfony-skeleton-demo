@@ -15,7 +15,7 @@ use DevPro\BackendBundle\Newsletter\NewsletterManager;
 
 
 
-class NewsletterController extends Controller
+class newsletterController extends Controller
 {
     /**
      * @Route("/admin/newsletter", name="backend_newsletter")

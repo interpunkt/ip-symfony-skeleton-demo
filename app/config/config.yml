@@ -120,11 +120,6 @@ jms_i18n_routing:
     locales: [de, en]
     strategy: prefix_except_default
 
-presta_sitemap:
-    timetolive: 3600
-    items_by_set: 50000
-    dumper_base_url: "http://www.example.com/"
-
 vich_uploader:
     db_driver: orm
     mappings:
