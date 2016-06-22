@@ -54,31 +54,32 @@ class blogController extends Controller
 
                 return new Response($html);
      }
-
+    
+    
     /**
-     * @Route("/admin/blog/insert", name="backend_blog_insert")
+     * @Route("/admin/blog/insert", name="admin_blog_insert")
      */
-    public function insertAction(Request $request)
-    {
-        $data = new blog();
-        $form = $this->createForm(BlogType::class, $data);
-
+     public function insertAction(Request $request)
+     {
+        $data = new admin();
+        $form = $this->createForm(blogType::class, $data);
+        
         $result = $this->handleFormUpload($form, $request, $data);
-
+        
         if($result)
         {
-            return $this->redirectToRoute('backend_blog');
+            return $this->redirectToRoute('admin_blog');
         }
-
+        
         $html = $this->renderView(
-            'Backend/Blog/insert.html.twig', array(
-                "data" => $data,
-                "form" => $form->createView()
+            'admin/blog/insert.html.twig', array(
+                'data' => $data,
+                'form' => $form->createView()
             )
         );
-
+        
         return new Response($html);
-    }
+     }
 
     /**
       * @Route("/admin/blog/update/{id}", name="backend_blog_update")
