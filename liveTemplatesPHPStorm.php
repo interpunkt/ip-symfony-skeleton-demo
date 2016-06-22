@@ -50,7 +50,7 @@ class foo
      */
     public function insertAction(Request $request)
     {
-        $data = new $path$();
+        $data = new $repo$();
     $form = $this->createForm($repo$Type::class, $data);
 
     $result = $this->handleFormUpload($form, $request);
@@ -68,7 +68,7 @@ class foo
     );
 
     return new Response($html);
- }
+    }
 
 
 // updateAction
@@ -115,6 +115,24 @@ class foo
     }
 
 
+// handFormUpload
+    /**
+     * @return bool
+     */
+    public function handleFormUpload($form, $request)
+    {
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted())
+        {
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
+
+            return true;
+        }
+    }
 
 }
 

@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
-class BlogType extends AbstractType
+class blogType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use DevPro\adminBundle\Form\Type\BlogType;
+use DevPro\adminBundle\Form\Type\blogType;
 use DevPro\adminBundle\Form\Type\BlogSeoType;
 
 /*
@@ -61,7 +61,7 @@ class blogController extends Controller
      */
      public function insertAction(Request $request)
      {
-        $data = new admin();
+        $data = new blog();
         $form = $this->createForm(blogType::class, $data);
         
         $result = $this->handleFormUpload($form, $request);
@@ -87,7 +87,7 @@ class blogController extends Controller
       public function updateAction(Request $request, $id)
       {
         $data = $this->getDoctrine()
-                ->getRepository('DevProBackendBundle:blog')
+                ->getRepository('DevProadminBundle:blog')
                 ->find($id);
 
             $form = $this->createForm(blogType::class, $data);
@@ -95,7 +95,7 @@ class blogController extends Controller
             $result = $this->handleFormUpload($form, $request);
             if($result)
             {
-                return $this->redirectToRoute('backend_blog');
+                return $this->redirectToRoute('admin_blog');
             }
 
             $html = $this->renderView(
@@ -154,7 +154,7 @@ class blogController extends Controller
     /**
      * @return bool
      */
-    public function handleFormUploadInsert($form, $request)
+    public function handleFormUpload($form, $request)
         {
             $form->handleRequest($request);
             if ($form->isValid() && $form->isSubmitted())
