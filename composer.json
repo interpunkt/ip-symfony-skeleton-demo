@@ -1,12 +1,13 @@
 {
     "name": "dpskeleton/dpskeleton",
+    "description": "Skeleton Application includes Symfony",
     "authors": [
         {
-            "name": "Benjamin Knecht",
-            "email": "bk@inter-punkt.ch"
+            "name": "Benjamin Knecht, Selim Imoberdorf",
+            "email": "bk@inter-punkt.ch, si@inter-punkt.ch"
         }
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "autoload": {
         "psr-4": {
