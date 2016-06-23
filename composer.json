@@ -1,24 +1,23 @@
 {
-    "name": "benjamin/dp_skeleton",
-    "version": "1.0.0",
-    "dist": {
-        "url": "https://github.com/benblub/devpro_page/archive/1.0.0.zip",
-        "type": "zip"
-    },
+    "name": "dpskeleton/dpskeleton",
     "authors": [
         {
             "name": "Benjamin Knecht",
             "email": "bk@inter-punkt.ch"
         }
     ],
-    "license": "proprietary",
-    "type": "project",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "": "src/",
-            "SymfonyStandard\\": "app/SymfonyStandard/"
+            "skeleton\\": ""
         }
     },
+    "repositories": [
+        {
+            "type": "zip",
+            "url": "https://github.com/benblub/devpro_page/archive/1.0.0.zip"
+        }
+    ],
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "2.8.*",
