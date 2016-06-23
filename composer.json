@@ -3,8 +3,8 @@
     "description": "Skeleton Application includes Symfony",
     "authors": [
         {
-            "name": "Benjamin Knecht, Selim Imoberdorf",
-            "email": "bk@inter-punkt.ch, si@inter-punkt.ch"
+            "name": "Benjamin Knecht",
+            "email": "bk@inter-punkt.ch"
         }
     ],
     "version": "1.0.1",
