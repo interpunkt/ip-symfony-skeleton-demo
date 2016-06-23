@@ -1,9 +1,14 @@
 {
-    "name": "benjamin/devpro_demo",
+    "name": "benjamin/dp_skeleton",
+    "version": "1.0.0",
+    "dist": {
+        "url": "https://github.com/benblub/devpro_page/archive/1.0.0.zip",
+        "type": "zip"
+    },
     "authors": [
         {
             "name": "Benjamin Knecht",
-            "email": "benjamin.knecht@inter-punkt.ch"
+            "email": "bk@inter-punkt.ch"
         }
     ],
     "license": "proprietary",
