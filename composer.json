@@ -6,6 +6,7 @@
             "email": "bk@inter-punkt.ch"
         }
     ],
+    "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -43,13 +44,7 @@
         "hwi/oauth-bundle": "^0.4.0",
         "leafo/lessphp": "^0.5.0",
         "jimigrunge/bootstrap-colorpicker-bundle": "^2.3",
-        "knplabs/knp-paginator-bundle": "^2.5",
-        "sonata-project/core-bundle": "~2.2@dev",
-        "sonata-project/media-bundle": "~2.3@dev",
-        "sonata-project/easy-extends-bundle": "~2.1",
-        "sonata-project/admin-bundle": "^2.3",
-        "sonata-project/intl-bundle": "^2.2",
-        "sonata-project/doctrine-orm-admin-bundle": "^2.3"
+        "knplabs/knp-paginator-bundle": "^2.5"
 
     },
     "require-dev": {
