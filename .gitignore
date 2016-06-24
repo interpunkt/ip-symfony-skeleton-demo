@@ -11,6 +11,7 @@
 /web/bundles/
 /.idea/*
 composer.lock
+/web/assets/compiled/*
 
 # Sublime
 devpro_page.sublime-project
