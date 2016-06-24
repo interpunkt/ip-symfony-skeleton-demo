@@ -14,11 +14,11 @@
     <script src="{{ asset('assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js') }}"></script>
 
     {# DEV FILES: Own #}
-    <script src="{{ asset('assets/backend/_build/js/bootstrap-colorpicker/bootstrap-colorpicker.js') }}"></script>
-    <script src="{{ asset('assets/backend/_build/js/characterCounter/characterCounter.js') }}"></script>
-    <script src="{{ asset('assets/backend/_build/js/datatables/dataTables.js') }}"></script>
-    <script src="{{ asset('assets/backend/_build/js/tinymce/tinymce.js') }}"></script>
-    <script src="{{ asset('assets/backend/_build/js/backend.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/bootstrap-colorpicker/bootstrap-colorpicker.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/characterCounter/characterCounter.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/datatables/dataTables.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/tinymce/tinymce.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/backend.js') }}"></script>
 
 {% else %}
 
@@ -31,9 +31,9 @@
         'assets/vendor/datatables.net/js/jquery.dataTables.js'
         'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js'
 
-        'assets/backend/build/js/datatables/dataTables.js'
-        'assets/backend/build/js/characterCounter/characterCounter.js'
-        'assets/backend/build/js/backend.js'
+        'assets/backend/js/datatables/dataTables.js'
+        'assets/backend/js/characterCounter/characterCounter.js'
+        'assets/backend/js/backend.js'
         output='assets/backend/js/app.min.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
