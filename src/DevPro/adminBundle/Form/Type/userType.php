@@ -28,6 +28,13 @@ class userType extends AbstractType
                              'label' => 'Passwort',
                              'required' => true
                          ))
+            ->add('save', SubmitType::class, array(
+                            'label' => '',
+                            'attr' => array(
+                            'class' => 'btn btn--important '
+                            )
+                        ))
+
         ;
     }
 }
