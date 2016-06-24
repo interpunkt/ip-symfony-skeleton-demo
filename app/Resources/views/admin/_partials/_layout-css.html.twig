@@ -6,25 +6,30 @@
 {% if app.environment == "dev" %}
 
     {# DEV FILES #}
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/font-awesome/css/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap/dist/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/bootstrap-table/dist/bootstrap-table.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/bower_components/datatables/media/css/jquery.dataTables.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/backend/_build/css/AdminLTE.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/backend/_build/css/skin-interpunkt.css') }}">
+        {# Libaries #}
+        <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-table/dist/bootstrap-table.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/vendor/datatables/media/css/jquery.dataTables.css') }}">
+
+        {# own Files #}
+        <link rel="stylesheet" href="{{ asset('assets/backend/css/AdminLTE.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/backend/css/skin-interpunkt.css') }}">
 
 {% else %}
 
     {# PROD FILE #}
     {% stylesheets filter='cssrewrite' output='assets/backend/css/app.min.css'
-        'assets/bower_components/font-awesome/css/font-awesome.css'
-        'assets/bower_components/bootstrap/dist/css/bootstrap.css'
-        'assets/bower_components/bootstrap-table/dist/bootstrap-table.css'
-        'assets/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
-        'assets/bower_components/datatables/media/css/jquery.dataTables.css'
-        'assets/backend/_build/css/AdminLTE.css'
-        'assets/backend/_build/css/skin-interpunkt.css'
+
+        'assets/vendor/font-awesome/css/font-awesome.css'
+        'assets/vendor/bootstrap/dist/css/bootstrap.css'
+        'assets/vendor/bootstrap-table/dist/bootstrap-table.css'
+        'assets/vendor/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css'
+        'assets/vendor/datatables/media/css/jquery.dataTables.css'
+
+        'assets/backend/css/AdminLTE.css'
+        'assets/backend/css/skin-interpunkt.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
@@ -32,7 +37,7 @@
     {% stylesheets filter='lessphp' output='assets/backend/css/colors.min.css'
         'assets/backend/less/all.less'
     %}
-    <link rel="stylesheet" href="{{ asset_url }}">
+        <link rel="stylesheet" href="{{ asset_url }}">
     {% endstylesheets %}
 
 {% endif %}
