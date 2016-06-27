@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class userType extends AbstractType
@@ -31,6 +32,9 @@ class userType extends AbstractType
              ->add('dp_name', TextType::class, array(
                             'label' => 'Name',
                             'required' => true
+                        ))
+            ->add('username', HiddenType::class, array(
+                            'data' => uniqid(),
                         ))
              ->add('save', SubmitType::class, array(
                             'label' => '',

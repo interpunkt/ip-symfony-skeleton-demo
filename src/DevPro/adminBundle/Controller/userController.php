@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use DevPro\adminBundle\Form\Type\userType;
+use DevPro\adminBundle\Entity\User;
 
 
 class userController extends Controller
@@ -38,15 +39,18 @@ class userController extends Controller
         $data = new user();
         $form = $this->createForm(userType::class, $data);
 
-        $result = $this->handleFormUpload($form, $request);
+        $result = $this->handleFormUploadNewUser($form, $request);
 
         if($result)
         {
+            // send Email to User with Login Data
+            sendEmailToNewUserWithLoginData($result);
+
             return $this->redirectToRoute('admin_user');
         }
 
         $html = $this->renderView(
-            'admin/user/insert.html.twig', array(
+            'admin/User/insert.html.twig', array(
                 'data' => $data,
                 'form' => $form->createView()
             )
@@ -54,6 +58,26 @@ class userController extends Controller
 
         return new Response($html);
      }
+
+    private function sendEmailToNewUserWithLoginData($user)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('send@example.com')
+            ->setTo('recipient@example.com')
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    'admin/User/passwordNewUserSendMail.html.twig',
+                    array('password' => $user->getPlainPassword())
+                ),
+                'text/html'
+            );
+
+        $this->get('mailer')->send($message);
+
+        return true;
+    }
 
     /**
       * @Route("/admin/user/update/{id}", name="admin_user_update")
@@ -115,6 +139,34 @@ class userController extends Controller
                 return true;
             }
         }
+
+    /**
+     * @return bool
+     */
+    public function handleFormUploadNewUser($form, $request)
+    {
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted())
+        {
+            $data = $form->getData();
+
+            // generate a new Password
+            $password = uniqid();
+
+            // get Usermanager
+            $userManager = $this->container->get('fos_user.user_manager');
+            $user = $userManager->createUser();
+            $user->addRole('ROLE_ADMIN');
+            $user->setEmail($data->getEmail());
+            $user->setEnabled(true);
+            $user->setPlainPassword($password);
+
+            $userManager->createUser($user);
+
+            return $user;
+        }
+    }
 
 
 //////////////////////////////////////////////////////////////////////////
