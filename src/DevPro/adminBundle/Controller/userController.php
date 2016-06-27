@@ -21,7 +21,7 @@ class userController extends Controller
                 ));
 
                 $html = $this->renderView(
-                    'admin/user/index.html.twig', array(
+                    'admin/User/index.html.twig', array(
                         'data' => $data,
                         'title' => 'user'
                     )
