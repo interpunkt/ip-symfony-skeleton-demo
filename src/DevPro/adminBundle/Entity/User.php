@@ -23,6 +23,16 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $dp_surname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $dp_name;
+
 
     public function __construct()
     {
@@ -30,4 +40,50 @@ class User extends BaseUser
         // your own logic
     }
     
+
+    /**
+     * Set dp_surname
+     *
+     * @param string $dpSurname
+     * @return User
+     */
+    public function setDpSurname($dpSurname)
+    {
+        $this->dp_surname = $dpSurname;
+
+        return $this;
+    }
+
+    /**
+     * Get dp_surname
+     *
+     * @return string 
+     */
+    public function getDpSurname()
+    {
+        return $this->dp_surname;
+    }
+
+    /**
+     * Set dp_name
+     *
+     * @param string $dpName
+     * @return User
+     */
+    public function setDpName($dpName)
+    {
+        $this->dp_name = $dpName;
+
+        return $this;
+    }
+
+    /**
+     * Get dp_name
+     *
+     * @return string 
+     */
+    public function getDpName()
+    {
+        return $this->dp_name;
+    }
 }

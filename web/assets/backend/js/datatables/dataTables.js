@@ -1,8 +1,14 @@
-//  Datatables init
-//  
-//  Copyright 2016 by inter-punkt.ag
-//  Autor: Selim Imoberdorf
-//  --------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  Default DataTables
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    // Custom Search Field
+    $('#searchDefault').on( 'keyup', function () {
+        table.search( this.value ).draw();
+    });
 
     var table = $('.table-data').DataTable({
         "bSort" : true,
@@ -29,3 +35,6 @@
             }
         }
     });
+
+    // Hide Standard Search Field
+    $("#DataTables_Table_0_filter").hide();

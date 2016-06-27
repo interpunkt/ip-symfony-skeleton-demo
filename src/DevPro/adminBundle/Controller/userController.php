@@ -74,7 +74,9 @@ class userController extends Controller
 
             $html = $this->renderView(
                 'admin/user/update.html.twig', array(
-                    "form" => $form->createView()
+                    "form" => $form->createView(),
+                    'id' => $id,
+                    'title' => 'Benutzer'
                 )
             );
 
@@ -113,4 +115,94 @@ class userController extends Controller
                 return true;
             }
         }
+
+
+//////////////////////////////////////////////////////////////////////////
+// Erweiterung UserController spezifisch
+// Da eine Benutzerverwaltung in allen Projekten vorhanden ist befindet sich dieser teil im Core der Applikation.
+//////////////////////////////////////////////////////////////////////////
+
+    /**
+     * @Route("/admin/user/password/resetrequest/{id}", name="admin_password_reset_request")
+     */
+    public function requestNewPassword($id)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array(
+           'id' => $id
+        ));
+
+        $user->setConfirmationToken(uniqid());
+        $user->setPasswordRequestedAt(new \DateTime("now"));
+        $userManager->updateUser($user);
+
+        $this->sendEmailForNewPasswordRequest($user);
+
+        return $this->redirectToRoute('admin_user');
+    }
+
+    private function sendEmailForNewPasswordRequest($user)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('send@example.com')
+            ->setTo('recipient@example.com')
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    'admin/User/passwordResetSendMail.html.twig',
+                    array('token' => $user->getConfirmationToken())
+                ),
+                'text/html'
+            );
+
+        $this->get('mailer')->send($message);
+    }
+
+    /**
+     * @Route("/frontend/user/password/reset/{confirmationToken}", name="admin_password_reset_confirm")
+     */
+    public function passwordReset($confirmationToken)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserByConfirmationToken($confirmationToken);
+
+        if( ! $user)
+        {
+            $html = $this->renderView(
+                ':Frontend/User:confirmPasswortReset.html.twig', array(
+                    "success" => false
+                )
+            );
+
+            return new Response($html);
+        }
+
+        $newPassword = uniqid();
+        $user->setPlainPassword($newPassword);
+
+        // Neues Passwort an User senden
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Passwort Anforderung')
+            ->setFrom('send@example.com')
+            ->setTo('recipient@example.com')
+            ->setBody(
+                $this->renderView(
+                    'admin/User/passwordResetSendMail.html.twig',
+                    array('passwort' => $newPassword)
+                ),
+                'text/html'
+            );
+
+        $this->get('mailer')->send($message);
+
+        $html = $this->renderView(
+            ':Frontend/User:confirmPasswortReset.html.twig', array(
+                "success" => true
+            )
+        );
+
+        return new Response($html);
+    }
+
 }

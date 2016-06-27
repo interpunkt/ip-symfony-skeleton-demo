@@ -19,3 +19,6 @@ Hier muss noch das Handling mit Fabian besprochen werden. Die Page auf der ander
 werden. Hier wird ein Sublink angelegt
 - updateskeleton@interpunkt-test.ch
 Api Token anlegen. Aktuelle Version festlegen und Json Response ausführen.
+- 
+
+3. Benutzerroller hinzu fügen (Interpunkt User), Url = /interpunkt oder admin/interpunkt, hier z.B. Update Funktion einbauen

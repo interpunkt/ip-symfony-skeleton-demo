@@ -24,11 +24,15 @@ class userType extends AbstractType
                              'label' => 'E-Mail',
                              'required' => true
                          ))
-             ->add('password', PasswordType::class, array(
-                             'label' => 'Passwort',
+             ->add('dp_surname', TextType::class, array(
+                             'label' => 'Vorname',
                              'required' => true
                          ))
-            ->add('save', SubmitType::class, array(
+             ->add('dp_name', TextType::class, array(
+                            'label' => 'Name',
+                            'required' => true
+                        ))
+             ->add('save', SubmitType::class, array(
                             'label' => '',
                             'attr' => array(
                             'class' => 'btn btn--important '
