@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use DevPro\adminBundle\Form\Type\userType;
 use DevPro\adminBundle\Entity\User;
+use DevPro\adminBundle\DependencyInjection\PWGen;
 
 
 class userController extends Controller
@@ -44,7 +45,7 @@ class userController extends Controller
         if($result)
         {
             // send Email to User with Login Data
-            sendEmailToNewUserWithLoginData($result);
+            $this->sendEmailToNewUserWithLoginData($result);
 
             return $this->redirectToRoute('admin_user');
         }
@@ -58,26 +59,6 @@ class userController extends Controller
 
         return new Response($html);
      }
-
-    private function sendEmailToNewUserWithLoginData($user)
-    {
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
-            ->setBody(
-                $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
-                    'admin/User/passwordNewUserSendMail.html.twig',
-                    array('password' => $user->getPlainPassword())
-                ),
-                'text/html'
-            );
-
-        $this->get('mailer')->send($message);
-
-        return true;
-    }
 
     /**
       * @Route("/admin/user/update/{id}", name="admin_user_update")
@@ -97,7 +78,7 @@ class userController extends Controller
             }
 
             $html = $this->renderView(
-                'admin/user/update.html.twig', array(
+                'admin/User/update.html.twig', array(
                     "form" => $form->createView(),
                     'id' => $id,
                     'title' => 'Benutzer'
@@ -149,10 +130,11 @@ class userController extends Controller
 
         if ($form->isValid() && $form->isSubmitted())
         {
+
             $data = $form->getData();
 
-            // generate a new Password
-            $password = uniqid();
+            // generate a new Password with PWGen, Password length 6
+            $password = $this->generateNewPassword(6);
 
             // get Usermanager
             $userManager = $this->container->get('fos_user.user_manager');
@@ -160,11 +142,17 @@ class userController extends Controller
             $user->addRole('ROLE_ADMIN');
             $user->setEmail($data->getEmail());
             $user->setEnabled(true);
+            $user->setUsername(uniqid());
             $user->setPlainPassword($password);
 
-            $userManager->createUser($user);
+            $userData = array(
+                'email' => $data->getEmail(),
+                'password' => $password
+            );
 
-            return $user;
+            $userManager->updateUser($user);
+
+            return $userData;
         }
     }
 
@@ -196,12 +184,11 @@ class userController extends Controller
     private function sendEmailForNewPasswordRequest($user)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
+            ->setSubject('Passwort Anforderung')
+            ->setFrom('webmaster@' . $_SERVER['SERVER_NAME'])
+            ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
                     'admin/User/passwordResetSendMail.html.twig',
                     array('token' => $user->getConfirmationToken())
                 ),
@@ -216,6 +203,8 @@ class userController extends Controller
      */
     public function passwordReset($confirmationToken)
     {
+        // Zeit prüfen ob Token noch nicht abgelaufen ist.
+
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByConfirmationToken($confirmationToken);
 
@@ -230,31 +219,76 @@ class userController extends Controller
             return new Response($html);
         }
 
-        $newPassword = uniqid();
+        $newPassword = $this->generateNewPassword(6);
         $user->setPlainPassword($newPassword);
 
         // Neues Passwort an User senden
         $message = \Swift_Message::newInstance()
-            ->setSubject('Passwort Anforderung')
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
+            ->setSubject('Neues Passwort')
+            ->setFrom('webmaster@' . $_SERVER['SERVER_NAME'])
+            ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
-                    'admin/User/passwordResetSendMail.html.twig',
-                    array('passwort' => $newPassword)
+                    'Frontend/User/newPasswordSendMail.html.twig',
+                    array('password' => $newPassword)
                 ),
                 'text/html'
             );
 
         $this->get('mailer')->send($message);
 
+        // Passwort Token löschen
+
         $html = $this->renderView(
-            ':Frontend/User:confirmPasswortReset.html.twig', array(
+            'Frontend/User/confirmPasswortReset.html.twig', array(
                 "success" => true
             )
         );
 
         return new Response($html);
+    }
+    /**
+     * @param $user
+     * @return bool
+     * Send a E-Mail withe the Login Data to the new User
+     */
+    private function sendEmailToNewUserWithLoginData($user)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Ihre Zugangsdaten auf ' . $_SERVER['SERVER_NAME'])
+            ->setFrom('webmaster@' . $_SERVER['SERVER_NAME'])
+            ->setTo($user['email'])
+            ->setBody(
+                $this->renderView(
+                // app/Resources/views/Emails/registration.html.twig
+                    'admin/User/passwordNewUserSendMail.html.twig',
+                    array(
+                        'password' => $user['password'],
+                        'email' => $user['email'],
+                        'url' => $_SERVER['SERVER_NAME'] . '/login'
+                    )
+                ),
+                'text/html'
+            );
+
+        $this->get('mailer')->send($message);
+
+        return true;
+    }
+
+    /**
+     * @param $passwordLength
+     * @return mixed
+     * Genrate a New Password for New User or Password reset
+     */
+    private function generateNewPassword($passwordLength)
+    {
+        // generate a new Password with PWGen
+        $passwordGenerator = new PWGen();
+        $passwordGenerator->setLength(6);
+        $password = $passwordGenerator->generate();
+
+        return $password;
     }
 
 }
