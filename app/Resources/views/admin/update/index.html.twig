@@ -1,0 +1,89 @@
+{################################################
+    Layout Definition & Variables
+#################################################}
+
+{# Layout #}
+{% extends 'layout_backend.html.twig' %}
+
+{# Sidebar: Aktiver Link #}
+{% block navActiveBlog %}class="active"{% endblock %}
+
+{# Content-Header: Titel und optionale Description + Breadcrumps #}
+{% block pageHeader %}
+    {{ parent() }}
+
+    {# Seitentitel #}
+    {% block pageHeaderTitel %}{{ title }}{% endblock %}
+
+    {# Beschreibung neben Seitentitel #}
+    {% block pageHeaderDescription %}Eine Beschreibung{% endblock %}
+
+    {# Breadcrumb: Toplevel #}
+    {% block BreadcrumbMainLevel %}
+        <li><a href="{{ path('admin_'~title) }}"><i class="fa fa-sitemap"></i> {{ title }}</a></li>
+    {% endblock %}
+
+    {# Breadcrumb: Sublevel #}
+    {% block BreadcrumbMainLevelSubOne %}{% endblock %} {# No Sublevel here #}
+{% endblock %}
+
+
+{################################################
+    Block: content
+#################################################}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-sm-4">
+
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Suche nach...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Suchen</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="pull-right">
+                            <a class="btn btn-default" href="#">Seo Einstellungen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">{{ title }}</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        {{ dump() }}
+                        {% if data is defined %}
+                            <p>Ein neues Update für Skeleton ist verfügbar! Bevor das neue Update eingespielt wird FTP und MySQL Files sichern!</p>
+                            <p>Version: {{ data.version }}</p>
+                            <p>PHP requirement: xx</p>
+                            <p>Installation starten: <a href="{{ path('admin_update_install') }}">Installation starten</a> </p>
+
+                            <p>Alternativ kann die Installation auch manuell erfolgen.</p>
+                            <p>Link zum Zip File: <a href="http://{{ data.updateUrl }}">Download</a></p>
+
+                        {% endif %}
+
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+    </section><!-- /.content -->
+{% endblock %}
