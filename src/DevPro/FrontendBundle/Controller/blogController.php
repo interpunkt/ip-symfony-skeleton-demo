@@ -1,7 +1,6 @@
 <?php
 namespace DevPro\FrontendBundle\Controller;
 
-use Proxies\__CG__\DevPro\BackendBundle\Entity\BlogSeo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +17,7 @@ class blogController extends Controller
     public function homepageAction(Request $request)
     {
         $em    = $this->get('doctrine.orm.entity_manager');
-        $dql   = 'SELECT a FROM DevProBackendBundle:Blog a ORDER BY a.sort DESC' ;
+        $dql   = 'SELECT a FROM DevProadminBundle:blog a ORDER BY a.sort DESC' ;
         $query = $em->createQuery($dql);
 
         $paginator  = $this->get('knp_paginator');
@@ -30,11 +29,11 @@ class blogController extends Controller
 
 
         $blog = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
+            ->getRepository('DevProadminBundle:Blog')
             ->findAll();
 
         $seo = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:BlogSeo')
+            ->getRepository('DevProadminBundle:BlogSeo')
             ->findAll();
 
         $html = $this->container->get('templating')->render(
