@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use DevPro\adminBundle\Form\Type\userType;
 use DevPro\adminBundle\Entity\User;
 use DevPro\adminBundle\DependencyInjection\PWGen;
+use DevPro\adminBundle\Form\Type\userProfilChangePasswordType;
 
 
 class userController extends Controller
@@ -291,4 +292,90 @@ class userController extends Controller
         return $password;
     }
 
+
+    /**
+     * @Route("/admin/user/profil", name="admin_user_profil")
+     */
+    public function userProfilAction(Request $request)
+    {
+        $data = $this->getDoctrine()->getRepository('DevProadminBundle:user')
+            ->find($this->getUser()->getId());
+
+        $form = $this->createForm(userType::class, $data);
+
+        $result = $this->handleFormUpload($form, $request);
+
+        if($result)
+        {
+            return $this->redirectToRoute('admin_user_profil');
+        }
+
+        $html = $this->renderView(
+            'admin/user/profil.html.twig', array(
+                'data' => $data,
+                'title' => 'user_profil',
+                'form' => $form->createView()
+            )
+        );
+
+        return new Response($html);
+    }
+
+    /**
+     * @Route("/admin/user/profil/changepassword", name="admin_user_profil_change_password")
+     */
+    public function userProfilChangePasswordAction(Request $request)
+    {
+        $data = $this->getDoctrine()->getRepository('DevProadminBundle:user')
+            ->find($this->getUser()->getId());
+
+        $form = $this->createForm('fos_user_change_password', $data);
+        $form->add('save', 'submit', array(
+            'label' => 'Speichern'
+        ));
+        //$form = $this->createForm(userProfilChangePasswordType::class, $data);
+
+        $result = $this->handleFormUploadChangePassword($form, $request);
+
+        if($result)
+        {
+
+            return $this->redirectToRoute('admin_user_profil');
+        }
+
+        $html = $this->renderView(
+            'admin/user/changePassword.html.twig', array(
+                'data' => $data,
+                'title' => 'user_profil',
+                'form' => $form->createView()
+            )
+        );
+
+        return new Response($html);
+    }
+
+    /**
+     * @return bool
+     */
+    public function handleFormUploadChangePassword($form, $request)
+    {
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted())
+        {
+            $data = $form->getData();
+
+            $userManager = $this->container->get('fos_user.user_manager');
+            $userManager->updatePassword($data);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Das Passwort wurde erfolgreich geändert!')
+            ;
+
+            return true;
+        }
+    }
 }

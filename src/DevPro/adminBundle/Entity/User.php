@@ -23,6 +23,12 @@ class User extends BaseUser
      */
     protected $id;
 
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -32,13 +38,16 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $dp_name;
-
-
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    
+    /**
+     * @Assert\Length(
+     *     min=6,
+     *     max=128,
+     *     minMessage="user.password.short",
+     *     groups={"Profile", "ResetPassword", "Registration", "ChangePassword"}
+     * )
+     */
+    protected $plainPassword;
     
 
     /**

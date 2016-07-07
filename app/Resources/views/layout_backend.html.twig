@@ -63,32 +63,7 @@
                             </li>
                             <!-- User Account Menu -->
                             <li class="dropdown user user-menu">
-                                <!-- Menu Toggle Button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <!-- The user image in the navbar-->
-                                    <img src="{{ asset('assets/backend/img/avatar.png') }}" class="user-image" alt="User Image">
-                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                    <span class="hidden-xs">Benjamin Knecht{# {{ user.username }} #}</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- The user image in the menu -->
-                                    <li class="user-header">
-                                        <img src="{{ asset('assets/backend/img/avatar.png') }}" class="img-circle" alt="User Image">
-                                        <p>
-                                            {# {{ user.username }} #}Benjamin Knecht
-                                            <small>{# {{ user.email }} #}benjamin.knecht@inter-punkt.ch</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                    <a href="{{ path('admin_user_profil') }}">{{ app.user.email }}</a>{# {{ user.username }} #}
                             </li>
                             <!-- Control Sidebar Toggle Button -->
                             <li>
@@ -159,6 +134,7 @@
                                 <li><a href="#"><span>Link</span></a></li>
                             </ul>
                         </li>
+                        <li {% block navActiveUpdate %}{% endblock %}><a href="{{ path('admin_update') }}"><i class="fa fa-cogs"></i> <span>Update Skeleton</span></a></li>
                     </ul><!-- /.sidebar-menu -->
 
                 </section>
@@ -185,6 +161,33 @@
                 </section>
             {% endblock %}
             {# End: Content Header #}
+
+            {% block flashMessage %}
+                {% if app.session.flashBag.has('success') %}
+                    <div class="alert alert-success">
+                        {% for msg in app.session.flashBag.get('success') %}
+                            {{ msg }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if app.session.flashBag.has('warning') %}
+                    <div class="alert alert-success">
+                        {% for msg in app.session.flashBag.get('warning') %}
+                            {{ msg }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if app.session.flashBag.has('success') %}
+                    <div class="alert alert-success">
+                        {% for msg in app.session.flashBag.get('failed') %}
+                            {{ msg }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            {% endblock %}
 
             {# Start: Content Main #}
             {% block content %}{% endblock %}
