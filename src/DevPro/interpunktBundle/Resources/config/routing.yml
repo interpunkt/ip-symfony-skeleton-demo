@@ -1,0 +1,3 @@
+dev_prointerpunkt_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: DevProinterpunktBundle:Default:index }

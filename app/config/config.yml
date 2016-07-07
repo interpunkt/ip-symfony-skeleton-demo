@@ -81,7 +81,7 @@ doctrine:
                         mappings:
                             FOSUserBundle: ~
                             DevProadminBundle: ~
-
+                            DevProinterpunktBundle: ~
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -121,6 +121,9 @@ fos_user:
             username_canonicalizer: fos_user.util.canonicalizer.default
             token_generator:        fos_user.util.token_generator.default
             user_manager:           fos_user.user_manager.default
+    change_password:
+            form:
+                validation_groups: [myChangePassword]
 
 jms_translation:
     configs:

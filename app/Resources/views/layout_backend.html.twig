@@ -179,8 +179,8 @@
                     </div>
                 {% endif %}
 
-                {% if app.session.flashBag.has('success') %}
-                    <div class="alert alert-success">
+                {% if app.session.flashBag.has('failed') %}
+                    <div class="alert alert-danger">
                         {% for msg in app.session.flashBag.get('failed') %}
                             {{ msg }}
                         {% endfor %}

@@ -36,13 +36,6 @@ class userType extends AbstractType
             ->add('username', HiddenType::class, array(
                             'data' => uniqid(),
                         ))
-             ->add('save', SubmitType::class, array(
-                            'label' => '',
-                            'attr' => array(
-                            'class' => 'btn btn--important '
-                            )
-                        ))
-
         ;
     }
 }

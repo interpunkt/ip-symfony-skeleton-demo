@@ -1,11 +1,11 @@
 <?php
-namespace DevPro\adminBundle\Controller;
+namespace DevPro\interpunktBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use DevPro\adminBundle\Entity\update;
+use DevPro\interpunktBundle\Entity\update;
 use ZipArchive;
 
 class updateController extends Controller
@@ -13,13 +13,13 @@ class updateController extends Controller
     private $token = 'uAjL8swUx3FsHtF';
 
     /**
-     * @Route("/admin/update", name="admin_update")
+     * @Route("/admin/interpunkt/update", name="admin_update")
      */
      public function indexAction()
      {
 
          $id = 1;
-        $data = $this->getDoctrine()->getRepository('DevProadminBundle:update')
+        $data = $this->getDoctrine()->getRepository('DevProinterpunktBundle:update')
                 ->find($id);
 
          if( ! $data)
@@ -53,7 +53,7 @@ class updateController extends Controller
     // Update install Routine
 
     /**
-     * @Route("/admin/update/install", name="admin_update_install")
+     * @Route("/admin/interpunkt/update/install", name="admin_update_install")
      */
     public function installAction()
     {
@@ -81,7 +81,7 @@ class updateController extends Controller
     }
 
     /**
-     * @Route("/admin/update/install/success", name="admin_update_install_success")
+     * @Route("/admin/interpunkt/update/install/success", name="admin_update_install_success")
      */
     public function updateInstallSuccessAction(Request $request)
     {

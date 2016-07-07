@@ -1,0 +1,28 @@
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+    <!--
+     ! Password constraints:
+     !-->
+    <class name="FOS\UserBundle\Form\Model\ChangePassword">
+        <property name="new">
+            <constraint name="Regex">
+                <option name="pattern">/[0-9!@#$%^*_-]+/</option>
+                <option name="message">Must include at least one digit or !,@,#,$,%,^,*</option>
+                <option name="groups">
+                    <value>myChangePassword</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">6</option>
+                <option name="max">254</option>
+                <option name="minMessage">Must be at least eight characters</option>
+                <option name="maxMessage">Too long</option>
+                <option name="groups">
+                    <value>myChangePassword</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

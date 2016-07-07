@@ -39,16 +39,6 @@ class User extends BaseUser
      */
     protected $dp_name;
     
-    /**
-     * @Assert\Length(
-     *     min=6,
-     *     max=128,
-     *     minMessage="user.password.short",
-     *     groups={"Profile", "ResetPassword", "Registration", "ChangePassword"}
-     * )
-     */
-    protected $plainPassword;
-    
 
     /**
      * Set dp_surname

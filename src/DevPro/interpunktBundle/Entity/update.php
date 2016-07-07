@@ -1,6 +1,6 @@
 <?php
 
-namespace DevPro\adminBundle\Entity;
+namespace DevPro\interpunktBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

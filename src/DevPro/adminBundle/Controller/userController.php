@@ -330,16 +330,17 @@ class userController extends Controller
             ->find($this->getUser()->getId());
 
         $form = $this->createForm('fos_user_change_password', $data);
-        $form->add('save', 'submit', array(
-            'label' => 'Speichern'
-        ));
+
         //$form = $this->createForm(userProfilChangePasswordType::class, $data);
 
         $result = $this->handleFormUploadChangePassword($form, $request);
 
         if($result)
         {
-
+            if($result === 'failed')
+            {
+                return $this->redirectToRoute('admin_user_profil_change_password');
+            }
             return $this->redirectToRoute('admin_user_profil');
         }
 
@@ -364,6 +365,16 @@ class userController extends Controller
         {
             $data = $form->getData();
 
+            $passwordLength = strlen($request->request->get('fos_user_change_password')['plainPassword']['first']);
+            if($passwordLength < 6)
+            {
+                $request->getSession()
+                    ->getFlashBag()
+                    ->add('failed', 'Das neue Passwort muss mindesten 6 Zeichen lang sein!');
+
+                return 'failed';
+            }
+
             $userManager = $this->container->get('fos_user.user_manager');
             $userManager->updatePassword($data);
 
@@ -372,8 +383,7 @@ class userController extends Controller
 
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Das Passwort wurde erfolgreich geändert!')
-            ;
+                ->add('success', 'Das Passwort wurde erfolgreich geändert!');
 
             return true;
         }

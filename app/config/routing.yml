@@ -1,3 +1,8 @@
+dev_prointerpunkt:
+    resource: "@DevProinterpunktBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 dev_pro_frontend:
     resource: "@DevProFrontendBundle/Controller/"
     type:     annotation
