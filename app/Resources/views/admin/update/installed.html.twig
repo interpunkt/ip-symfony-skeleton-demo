@@ -67,20 +67,7 @@
                         <h3 class="box-title">{{ title }}</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-
-                        {% if data.version is defined %}
-                            <p>Ein neues Update für Skeleton ist verfügbar! Bevor das neue Update eingespielt wird FTP und MySQL Files sichern!</p>
-                            <p>Version: {{ data.version }}</p>
-                            <p>PHP requirement: xx</p>
-                            <p>Installation starten: <a href="{{ path('admin_update_install') }}">Installation starten</a> </p>
-
-                            <p>Alternativ kann die Installation auch manuell erfolgen.</p>
-                            <p>Link zum Zip File: <a href="http://{{ data.updateUrl }}">Download</a></p>
-
-                        {% else %}
-                            <p>Die Version ist aktuell</p>
-                        {% endif %}
-
+                            <p>Das Update wurde erfolgreich auf Version <b>{{ version }}</b> installiert, Cache bitte manuel löschen!</p>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div>
