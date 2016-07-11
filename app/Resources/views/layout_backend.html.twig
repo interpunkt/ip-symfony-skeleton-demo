@@ -100,8 +100,17 @@
                         <li class="header">Seiten</li>
                         <!-- Optionally, you can add icons to the links -->
                         <li {% block navActiveIndex %}{% endblock %}><a href="{{ path('admin_index') }}"><i class="fa fa-home"></i> <span>Startseite</span></a> </li>
-                        <li {% block navActiveUser %}{% endblock %}><a href="{{ path('admin_user') }}"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span></a> </li>
                         <li {% block navActiveBlog %}{% endblock %}><a href="{{ path('admin_blog') }}"><i class="fa fa-newspaper-o"></i> <span>Blog</span></a></li>
+
+                        <li {% block navActiveUser %}{% endblock %} class="treeview">
+                            <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+
+                                <li><a href="{{ path('admin_user') }}"><span>Benutzer</span></a></li>
+                                <li><a href="{{ path('admin_user_settings') }}"><span>Einstellungen</span></a></li>
+
+                            </ul>
+                        </li>
 
                         {# Weitere Seiten, die aktiviert werden können #}
                         {# <li {% block navActiveEinstellungen %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
@@ -117,17 +126,24 @@
                             </ul>
                         </li> #}
 
-                        {# Interpunkt internes Menu für ROLE_SUPER_ADMIN #}
-                        <li class="header">Einstellugnen</li>
-                        <li {% block navActiveLess %}{% endblock %} class="treeview">
-                            <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                {% if is_granted("ROLE_SUPER_ADMIN") %}
+                        {# ########################################################
+                         # Interpunkt internes Menu für ROLE_SUPER_ADMIN
+                         ######################################################## #}
+                        {% if is_granted("ROLE_SUPER_ADMIN") %}
+
+                            <li class="header">Einstellugnen</li>
+                            <li {% block navActiveLess %}{% endblock %} class="treeview">
+                                <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu">
+
                                     <li><a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><span>Basiskonfiguration</span></a></li>
                                     <li><a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><span>Typographie</span></a></li>
-                                {% endif %}
-                            </ul>
-                        </li>
+
+                                </ul>
+                            </li>
+                        {% endif %}
+
+
                         <li class="treeview">
                             <a href="#"><i class="fa fa-cogs"></i> <span>SEO</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
