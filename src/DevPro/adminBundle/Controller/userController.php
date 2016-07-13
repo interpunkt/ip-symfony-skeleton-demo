@@ -96,6 +96,7 @@ class userController extends Controller
 
             return new Response($html);
         }
+
     /**
      * @Route("/admin/user/delete/{id}", name="admin_user_delete")
      * @param $id

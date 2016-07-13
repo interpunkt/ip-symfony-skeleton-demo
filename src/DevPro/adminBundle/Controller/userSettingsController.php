@@ -1,6 +1,7 @@
 <?php
 namespace DevPro\adminBundle\Controller;
 
+use DevPro\adminBundle\Entity\userSettings;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +16,9 @@ class userSettingsController extends Controller
 {
     /**
      * @Route("/admin/user/settings", name="admin_user_settings")
+     * @return Response
      */
-    public function userSettingsAction(Request $request)
+    public function userSettingsAction()
     {
         $data = $this->getDoctrine()->getRepository('DevProadminBundle:userSettings')
             ->findBy(array(), array(
@@ -37,21 +39,22 @@ class userSettingsController extends Controller
 
         return new Response($html);
     }
-
     /**
      * @Route("/admin/user/settings/update/{id}", name="admin_user_settings_update")
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, userSettings $userSettings, $id)
     {
-        $data = $this->getDoctrine()
-            ->getRepository('DevProadminBundle:userSettings')
-            ->find($id);
 
-        $form = $this->createForm(userSettingsType::class, $data);
+        $form = $this->createForm(userSettingsType::class, $userSettings);
 
         $result = $this->handleFormUpload($form, $request);
+
         if($result)
         {
+            $this->addFlash('success', 'update erfolgreich!')
             return $this->redirectToRoute('admin_user');
         }
 
@@ -68,20 +71,27 @@ class userSettingsController extends Controller
 
     /**
      * @Route("/admin/user/settings/delete/{id}", name="admin_user_settings_delete")
+     * @param $id
+     * @param userSettings $userSettings
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteAction($id)
+    public function deleteAction($id, userSettings $userSettings)
     {
-        $em = $this->getDoctrine()->getManager();
-        $data = $em->getRepository('DevProadminBundle:user')
-            ->find($id);
+        if( ! $userSettings)
+        {
+            throw $this->createNotFoundException('Usersettings nicht gefunden, ID: ' . $id);
+        }
 
-        $em->remove($data);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($userSettings);
         $em->flush();
 
         return $this->redirectToRoute('admin_user');
     }
 
     /**
+     * @param $form
+     * @param $request
      * @return bool
      */
     public function handleFormUpload($form, $request)

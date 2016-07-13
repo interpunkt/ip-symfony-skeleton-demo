@@ -106,7 +106,7 @@
                             <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
 
-                                <li><a href="{{ path('admin_user') }}"><span>Benutzer</span></a></li>
+                                <li {% block navActiveUserUser %}{% endblock %}><a href="{{ path('admin_user') }}"><span>Benutzer</span></a></li>
                                 <li><a href="{{ path('admin_user_settings') }}"><span>Einstellungen</span></a></li>
 
                             </ul>
@@ -178,31 +178,9 @@
             {% endblock %}
             {# End: Content Header #}
 
+            {# Flash Message Block #}
             {% block flashMessage %}
-                {% if app.session.flashBag.has('success') %}
-                    <div class="alert alert-success flash-message">
-                        {% for msg in app.session.flashBag.get('success') %}
-                            {{ msg }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
-                {% if app.session.flashBag.has('warning') %}
-                    <div class="alert alert-success flash-message">
-                        {% for msg in app.session.flashBag.get('warning') %}
-                            {{ msg }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
-                {% if app.session.flashBag.has('failed') %}
-                    <div class="alert alert-danger flash-message">
-                        {% for msg in app.session.flashBag.get('failed') %}
-                            {{ msg }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
+                {% include ':admin/_partials:_layout-flash-message.html.twig' %}
             {% endblock %}
 
             {# Start: Content Main #}
