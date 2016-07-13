@@ -55,10 +55,10 @@ class blogController extends Controller
 
                 return new Response($html);
      }
-    
-    
     /**
      * @Route("/admin/blog/insert", name="admin_blog_insert")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
      public function insertAction(Request $request)
      {
@@ -83,15 +83,15 @@ class blogController extends Controller
      }
 
     /**
-      * @Route("/admin/blog/update/{id}", name="admin_blog_update")
-      */
-      public function updateAction(Request $request, $id)
+     * @Route("/admin/blog/update/{id}", name="admin_blog_update")
+     * @param Request $request
+     * @param Blog $blog
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+      public function updateAction(Request $request, blog $blog, $id)
       {
-        $data = $this->getDoctrine()
-                ->getRepository('DevProadminBundle:blog')
-                ->find($id);
-
-            $form = $this->createForm(blogType::class, $data);
+            $form = $this->createForm(blogType::class, $blog);
 
             $result = $this->handleFormUpload($form, $request);
             if($result)
@@ -108,9 +108,11 @@ class blogController extends Controller
             return new Response($html);
         }
 
-     /**
-       * @Route("/admin/blog/delete/{id}", name="admin_blog_delete")
-       */
+    /**
+     * @Route("/admin/blog/delete/{id}", name="admin_blog_delete")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
        public function deleteAction($id)
        {
            $em = $this->getDoctrine()->getManager();
@@ -123,9 +125,11 @@ class blogController extends Controller
            return $this->redirectToRoute('admin_blog');
        }
 
-
     /**
      * @Route("/admin/blog/seo", name="backend_blog_seo")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @throws \Twig_Error
      */
     public function seoAction(Request $request)
     {
@@ -153,6 +157,8 @@ class blogController extends Controller
     }
 
     /**
+     * @param $form
+     * @param $request
      * @return bool
      */
     public function handleFormUpload($form, $request)
