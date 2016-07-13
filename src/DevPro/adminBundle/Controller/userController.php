@@ -41,8 +41,9 @@ class userController extends Controller
      */
      public function insertAction(Request $request)
      {
-        $data = new user();
-        $form = $this->createForm(userType::class, $data);
+        $user = new user();
+         $user->setPlainPassword(uniqid());
+        $form = $this->createForm(userType::class, $user);
 
         $result = $this->handleFormUploadNewUser($form, $request);
 
@@ -51,12 +52,14 @@ class userController extends Controller
             // send Email to User with Login Data
             $this->sendEmailToNewUserWithLoginData($result);
 
+            $this->addFlash('success', 'Der neue Benutzer wurde erfolgreich angelegt, eine Email mit den Zugangsdaten wurde versendet!');
+
             return $this->redirectToRoute('admin_user');
         }
 
         $html = $this->renderView(
             'admin/User/insert.html.twig', array(
-                'data' => $data,
+                'data' => $user,
                 'form' => $form->createView()
             )
         );
@@ -79,6 +82,7 @@ class userController extends Controller
 
             if($result)
             {
+                $this->addFlash('success', 'Benutzer erfolgreich gespeichert');
                 return $this->redirectToRoute('admin_user');
             }
 
@@ -97,14 +101,18 @@ class userController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-       public function deleteAction($id)
+       public function deleteAction($id, User $user)
        {
-           $em = $this->getDoctrine()->getManager();
-           $data = $em->getRepository('DevProadminBundle:user')
-                   ->find($id);
+           if( ! $user)
+           {
+               throw $this->createNotFoundException('User nicht gefunden, ID: ' . $id);
+           }
 
-           $em->remove($data);
+           $em = $this->getDoctrine()->getManager();
+           $em->remove($user);
            $em->flush();
+
+           $this->addFlash('success', 'Benutzer wurde gelöscht');
 
            return $this->redirectToRoute('admin_user');
        }
@@ -373,7 +381,7 @@ class userController extends Controller
 
         return new Response($html);
     }
-    
+
     /**
      * @param $form
      * @param $request

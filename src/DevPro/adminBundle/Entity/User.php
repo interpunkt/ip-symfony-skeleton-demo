@@ -36,8 +36,38 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Mindestens {{ limit }} Zeichen länge!",
+     *      maxMessage = "Maximal {{ limit }} Zeichen länge!"
+     * )
      */
     protected $dp_name;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 50,
+     *      minMessage = "Das Passwort muss mindestens {{ limit }} Zeichen lang sein",
+     *      maxMessage = "Das Passwort kann maximal {{ limit }} Zeichen lang sein"
+     * )
+     */
+    protected $plainPassword;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\Email(
+     *     message = "Bitte eine gültige E-Mail Adresse eingeben",
+     * )
+     */
+    protected $email;
     
 
     /**

@@ -2,7 +2,7 @@
 namespace DevPro\adminBundle\Controller;
 
 use DevPro\adminBundle\DependencyInjection\singleSorter;
-use DevPro\adminBundle\Entity\Blog;
+use DevPro\adminBundle\Entity\blog;
 use DevPro\adminBundle\Entity\BlogSeo;
 use DevPro\adminBundle\Utils\DoctrineClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
