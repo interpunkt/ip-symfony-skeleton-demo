@@ -60,19 +60,20 @@ class userController extends Controller
 
         return new Response($html);
      }
-
+    
     /**
-      * @Route("/admin/user/update/{id}", name="admin_user_update")
-      */
-      public function updateAction(Request $request, $id)
+     * @Route("/admin/user/update/{id}", name="admin_user_update")
+     * @param Request $request
+     * @param User $user
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+      public function updateAction(Request $request, User $user, $id)
       {
-        $data = $this->getDoctrine()
-                ->getRepository('DevProadminBundle:user')
-                ->find($id);
-
-            $form = $this->createForm(userType::class, $data);
+            $form = $this->createForm(userType::class, $user);
 
             $result = $this->handleFormUpload($form, $request);
+
             if($result)
             {
                 return $this->redirectToRoute('admin_user');
@@ -389,5 +390,5 @@ class userController extends Controller
         }
     }
 
-    
+
 }
