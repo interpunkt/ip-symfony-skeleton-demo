@@ -15,6 +15,7 @@ class userController extends Controller
 {
     /**
      * @Route("/admin/user", name="admin_user")
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
      public function indexAction()
      {
@@ -35,6 +36,8 @@ class userController extends Controller
 
     /**
      * @Route("/admin/user/insert", name="admin_user_insert")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
      public function insertAction(Request $request)
      {
@@ -60,7 +63,7 @@ class userController extends Controller
 
         return new Response($html);
      }
-    
+
     /**
      * @Route("/admin/user/update/{id}", name="admin_user_update")
      * @param Request $request
@@ -89,10 +92,11 @@ class userController extends Controller
 
             return new Response($html);
         }
-
-     /**
-       * @Route("/admin/user/delete/{id}", name="admin_user_delete")
-       */
+    /**
+     * @Route("/admin/user/delete/{id}", name="admin_user_delete")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
        public function deleteAction($id)
        {
            $em = $this->getDoctrine()->getManager();
@@ -106,6 +110,8 @@ class userController extends Controller
        }
 
     /**
+     * @param $form
+     * @param $request
      * @return bool
      */
     public function handleFormUpload($form, $request)
@@ -124,7 +130,9 @@ class userController extends Controller
         }
 
     /**
-     * @return bool
+     * @param $form
+     * @param $request
+     * @return array
      */
     public function handleFormUploadNewUser($form, $request)
     {
@@ -163,9 +171,10 @@ class userController extends Controller
 // Erweiterung UserController spezifisch
 // Da eine Benutzerverwaltung in allen Projekten vorhanden ist befindet sich dieser teil im Core der Applikation.
 //////////////////////////////////////////////////////////////////////////
-
     /**
      * @Route("/admin/user/password/resetrequest/{id}", name="admin_password_reset_request")
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function requestNewPassword($id)
     {
@@ -183,6 +192,9 @@ class userController extends Controller
         return $this->redirectToRoute('admin_user');
     }
 
+    /**
+     * @param $user
+     */
     private function sendEmailForNewPasswordRequest($user)
     {
         $message = \Swift_Message::newInstance()
@@ -202,6 +214,8 @@ class userController extends Controller
 
     /**
      * @Route("/frontend/user/password/reset/{confirmationToken}", name="admin_password_reset_confirm")
+     * @param $confirmationToken
+     * @return Response
      */
     public function passwordReset($confirmationToken)
     {
@@ -249,6 +263,7 @@ class userController extends Controller
 
         return new Response($html);
     }
+
     /**
      * @param $user
      * @return bool
@@ -293,9 +308,10 @@ class userController extends Controller
         return $password;
     }
 
-
     /**
      * @Route("/admin/user/profil", name="admin_user_profil")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function userProfilAction(Request $request)
     {
@@ -324,6 +340,8 @@ class userController extends Controller
 
     /**
      * @Route("/admin/user/profil/changepassword", name="admin_user_profil_change_password")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function userProfilChangePasswordAction(Request $request)
     {
@@ -355,8 +373,10 @@ class userController extends Controller
 
         return new Response($html);
     }
-
+    
     /**
+     * @param $form
+     * @param $request
      * @return bool
      */
     public function handleFormUploadChangePassword($form, $request)
