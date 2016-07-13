@@ -50,19 +50,6 @@ class User extends BaseUser
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Length(
-     *      min = 6,
-     *      max = 50,
-     *      minMessage = "Das Passwort muss mindestens {{ limit }} Zeichen lang sein",
-     *      maxMessage = "Das Passwort kann maximal {{ limit }} Zeichen lang sein"
-     * )
-     */
-    protected $plainPassword;
-
-    /**
-     * @var string
-     * @Assert\NotBlank()
      * @Assert\Email(
      *     message = "Bitte eine gültige E-Mail Adresse eingeben",
      * )
