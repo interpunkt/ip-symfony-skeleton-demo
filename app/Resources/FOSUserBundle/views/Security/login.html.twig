@@ -23,15 +23,25 @@
 
                         <h2>Login <span style="float: right;" class="glyphicon glyphicon-user" aria-hidden="true"></span></h2>
                         <p>Mit deiner Email Adresse und Passwort einloggen.</p>
-                        <hr>
+                        <hr class="colorgraph">
                         <br>
                         {% if error %}
                             <div class="alert alert--false">{% trans %}login.failed.text{% endtrans %}</div>
                         {% endif %}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-                        <input placeholder="Email" class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-                        <input placeholder="Passwort" style="margin-top: 5px;" class="form-control" type="password" id="password" name="_password" required="required" />
+                        <div class="form-group">
+                            <input placeholder="Email" class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Passwort" class="form-control" type="password" id="password" name="_password" required="required" />
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> eingeloggt bleiben?
+                            </label>
+                        </div>
 
                         <input class="btn btn-default form-control login-btn" type="submit" id="_submit" name="_submit" value="einloggen" />
                     </form>
