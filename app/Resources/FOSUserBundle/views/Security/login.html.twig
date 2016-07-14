@@ -8,13 +8,14 @@
 
 {% block body %}
     {% block fos_user_content %}
+        <style>
+            html, body {height: 100%}
+        </style>
+        <div class="container" style="height:100%; min-height: 100%;">
 
-        <div class="container-fluid container-login">
-
-
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-3">
+            <div class="row" style="margin-top: 25%;">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 login--box">
 
                     <form class="form--box login-box" action="{{ path("fos_user_security_check") }}" method="post">
 
@@ -36,7 +37,7 @@
                     </form>
 
                 </div>
-                <div class="col-md-1"></div>
+                <div class="col-md-4"></div>
             </div>
 
 

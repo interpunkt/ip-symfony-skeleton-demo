@@ -5,14 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>{% block title %}Backend Skeleton: inter-punkt. ag Login{% endblock %}</title>
+
+    {% block layoutCss %}
+        {% include '/admin/_partials/_layout-css.html.twig'%}
+    {% endblock %}
 
 </head>
-<body class="backend-login" style='background-image: url("assets/img/login_bg2.jpg");'>
+<body>
 
 
 {% block body %}
 
 {% endblock %}
 
+
+{% block layoutScripts %}
+    {% include '/admin/_partials/_layout-scripts.html.twig'%}
+{% endblock %}
 </body>
 </html>

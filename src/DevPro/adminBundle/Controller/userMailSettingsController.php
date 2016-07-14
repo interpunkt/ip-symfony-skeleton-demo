@@ -11,28 +11,28 @@ use DevPro\adminBundle\Entity\User;
 use DevPro\adminBundle\DependencyInjection\PWGen;
 use DevPro\adminBundle\Form\Type\userProfilChangePasswordType;
 use DevPro\adminBundle\Form\Type\userSettingsType;
+use DevPro\adminBundle\Entity\userMailSettings;
 
-class userSettingsController extends Controller
+class userMailSettingsController extends Controller
 {
     /**
-     * @Route("/admin/user/settings", name="admin_user_settings")
+     * @Route("/admin/user/mailsettings/{id}", name="admin_user_mailsettings")
      * @return Response
      */
-    public function userSettingsAction()
+    public function userMailSettingsAction(userMailSettings $userMailSettings)
     {
-        $data = $this->getDoctrine()->getRepository('DevProadminBundle:userSettings')
-            ->findBy(array(), array(
-                'id' => 'DESC'
-            ));
 
-        if( ! $data)
+        if( ! $userMailSettings)
         {
+            // TODO
+            // Hier default werden in DB eintragen wenn kein ID 1 Eintrag vorhanden
+            // überlegung ist auch eine Install Routine zu erstellen welche DB anlegt und Datensätze einträgt
             throw $this->createNotFoundException('Keine Datensätze gefunden!');
         }
 
         $html = $this->renderView(
             'admin/User/settings/index.html.twig', array(
-                'data' => $data,
+                'data' => $userMailSettings,
                 'title' => 'user_settings'
             )
         );

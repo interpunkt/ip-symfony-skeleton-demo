@@ -6,7 +6,8 @@
 {# Navbar Side + active Link #}
 {% block navbar %}
     {{ parent() }}
-    {% block navActiveBlog %}class="active"{% endblock %}
+    {% block navActiveUser %}class="active"{% endblock %}
+    {% block navActiveUserSettings %}class="active"{% endblock %}
 {% endblock %}
 
 {# Content-Header, hier Titel und optionalen Text setzen #}

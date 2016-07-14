@@ -171,4 +171,73 @@ class userSettings
     {
         return $this->delete;
     }
+
+    /**
+     * Set ip_view
+     *
+     * @param boolean $ipView
+     * @return userSettings
+     */
+    public function setIpView($ipView)
+    {
+        $this->ip_view = $ipView;
+
+        return $this;
+    }
+
+    /**
+     * Get ip_view
+     *
+     * @return boolean 
+     */
+    public function getIpView()
+    {
+        return $this->ip_view;
+    }
+
+    /**
+     * Set ip_edit
+     *
+     * @param boolean $ipEdit
+     * @return userSettings
+     */
+    public function setIpEdit($ipEdit)
+    {
+        $this->ip_edit = $ipEdit;
+
+        return $this;
+    }
+
+    /**
+     * Get ip_edit
+     *
+     * @return boolean 
+     */
+    public function getIpEdit()
+    {
+        return $this->ip_edit;
+    }
+
+    /**
+     * Set ip_delete
+     *
+     * @param boolean $ipDelete
+     * @return userSettings
+     */
+    public function setIpDelete($ipDelete)
+    {
+        $this->ip_delete = $ipDelete;
+
+        return $this;
+    }
+
+    /**
+     * Get ip_delete
+     *
+     * @return boolean 
+     */
+    public function getIpDelete()
+    {
+        return $this->ip_delete;
+    }
 }

@@ -106,9 +106,9 @@
                             <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
 
-                                <li {% block navActiveUserUser %}{% endblock %}><a href="{{ path('admin_user') }}"><span>Benutzer</span></a></li>
-                                <li><a href="{{ path('admin_user_settings') }}"><span>Einstellungen</span></a></li>
-
+                                <li {% block navActiveUserUser %}{% endblock %}><a href="{{ path('admin_user') }}"><i class="fa fa-user-o"></i> <span>Benutzer</span></a></li>
+                                <li {% block navActiveUserSettings %}{% endblock %}><a href="{{ path('admin_user_settings') }}"><i class="fa fa-french"></i> <span>Einstellungen</span></a></li>
+                                <li {% block navActiveUserMailSettings %}{% endblock %}><a href="{{ path('admin_user_mailsettings', { 'id' : 1 }) }}"><i class="fa fa-send"></i> <span>E-Mail Einstellungen</span></a></li>
                             </ul>
                         </li>
 
