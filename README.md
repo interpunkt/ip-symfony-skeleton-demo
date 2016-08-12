@@ -1,6 +1,6 @@
-# devpro_page
+# Skeleton
 
-This is new Page for DevPro. Created with Symfony and it contains a Frontend and a Backend Bundle with some features.
+Build with Symfony Framework
 
 ### Docs
 
@@ -50,6 +50,7 @@ localhost:8000/_trans/ -> translationUI to set your translations
 ### Require
 
 Composer
+Bower
 Nodejs
 PHP 5.3
 MySQL

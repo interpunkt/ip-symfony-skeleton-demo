@@ -94,7 +94,8 @@ class blogController extends Controller
             $form = $this->createForm(blogType::class, $blog);
 
             $result = $this->handleFormUpload($form, $request);
-            if($result)
+            
+          if($result)
             {
                 return $this->redirectToRoute('admin_blog');
             }

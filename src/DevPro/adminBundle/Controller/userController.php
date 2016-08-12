@@ -66,7 +66,6 @@ class userController extends Controller
 
         return new Response($html);
      }
-
     /**
      * @Route("/admin/user/update/{id}", name="admin_user_update")
      * @param Request $request
@@ -96,6 +95,9 @@ class userController extends Controller
 
             return new Response($html);
         }
+    
+    
+
 
     /**
      * @Route("/admin/user/delete/{id}", name="admin_user_delete")

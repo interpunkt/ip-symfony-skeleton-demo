@@ -6,6 +6,13 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#009ec3',GradientType=0 ); /* IE6-9 */
 }
 
+.box--login
+{
+    .box__head--login{
+
+    }
+}
+
 .login--box
 {
     background-color: white;
