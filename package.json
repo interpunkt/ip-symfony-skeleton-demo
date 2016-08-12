@@ -1,15 +1,15 @@
 {
   "private": true,
   "devDependencies": {
-    "browser-sync": "^2.11.1",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-less": "^3.0.5",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.3",
-    "less-plugin-autoprefix": "^1.5.1",
-    "less-plugin-clean-css": "^1.5.1"
+    "browser-sync": "~2.14.0",
+    "gulp": "~3.9.1",
+    "gulp-autoprefixer": "~3.1.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-less": "~3.1.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-sourcemaps": "~1.6.0",
+    "gulp-uglify": "~2.0.0",
+    "less-plugin-autoprefix": "~1.5.1",
+    "less-plugin-clean-css": "~1.5.1"
   }
 }

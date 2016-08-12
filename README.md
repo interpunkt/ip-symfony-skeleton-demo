@@ -6,6 +6,15 @@ Build with Symfony Framework
 
 https://github.com/benblub/devpro_page/wiki
 
+### Require
+
+Gulp
+Composer
+Bower
+Nodejs
+PHP 5.3
+MySQL
+
 ### Features
 
 NewsletterManager
@@ -46,14 +55,6 @@ localhost:8000/admin/ -> Your Backend/Dashboard (you will redirected to Login /l
 localhost:8000/register/ -> register a new User (need to set a higher ROLE if he need access to the backend
 localhost:8000/login/ -> Login Window
 localhost:8000/_trans/ -> translationUI to set your translations
-
-### Require
-
-Composer
-Bower
-Nodejs
-PHP 5.3
-MySQL
 
 
 ### Google Settings

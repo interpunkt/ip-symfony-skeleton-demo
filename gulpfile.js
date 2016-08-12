@@ -29,7 +29,7 @@ var LessPluginCleanCSS = require('less-plugin-clean-css'),
 //  task: browsersync
 gulp.task('serve', ['less'], function () {
   browserSync.init({
-    proxy: '127.0.0.1:8000'
+    proxy: 'localhost:8000'
   });
 
   gulp.watch('web/assets/backend/_build/**/*.less', ['less']);
