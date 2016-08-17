@@ -24,9 +24,21 @@
     <section class="content">
 
         <!-- Your Page Content Here -->
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                {{ form_start(form) }}
+                {{ form_row(form.sort) }}
+                {{ form_row(form.titel) }}
+                {{ form_row(form.content) }}
+                <div class="bar-save pull-right">
+                    {{ form_row(form.save) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
 
     </section><!-- /.content -->
 

@@ -15,18 +15,23 @@ class blogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('sort', TextType::class, array(
+                'label' => 'Sort',
+                'required' => true
+            ))
             ->add('titel', TextType::class, array(
                 'label' => 'Titel',
                 'required' => true
             ))
             ->add('content', TextareaType::class, array(
                 'label' => 'Inhalt',
+                'required' => true,
                 'attr' => array('class' => 'tinymce'),
             ))
             ->add('save', SubmitType::class, array(
                 'label' => 'speichern',
                 'attr' => array(
-                    'class' => 'btn btn--important',
+                    'class' => 'btn btn-primary',
                     'formnovalidate'=> true,
                 )
             ))
