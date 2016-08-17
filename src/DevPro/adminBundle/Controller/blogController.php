@@ -102,7 +102,8 @@ class blogController extends Controller
 
             $html = $this->renderView(
                 'admin/blog/update.html.twig', array(
-                    "form" => $form->createView()
+                    "form" => $form->createView(),
+                    'id' => $id
                 )
             );
 

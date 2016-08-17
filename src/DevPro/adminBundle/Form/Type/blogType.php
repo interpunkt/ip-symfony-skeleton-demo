@@ -25,15 +25,8 @@ class blogType extends AbstractType
             ))
             ->add('content', TextareaType::class, array(
                 'label' => 'Inhalt',
-                'required' => true,
+                'required' => false,
                 'attr' => array('class' => 'tinymce'),
-            ))
-            ->add('save', SubmitType::class, array(
-                'label' => 'speichern',
-                'attr' => array(
-                    'class' => 'btn btn-primary',
-                    'formnovalidate'=> true,
-                )
             ))
         ;
     }
