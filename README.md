@@ -37,7 +37,7 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 
 cd ..
 
-rm -rf old-repository.git
+rm -rf devpro_page.git
 // Remove our temporary local repository
 
 ### Install
