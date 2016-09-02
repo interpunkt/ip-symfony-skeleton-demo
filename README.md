@@ -21,7 +21,8 @@ NewsletterManager
 Frontend/Backend Bundle
 FOSUSERBundle (Login/logout/register, protected area)
 JMS Translation Bundle and UI
-JMS Routing  Bundle 
+JMS Routing  Bundle
+File Manager
 
 
 ### Duplicate Repository
@@ -123,6 +124,9 @@ globals:
 ## Error Pages
 
 Die error Pages sind zu finden in Resource/TwigBundle/views/Exeption.
+
+## File manager
+https://github.com/helios-ag/FMElfinderBundle
 
 ## ToDo Backend
 - Variable `user` global freigeben
