@@ -56,7 +56,7 @@ class blogController extends Controller
                 return new Response($html);
      }
     /**
-     * @Route("/admin/blog/insert", name="admin_blog_insert")
+     * @Route("/admin/blog/new", name="admin_blog_new")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
@@ -73,7 +73,7 @@ class blogController extends Controller
         }
         
         $html = $this->renderView(
-            'admin/blog/insert.html.twig', array(
+            'admin/blog/new.html.twig', array(
                 'data' => $data,
                 'form' => $form->createView()
             )
@@ -102,7 +102,8 @@ class blogController extends Controller
 
             $html = $this->renderView(
                 'admin/blog/update.html.twig', array(
-                    "form" => $form->createView()
+                    "form" => $form->createView(),
+                    'id' => $id
                 )
             );
 
@@ -163,19 +164,19 @@ class blogController extends Controller
      * @return bool
      */
     public function handleFormUpload($form, $request)
+    {
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted())
         {
-            $form->handleRequest($request);
-            if ($form->isValid() && $form->isSubmitted())
-            {
-                $data = $form->getData();
+            $data = $form->getData();
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($data);
-                $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
 
-                return true;
-            }
+            return true;
         }
+    }
 
 
 
