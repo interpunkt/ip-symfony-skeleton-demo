@@ -2,27 +2,29 @@
 
 Build with Symfony Framework
 
-### Docs
+## Docs
 
 https://github.com/benblub/devpro_page/wiki
 
-### Require
+## Require
 
 Gulp
 Composer
 Bower
 Nodejs
-PHP 5.3
+PHP 5.4
 MySQL
 
-### Features
+## Features
 
 NewsletterManager
 Frontend/Backend Bundle
 FOSUSERBundle (Login/logout/register, protected area)
 JMS Translation Bundle and UI
 JMS Routing  Bundle
-File Manager
+#### File manager / Media Manager
+
+![Preview](https://raw.githubusercontent.com/benblub/devpro_page/master/web/assets/github/mediaManager.png)
 
 
 ### Duplicate Repository
@@ -124,11 +126,6 @@ globals:
 ## Error Pages
 
 Die error Pages sind zu finden in Resource/TwigBundle/views/Exeption.
-
-## File manager / Media Manager
-
-![Preview](https://raw.githubusercontent.com/benblub/devpro_page/master/web/assets/github/mediaManager.png)
-https://github.com/helios-ag/FMElfinderBundle
 
 ## ToDo Backend
 - Variable `user` global freigeben
