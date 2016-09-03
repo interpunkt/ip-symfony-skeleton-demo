@@ -125,7 +125,9 @@ globals:
 
 Die error Pages sind zu finden in Resource/TwigBundle/views/Exeption.
 
-## File manager
+## File manager / Media Manager
+
+![Preview](https://raw.githubusercontent.com/benblub/devpro_page/master/web/assets/github/mediaManager.png)
 https://github.com/helios-ag/FMElfinderBundle
 
 ## ToDo Backend
