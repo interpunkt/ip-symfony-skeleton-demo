@@ -34,6 +34,11 @@ class blog
     protected $titel;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $image;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $content;
@@ -189,5 +194,28 @@ class blog
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return blog
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

@@ -13,8 +13,10 @@ dev_pro_backend:
     type:     annotation
     prefix:   /
 
- # app/config/routing.yml
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
 

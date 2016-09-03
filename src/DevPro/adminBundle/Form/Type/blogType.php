@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use FM\ElfinderBundle\Form\Type\ElFinderType;
 
 class blogType extends AbstractType
 {
@@ -23,10 +25,19 @@ class blogType extends AbstractType
                 'label' => 'Titel',
                 'required' => true
             ))
-            ->add('content', TextareaType::class, array(
-                'label' => 'Inhalt',
-                'required' => false,
-                'attr' => array('class' => 'tinymce'),
+            ->add('image',ElFinderType::class, array(
+                'instance'=>'form',
+                'enable'=>true,
+                'label'=>'File'
+            ))
+            ->add('content', CKEditorType::class, array(
+                'config' => array(
+                    'filebrowserBrowseRoute' => 'elfinder',
+                    'filebrowserBrowseRouteParameters' => array(
+                        'instance' => 'default',
+                        'homeFolder' => ''
+                    )
+                ),
             ))
         ;
     }
