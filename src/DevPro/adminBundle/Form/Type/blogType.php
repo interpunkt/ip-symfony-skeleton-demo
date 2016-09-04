@@ -28,7 +28,10 @@ class blogType extends AbstractType
             ->add('image',ElFinderType::class, array(
                 'instance'=>'form',
                 'enable'=>true,
-                'label'=>'File'
+                'label'=>' ',
+                'attr' => array(
+                    'class' => 'btn btn-primary'
+                )
             ))
             ->add('content', CKEditorType::class, array(
                 'config' => array(

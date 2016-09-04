@@ -23,14 +23,16 @@
     <!-- Main content -->
     <section class="content">
 
+
         <!-- Your Page Content Here -->
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 {{ form_start(form) }}
+                <p><strong>Image Select</strong></p>
                 {{ form_row(form.image) }}
                 {% if form.image.vars.value != '' %}
-                    <img src="{{ asset(form.image.vars.value) }}" width="300">
+                    <img id="img_preview" src="{{ asset(form.image.vars.value) }}" width="200">
                 {% endif %}
 
                 {{ form_widget(form) }}

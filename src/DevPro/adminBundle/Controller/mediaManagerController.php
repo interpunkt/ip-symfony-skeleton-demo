@@ -50,9 +50,6 @@ class mediaManagerController extends Controller
     {
 
         $form = $this->createForm(MediaManagerType::class);
-        /*$form = $this->createFormBuilder()
-            ->add('elfinder', ElFinderType::class, array('instance'=>'default', 'enable'=>true))
-            ->getForm();*/
 
         $html = $this->renderView(
             'admin/Media/index.html.twig', array(

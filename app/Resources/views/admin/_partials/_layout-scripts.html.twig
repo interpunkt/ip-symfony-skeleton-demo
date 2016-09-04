@@ -26,6 +26,13 @@
     <script src="{{ asset('assets/backend/js/flashMessages.js') }}"></script>
     {#<script src="{{ asset('assets/backend/js/gridstack.js') }}"></script>#}
 
+    <script>
+        $("#blog_image").change(function(){
+           console.log('image changed!');
+            $("#img_preview").attr('src', $("#blog_image").val());
+        });
+    </script>
+
 
 
 {% else %}

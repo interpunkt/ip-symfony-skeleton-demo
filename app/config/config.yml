@@ -177,34 +177,58 @@ fm_elfinder:
             include_assets: true # disable if you want to manage loading of javascript and css assets manually
             #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
             connector:
-                debug: false # defaults to false
+                debug: true # defaults to false
+                binds:
+                  upload.presave:
+                      - Plugin.AutoResize.onUpLoadPreSave
+                  plugins:
+                    AutoResize: # global resize options, applies to root which don't have his own resize configuraion
+                        enable: true
+                        maxWidth: 400
+                        maxHeight: 400
+                        quality: 95 # JPEG image save quality
                 roots:       # at least one root must be defined, defines root filemanager directories
                     uploads:
                         #show_hidden: true|false # defaults to false, hides dotfiles
                         driver: LocalFileSystem
                         path: uploads
+                        plugins:
+                            AutoResize:
+                                enable: true # For control by volume driver
+                                maxWidth: 300 # Path to Water mark image
+                                maxHeight: 300 # Margin right pixel
+                                quality: 95 # JPEG image save quality
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'application/pdf']
                         upload_deny: ['all']
                         upload_max_size: 2M # also file upload sizes restricted in php.ini
-                        url: /uploads
                         #attributes: example of setting attributes permission
                         #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
+                        url: /uploads
+
         form:
             locale: %locale% # defaults to current request locale
             editor: form # other choices are tinymce or simple, and form
             fullscreen: true # defaults true, applies to simple and ckeditor editors
             include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
             connector:
+                binds:
+                      upload.presave:
+                          - Plugin.AutoResize.onUpLoadPreSave
                 debug: false # defaults to false
                 roots:       # at least one root must be defined
                     uploads:
                         driver: LocalFileSystem
                         path: uploads
+                        plugins:
+                             AutoResize:
+                                 enable: true # For control by volume driver
+                                 maxWidth: 400 # Path to Water mark image
+                                 maxHeight: 400 # Margin right pixel
+                                 quality: 95 # JPEG image save quality
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'application/pdf']
                         upload_deny: ['all']
                         upload_max_size: 2M
 
-                        url: uploads
 ivory_ck_editor:
     default_config: default
     configs:
