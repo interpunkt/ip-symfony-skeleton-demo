@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new DevPro\interpunktBundle\DevProinterpunktBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Maba\Bundle\WebpackBundle\MabaWebpackBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
