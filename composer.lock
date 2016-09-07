@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6940591161f07b956f92a9ed0a1b4f67",
+    "hash": "d0faff501c88be18f2895bfb6d07d696",
     "content-hash": "63aa9dcac0a37eedce4e9c408d612304",
     "packages": [
         {
@@ -896,16 +896,16 @@
         },
         {
             "name": "egeloen/ckeditor-bundle",
-            "version": "4.0.4",
+            "version": "4.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egeloen/IvoryCKEditorBundle.git",
-                "reference": "2bfe162ab98236efc4d9ad13a5ecda8f877a54a3"
+                "reference": "0c14a1d8ebfe397fe9c499f0aad6ba7b7d37e058"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/2bfe162ab98236efc4d9ad13a5ecda8f877a54a3",
-                "reference": "2bfe162ab98236efc4d9ad13a5ecda8f877a54a3",
+                "url": "https://api.github.com/repos/egeloen/IvoryCKEditorBundle/zipball/0c14a1d8ebfe397fe9c499f0aad6ba7b7d37e058",
+                "reference": "0c14a1d8ebfe397fe9c499f0aad6ba7b7d37e058",
                 "shasum": ""
             },
             "require": {
@@ -950,7 +950,7 @@
             "keywords": [
                 "CKEditor"
             ],
-            "time": "2016-07-31 16:06:19"
+            "time": "2016-09-07 17:31:21"
         },
         {
             "name": "egeloen/json-builder",

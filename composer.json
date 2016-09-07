@@ -76,7 +76,7 @@
     },
     "config": {
         "bin-dir": "bin",
-        "component-dir": "web/assets"
+        "component-dir": "web/assets/vendor"
     },
     "extra": {
         "symfony-app-dir": "app",
