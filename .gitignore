@@ -1,3 +1,6 @@
+# PHPStorm
+/.idea/*
+
 /app/bootstrap.php.cache
 /app/cache/*
 !app/cache/.gitkeep
@@ -7,9 +10,7 @@
 /app/phpunit.xml
 /bin/
 /composer.phar
-/vendor/
 /web/bundles/
-/.idea/*
 composer.lock
 /web/assets/compiled/*
 
@@ -20,3 +21,4 @@ devpro_page.sublime-workspace
 # Package Manager
 node_modules
 web/assets/bower_components
+/vendor/
