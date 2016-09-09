@@ -47,3 +47,10 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+# DB Fake Data
+bazinga_faker:
+    orm: doctrine
+    entities:
+        DevPro\adminBundle\Entity\Blog:
+            number: 5

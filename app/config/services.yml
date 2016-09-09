@@ -11,3 +11,6 @@ services:
               class: DevPro\adminBundle\Controller\LayoutController
               arguments:
                       entityManager: "@doctrine.orm.entity_manager"
+    database:
+        class: DevPro\adminBundle\Utils\DoctrineClass
+        arguments: [@doctrine.orm.default_entity_manager]

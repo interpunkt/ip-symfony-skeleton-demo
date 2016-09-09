@@ -238,10 +238,3 @@ ivory_ck_editor:
             filebrowserBrowseRouteParameters:
                 instance: default
 
-# DB Fake Data
-bazinga_faker:
-    orm: doctrine
-    entities:
-        DevPro\adminBundle\Entity\Blog:
-            number: 5
-

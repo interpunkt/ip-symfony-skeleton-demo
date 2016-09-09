@@ -4,47 +4,39 @@
  */
 namespace DevPro\adminBundle\Utils;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
 class DoctrineClass
 {
-    private $container;
+    private $entityManager;
 
-    public function __construct(ContainerInterface $container, $entity)
+    public function __construct(EntityManager $entityManager)
     {
-        $this->container = $container;
-        $this->entity = $entity;
+        $this->entityManager = $entityManager;
     }
 
-    public function fetch($id)
+    /**
+     * @param $entity
+     * @return array
+     */
+    public function fetchAllDesc( $entity)
     {
-        $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('DevProBackendBundle:' . $this->entity)->find($id);
+        $repository = $this->entityManager->getRepository('DevProadminBundle:' . $entity)
+            ->findby(
+            [],
+            [
+                "id" => "DESC"
+            ] );
 
-        if (!$object) {
+        if ( ! $repository) {
             throw $this->createNotFoundException(
-                'Keine Datensätze gefunden mit ID: ' . $id
+                'Keine Datensätze gefunden für Entity:  ' . $entity . ' in adminBundle/Utils/DoctrineClass'
             );
         }
 
-        return $object;
-    }
-
-    public function fetchAll()
-    {
-        $em = $this->container->get('doctrine.orm.entity_manager');
-        $object = $em->getRepository('DevProBackendBundle:' . $this->entity)->findby(
-            array(),
-            array(
-                "sort" => "ASC"
-            ));
-
-        if (!$object) {
-            return false;
-        }
-
-        return $object;
+        return $repository;
     }
 }

@@ -4,6 +4,7 @@ namespace DevPro\adminBundle\Controller;
 use DevPro\adminBundle\DependencyInjection\singleSorter;
 use DevPro\adminBundle\Entity\blog;
 use DevPro\adminBundle\Entity\BlogSeo;
+use DevPro\adminBundle\Service\HandleForm;
 use DevPro\adminBundle\Utils\DoctrineClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use DevPro\adminBundle\Form\Type\blogType;
 use DevPro\adminBundle\Form\Type\BlogSeoType;
+use DevPro\adminBundle\Utils;
 
 /*
  * Skeleton Überarbeitung
@@ -41,20 +43,17 @@ class blogController extends Controller
      */
      public function indexAction()
      {
-        $data = $this->getDoctrine()->getRepository('DevProadminBundle:blog')
-                ->findBy(array(), array(
-                    'sort' => 'DESC'
-                ));
+         $data = $this->get('database')->fetchAllDesc('blog');
 
-                $html = $this->renderView(
-                    'admin/blog/index.html.twig', array(
+                return $this->render(
+                    'admin/blog/index.html.twig',
+                    [
                         'data' => $data,
                         'title' => 'blog'
-                    )
+                    ]
                 );
-
-                return new Response($html);
      }
+
     /**
      * @Route("/admin/blog/new", name="admin_blog_new")
      * @param Request $request
@@ -89,11 +88,13 @@ class blogController extends Controller
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-      public function updateAction(Request $request, blog $blog, $id)
+      public function updateAction(Request $request, Blog $blog, $id)
       {
-            $form = $this->createForm(blogType::class, $blog);
+          $form = $this->createForm(blogType::class, $blog);
 
-            $result = $this->handleFormUpload($form, $request);
+          //$handleForm = new HandleForm();
+          //$result = $handleForm->handleFormUpload($form, $request, $blog);
+          $result = $this->handleFormUpload($form, $request);
             
           if($result)
             {
@@ -101,10 +102,11 @@ class blogController extends Controller
             }
 
             $html = $this->renderView(
-                'admin/blog/update.html.twig', array(
+                'admin/blog/update.html.twig',
+                [
                     "form" => $form->createView(),
                     'id' => $id
-                )
+                ]
             );
 
             return new Response($html);
@@ -141,7 +143,7 @@ class blogController extends Controller
 
         $form = $this->createForm(BlogSeoType::class, $blog);
 
-        $result = $this->handleFormUpload($form, $request, $blog, 'edit');
+        $result = $this->handleFormUpload($form, $request, $blog);
 
         if($result)
         {
