@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
