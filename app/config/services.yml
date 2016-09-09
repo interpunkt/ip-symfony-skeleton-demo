@@ -12,5 +12,5 @@ services:
               arguments:
                       entityManager: "@doctrine.orm.entity_manager"
     database:
-        class: DevPro\adminBundle\Utils\DoctrineClass
+        class: DevPro\adminBundle\Utils\database
         arguments: [@doctrine.orm.default_entity_manager]

@@ -3,14 +3,10 @@ namespace DevPro\adminBundle\Controller;
 
 use DevPro\adminBundle\DependencyInjection\singleSorter;
 use DevPro\adminBundle\Entity\blog;
-use DevPro\adminBundle\Entity\BlogSeo;
-use DevPro\adminBundle\Service\HandleForm;
-use DevPro\adminBundle\Utils\DoctrineClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use DevPro\adminBundle\Form\Type\blogType;
 use DevPro\adminBundle\Form\Type\BlogSeoType;
 use DevPro\adminBundle\Utils;
@@ -26,12 +22,6 @@ use DevPro\adminBundle\Utils;
  * select -> Datensatz aus DB holen
  *
  * Nutzung der Live Templates, muss man sich selber anlegen.
- * action ->
- * render ->
- * insert
- * update
- * delete
- * select
  */
 
 
@@ -45,13 +35,13 @@ class blogController extends Controller
      {
          $data = $this->get('database')->fetchAllDesc('blog');
 
-                return $this->render(
-                    'admin/blog/index.html.twig',
-                    [
-                        'data' => $data,
-                        'title' => 'blog'
-                    ]
-                );
+         return $this->render(
+             'admin/blog/index.html.twig',
+             [
+                 'data' => $data,
+                 'title' => 'blog'
+             ]
+         );
      }
 
     /**
@@ -92,8 +82,6 @@ class blogController extends Controller
       {
           $form = $this->createForm(blogType::class, $blog);
 
-          //$handleForm = new HandleForm();
-          //$result = $handleForm->handleFormUpload($form, $request, $blog);
           $result = $this->handleFormUpload($form, $request);
             
           if($result)
@@ -114,16 +102,13 @@ class blogController extends Controller
 
     /**
      * @Route("/admin/blog/delete/{id}", name="admin_blog_delete")
-     * @param $id
+     * @param blog $blog
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-       public function deleteAction($id)
+       public function deleteAction(blog $blog)
        {
            $em = $this->getDoctrine()->getManager();
-           $data = $em->getRepository('DevProadminBundle:blog')
-                   ->find($id);
-
-           $em->remove($data);
+           $em->remove($blog);
            $em->flush();
 
            return $this->redirectToRoute('admin_blog');

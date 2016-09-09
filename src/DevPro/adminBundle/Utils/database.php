@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
-class DoctrineClass
+class database
 {
     private $entityManager;
 
