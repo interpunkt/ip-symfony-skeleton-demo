@@ -22,7 +22,7 @@ class database
      * @param $entity
      * @return array
      */
-    public function fetchAllDesc( $entity)
+    public function fetchAllDesc($entity)
     {
         $repository = $this->entityManager->getRepository('DevProadminBundle:' . $entity)
             ->findby(
@@ -31,7 +31,7 @@ class database
                 "id" => "DESC"
             ] );
 
-        if ( ! $repository) {
+        if ( ! $repository ) {
             throw $this->createNotFoundException(
                 'Keine Datensätze gefunden für Entity:  ' . $entity . ' in adminBundle/Utils/DoctrineClass'
             );

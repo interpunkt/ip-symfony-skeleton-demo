@@ -214,6 +214,7 @@ fm_elfinder:
                 binds:
                       upload.presave:
                           - Plugin.AutoResize.onUpLoadPreSave
+                          - Plugin.Thumbnails.generateThumbs
                 debug: false # defaults to false
                 roots:       # at least one root must be defined
                     uploads:
@@ -225,6 +226,11 @@ fm_elfinder:
                                  maxWidth: 400 # Path to Water mark image
                                  maxHeight: 400 # Margin right pixel
                                  quality: 95 # JPEG image save quality
+                             Thumbnails:
+                                 enable: true
+                                 thumb_path: assets/uploads/ # root upload folder
+                                 thumb: 200|400|600
+                                 # thumb4: 400 # No folder will be created
                         upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'application/pdf']
                         upload_deny: ['all']
                         upload_max_size: 2M
