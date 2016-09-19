@@ -2,3 +2,39 @@
     width: 98%;
     margin: 0 auto;
 }
+
+/*------------------------------------*\
+    Mods for DataTables
+\*------------------------------------*/
+
+.dataTables_info,
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.dataTables_info {
+    padding: 7px 0;
+}
+
+.pagination {
+    float: right;
+}
+
+/* pagination color */
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #367fa9;
+    border-color: #367fa9;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+    color: #367fa9;
+}
