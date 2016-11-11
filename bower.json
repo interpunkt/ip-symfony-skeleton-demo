@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "gridstack": "^0.2.5",
-    "ckeditor": "^4.5.10"
+    "ckeditor": "^4.5.10",
+    "datatables.net-buttons-bs": "^1.2.2"
   }
 }

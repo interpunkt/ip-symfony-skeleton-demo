@@ -11,6 +11,10 @@
     });
 
     var table = $('.table-data').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
         "bSort" : true,
         "bLengthChange": false,
         "order": [[ 0, "desc" ]],
@@ -38,3 +42,4 @@
 
     // Hide Standard Search Field
     $("#DataTables_Table_0_filter").hide();
+
