@@ -31,24 +31,26 @@
         });
     </script>
 
-
-
 {% else %}
 
     {# PROD FILE: Vendor & Own #}
     {% javascripts
-        'assets/vendor/jquery/dist/jquery.js'
+        'assets/vendor/jquery/jquery.js'
+        'assets/vendor/jquery-ui/jquery-ui.min.js'
         'assets/vendor/bootstrap/dist/js/bootstrap.js'
         'assets/vendor/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js'
         'assets/vendor/datatables.net/js/jquery.dataTables.js'
         'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js'
         'assets/vendor/lodash/dist/lodash.min.js'
-        'assets/vendor/jquery-ui/jquery-ui.min.js'
         'assets/vendor/gridstack/dist/gridstack.min.js'
+        'assets/vendor/ckeditor/ckeditor.js'
 
+        'assets/backend/js/bootstrap-colorpicker/bootstrap-colorpicker.js'
         'assets/backend/js/datatables/dataTables.js'
         'assets/backend/js/characterCounter/characterCounter.js'
         'assets/backend/js/backend.js'
+        'assets/backend/js/flashMessages.js'
+
         output='assets/compiled/app.min.js' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

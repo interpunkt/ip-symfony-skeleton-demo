@@ -82,6 +82,7 @@ doctrine:
                             FOSUserBundle: ~
                             DevProadminBundle: ~
                             DevProinterpunktBundle: ~
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -243,4 +244,3 @@ ivory_ck_editor:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters:
                 instance: default
-
