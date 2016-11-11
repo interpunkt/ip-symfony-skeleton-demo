@@ -13,13 +13,15 @@
     <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/vendor/ckeditor/ckeditor.js') }}"></script>
+    {# DataTables Buttons for Export: CSV, Excel, PDF, Print and Copy #}
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.js') }}"></script>
-    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-    <script src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.colVis.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jszip/dist/jszip.js') }}"></script>
+    <script src="{{ asset('assets/vendor/pdfmake/build/pdfmake.js') }}"></script>
+    <script src="{{ asset('assets/vendor/pdfmake/build/vfs_fonts.js') }}"></script>
 
 
     {# DEV FILES: Own #}
@@ -48,6 +50,13 @@
         'assets/vendor/datatables.net/js/jquery.dataTables.js'
         'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js'
         'assets/vendor/ckeditor/ckeditor.js'
+        'assets/vendor/datatables.net-buttons/js/dataTables.buttons.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.flash.min.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.html5.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.print.js'
+        'assets/vendor/jszip/dist/jszip.js'
+        'assets/vendor/pdfmake/build/pdfmake.js'
+        'assets/vendor/pdfmake/build/vfs_fonts.js'
 
         'assets/backend/js/bootstrap-colorpicker/bootstrap-colorpicker.js'
         'assets/backend/js/datatables/dataTables.js'

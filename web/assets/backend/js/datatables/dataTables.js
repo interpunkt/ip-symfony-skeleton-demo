@@ -11,9 +11,9 @@
     });
 
     var table = $('.table-data').DataTable({
-        dom: 'Bfrtip',
+        lengthChange: false,
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel', 'pdf', 'print', 'colvis'
         ],
         "bSort" : true,
         "bLengthChange": false,
@@ -39,6 +39,9 @@
             }
         }
     });
+
+    table.buttons().container()
+        .appendTo( '#datatables-export' );
 
     // Hide Standard Search Field
     $("#DataTables_Table_0_filter").hide();
