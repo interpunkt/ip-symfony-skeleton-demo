@@ -31,11 +31,11 @@ class database
                 "id" => "DESC"
             ] );
 
-        if ( ! $repository ) {
+        /*if ( ! $repository ) {
             throw $this->createNotFoundException(
                 'Keine Datensätze gefunden für Entity:  ' . $entity . ' in adminBundle/Utils/DoctrineClass'
             );
-        }
+        }*/
 
         return $repository;
     }
