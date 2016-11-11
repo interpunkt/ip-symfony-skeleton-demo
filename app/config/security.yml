@@ -19,9 +19,11 @@ security:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
                 default_target_path: /admin/ # Setup your redirect Path after login success here
-
-            logout:       true
             anonymous:    true
+            logout:
+              path:   /logout
+              target: /login
+
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
