@@ -6,22 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-
-
-
 class IndexController extends Controller
 {
     /**
-     * @Route("/", name="index", options={"sitemap" = {"priority" = 0.7, "changefreq" = "weekly" }})
+     * @Route("/", name="frontend_index")
      */
-    public function homepageAction()
+    public function indexAction()
     {
-        $html = $this->container->get('templating')->render(
-            'frontend/index/index.html.twig'
-        );
-
-        return new Response($html);
+        return $this->render('frontend/index/index.html.twig');
     }
-
-
 }
