@@ -1,6 +1,10 @@
-# PHPStorm
-/.idea/*
+# Sytem
+.DS_Store
 
+# PHPStorm
+/.idea/
+
+# Symfony
 /app/bootstrap.php.cache
 /app/cache/
 /app/cache/*
@@ -15,11 +19,13 @@
 composer.lock
 /web/assets/compiled/*
 
-# Sublime
-devpro_page.sublime-project
-devpro_page.sublime-workspace
-
-# Package Manager
+# Package Managers
 node_modules
 web/assets/bower_components
 /vendor/
+
+# Uploads
+/web/uploads/
+!/web/uploads/documents/.gitkeep
+!/web/uploads/images/.gitkeep
+!/web/uploads/media/.gitkeep
