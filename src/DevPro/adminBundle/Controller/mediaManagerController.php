@@ -52,8 +52,8 @@ class mediaManagerController extends Controller
         $form = $this->createForm(MediaManagerType::class);
 
         $html = $this->renderView(
-            'admin/Media/index.html.twig', array(
-                'title' => 'Media Manager',
+            'admin/media/index.html.twig', array(
+                'title' => 'media Manager',
                 'form' => $form->createView(),
             )
         );

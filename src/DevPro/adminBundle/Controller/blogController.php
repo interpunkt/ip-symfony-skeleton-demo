@@ -136,7 +136,7 @@ class blogController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'admin/Blog/seo.html.twig', array(
+            'admin/blog/seo.html.twig', array(
                 "data" => '',
                 "form" => $form->createView()
             )
@@ -181,10 +181,10 @@ class blogController extends Controller
     public function sortupAction($id)
     {
         $data = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
+            ->getRepository('DevProBackendBundle:blog')
             ->find($id);
 
-        $sorter = new singleSorter($this->container, 'Blog', 'DevProBackendBundle');
+        $sorter = new singleSorter($this->container, 'blog', 'DevProBackendBundle');
         $sorter->setSort($data, 'sortup');
         $sorter->flushSort();
 
@@ -197,10 +197,10 @@ class blogController extends Controller
     public function sortdownAction($id)
     {
         $data = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
+            ->getRepository('DevProBackendBundle:blog')
             ->find($id);
 
-        $sorter = new singleSorter($this->container, 'Blog', 'DevProBackendBundle');
+        $sorter = new singleSorter($this->container, 'blog', 'DevProBackendBundle');
         $sorter->setSort($data, 'sortdown');
         $sorter->flushSort();
 
@@ -210,7 +210,7 @@ class blogController extends Controller
     public function getSetSort()
     {
         $blog = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
+            ->getRepository('DevProBackendBundle:blog')
             ->findOneby([], ["id" => "DESC"]);
 
         $sort = $blog->getSort();

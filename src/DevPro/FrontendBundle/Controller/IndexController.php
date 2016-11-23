@@ -17,7 +17,7 @@ class IndexController extends Controller
     public function homepageAction()
     {
         $html = $this->container->get('templating')->render(
-            'Frontend/Index/index.html.twig'
+            'frontend/index/index.html.twig'
         );
 
         return new Response($html);

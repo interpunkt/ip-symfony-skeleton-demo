@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Entity/User.php
+// src/AppBundle/Entity/user.php
 
 namespace DevPro\adminBundle\Entity;
 

@@ -1,0 +1,70 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+
+{% block title %}{{ title }} - bearbeiten{% endblock %}
+
+{# Navbar Side + active Link #}
+{% block navbar %}
+    {{ parent() }}
+    {% block navActiveUser %}class="active"{% endblock %}
+    {% block navActiveUserUser %}class="active"{% endblock %}
+{% endblock %}
+
+{# Content-Header, hier Titel und optionalen Text setzen #}
+{% block pageHeader %}
+    {{ parent() }}
+    {% block pageHeaderDescription %} bearbeiten{% endblock %}
+    {% block pageHeaderTitel %}{{ title }} - {% endblock %}
+    {% block BreadcrumbMainLevel %}<li><a href="{{ path('admin_user') }}"><i class="fa fa-dashboard"></i> {{ title }}</a></li>{% endblock %}
+    {% block BreadcrumbMainLevelSubOne %}<li class="active">{{ title }} bearbeiten</li>{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> löschen</button>
+                <input type="submit" value="speichern" class="btn btn-default">
+            </div>
+            {{ form_end(form) }}
+
+        <br><br>
+        <h3>Passwort Request</h3>
+        <p>Neues Passwort für den Benutzer anfordern, E-Mail wird versendet.</p>
+        <a class="btn btn-default" href="{{ path('admin_password_reset_request', { 'id' : id }) }}">Passwort Request</a>
+
+    </section><!-- /.content -->
+
+
+    {# Modal Window #}
+    <!-- Trigger the modal with a button -->
+
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Benutzer löschen</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Benutzer löschen bestätigen</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a href="{{ path('admin_user_delete', { 'id' : id }) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> löschen</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

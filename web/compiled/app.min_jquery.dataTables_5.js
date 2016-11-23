@@ -2002,7 +2002,7 @@
 			}
 		}
 	
-		/* User specified column options */
+		/* user specified column options */
 		if ( oOptions !== undefined && oOptions !== null )
 		{
 			// Backwards compatibility
@@ -2823,7 +2823,7 @@
 	 /**
 	 * Take an array of integers (index array) and remove a target integer (value - not
 	 * the key!)
-	 *  @param {array} a Index array to target
+	 *  @param {array} a index array to target
 	 *  @param {int} iTarget value to find
 	 *  @memberof DataTable#oApi
 	 */
@@ -6380,7 +6380,7 @@
 	/**
 	 * Return the settings object for a particular table
 	 *  @param {node} table table we are using as a dataTable
-	 *  @returns {object} Settings object - or null if not found
+	 *  @returns {object} settings object - or null if not found
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnSettingsFromNode ( table )
@@ -9522,7 +9522,7 @@
 		"src": null,
 	
 		/**
-		 * Index in the aoData array. This saves an indexOf lookup when we have the
+		 * index in the aoData array. This saves an indexOf lookup when we have the
 		 * object, but want to know the index
 		 *  @type integer
 		 *  @default -1
@@ -13189,8 +13189,8 @@
 		 * Sorting that is applied to the table. Note that the inner arrays are
 		 * used in the following manner:
 		 * <ul>
-		 *   <li>Index 0 - column number</li>
-		 *   <li>Index 1 - current sorting direction</li>
+		 *   <li>index 0 - column number</li>
+		 *   <li>index 1 - current sorting direction</li>
 		 * </ul>
 		 * Note that this parameter will be set by the initialisation routine. To
 		 * set a default use {@link DataTable.defaults}.
@@ -13952,7 +13952,7 @@
 		 * Each property is an array to which functions can be pushed. The functions
 		 * take three attributes:
 		 *
-		 * * Settings object for the host table
+		 * * settings object for the host table
 		 * * Options object (`selector-modifier` object type)
 		 * * Array of selected item indexes
 		 *
@@ -14281,7 +14281,7 @@
 	
 	
 		/**
-		 * Index for what 'this' index API functions should use
+		 * index for what 'this' index API functions should use
 		 *  @type int
 		 *  @deprecated Since v1.10
 		 */

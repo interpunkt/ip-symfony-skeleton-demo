@@ -25,7 +25,7 @@ class userController extends Controller
                 ));
 
                 $html = $this->renderView(
-                    'admin/User/index.html.twig', array(
+                    'admin/user/index.html.twig', array(
                         'data' => $data,
                         'title' => 'user'
                     )
@@ -49,7 +49,7 @@ class userController extends Controller
 
         if($result)
         {
-            // send Email to User with Login Data
+            // send Email to user with Login Data
             $this->sendEmailToNewUserWithLoginData($result);
 
             $this->addFlash('success', 'Der neue Benutzer wurde erfolgreich angelegt, eine Email mit den Zugangsdaten wurde versendet!');
@@ -58,7 +58,7 @@ class userController extends Controller
         }
 
         $html = $this->renderView(
-            'admin/User/insert.html.twig', array(
+            'admin/user/insert.html.twig', array(
                 'data' => $user,
                 'form' => $form->createView()
             )
@@ -86,7 +86,7 @@ class userController extends Controller
             }
 
             $html = $this->renderView(
-                'admin/User/update.html.twig', array(
+                'admin/user/update.html.twig', array(
                     "form" => $form->createView(),
                     'id' => $id,
                     'title' => 'Benutzer'
@@ -108,7 +108,7 @@ class userController extends Controller
        {
            if( ! $user)
            {
-               throw $this->createNotFoundException('User nicht gefunden, ID: ' . $id);
+               throw $this->createNotFoundException('user nicht gefunden, ID: ' . $id);
            }
 
            $em = $this->getDoctrine()->getManager();
@@ -214,7 +214,7 @@ class userController extends Controller
             ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
-                    'admin/User/passwordResetSendMail.html.twig',
+                    'admin/user/passwordResetSendMail.html.twig',
                     array('token' => $user->getConfirmationToken())
                 ),
                 'text/html'
@@ -238,7 +238,7 @@ class userController extends Controller
         if( ! $user)
         {
             $html = $this->renderView(
-                ':Frontend/User:confirmPasswortReset.html.twig', array(
+                ':frontend/user:confirmPasswortReset.html.twig', array(
                     "success" => false
                 )
             );
@@ -249,14 +249,14 @@ class userController extends Controller
         $newPassword = $this->generateNewPassword(6);
         $user->setPlainPassword($newPassword);
 
-        // Neues Passwort an User senden
+        // Neues Passwort an user senden
         $message = \Swift_Message::newInstance()
             ->setSubject('Neues Passwort')
             ->setFrom('webmaster@' . $_SERVER['SERVER_NAME'])
             ->setTo($user->getEmail())
             ->setBody(
                 $this->renderView(
-                    'Frontend/User/newPasswordSendMail.html.twig',
+                    'frontend/user/newPasswordSendMail.html.twig',
                     array('password' => $newPassword)
                 ),
                 'text/html'
@@ -267,7 +267,7 @@ class userController extends Controller
         // Passwort Token löschen
 
         $html = $this->renderView(
-            'Frontend/User/confirmPasswortReset.html.twig', array(
+            'frontend/user/confirmPasswortReset.html.twig', array(
                 "success" => true
             )
         );
@@ -278,7 +278,7 @@ class userController extends Controller
     /**
      * @param $user
      * @return bool
-     * Send a E-Mail withe the Login Data to the new User
+     * Send a E-Mail withe the Login Data to the new user
      */
     private function sendEmailToNewUserWithLoginData($user)
     {
@@ -289,7 +289,7 @@ class userController extends Controller
             ->setBody(
                 $this->renderView(
                 // app/Resources/views/Emails/registration.html.twig
-                    'admin/User/passwordNewUserSendMail.html.twig',
+                    'admin/user/passwordNewUserSendMail.html.twig',
                     array(
                         'password' => $user['password'],
                         'email' => $user['email'],
@@ -307,7 +307,7 @@ class userController extends Controller
     /**
      * @param $passwordLength
      * @return mixed
-     * Genrate a New Password for New User or Password reset
+     * Genrate a New Password for New user or Password reset
      */
     private function generateNewPassword($passwordLength)
     {

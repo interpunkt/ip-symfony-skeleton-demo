@@ -1,0 +1,42 @@
+{# app/Resources/views/demo/about/base.html.twig #}
+{% extends 'layoutFrontend.html.twig' %}
+
+{% block seoDescription %}{{ seodescription }}{% endblock %}
+{% block title %}{{ seotitel }}{% endblock %}
+
+{% block navbar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {% set blog_image_frontend = '/assets/img/frontend/blog/' %}
+
+    <div class="container">
+        {# total items count #}
+        blog
+
+            {# table body #}
+    {% if data is defined %}
+            {% for article in pagination %}
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="{{ asset('assets/admin/img/placeholder.jpg') }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{ article.titel }}</h2>
+                        {{ article.content|raw }}
+                    </div>
+                </div>
+            {% endfor %}
+    {% endif %}
+
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    </div>
+
+{% endblock %}

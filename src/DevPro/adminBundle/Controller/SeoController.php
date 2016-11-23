@@ -31,7 +31,7 @@ class SeoController extends Controller
         if($result)
         {
             $html = $this->container->get('templating')->render(
-                'admin/Settings/setless.html.twig',array(
+                'admin/settings/setless.html.twig',array(
                     "form" => $form->createView(),
                     "save" => true
                 )
@@ -41,7 +41,7 @@ class SeoController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'admin/Seo/index.html.twig',
+            'admin/seo/index.html.twig',
             array(
                 'user' => $user,
                 'form' => $form->createView(),

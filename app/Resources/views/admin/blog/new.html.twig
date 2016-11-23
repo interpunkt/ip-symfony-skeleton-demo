@@ -1,0 +1,42 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+
+{% block title %}Blog - Neuer Artikel{% endblock %}
+
+{# Navbar Side + active Link #}
+{% block navbar %}
+    {{ parent() }}
+    {% block navActiveBlog %}class="active"{% endblock %}
+{% endblock %}
+
+{# Content-Header, hier Titel und optionalen Text setzen #}
+{% block pageHeader %}
+    {{ parent() }}
+    {% block pageHeaderDescription %}neuen Artikel erstellen{% endblock %}
+    {% block pageHeaderTitel %}Blog - {% endblock %}
+    {% block BreadcrumbMainLevel %}<li><a href="{{ path('admin_blog') }}"><i class="fa fa-dashboard"></i> Blog</a></li>{% endblock %}
+    {% block BreadcrumbMainLevelSubOne %}<li class="active">Neuer Artikel</li>{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <div class="bar-save pull-right">
+                    <input type="submit" value="Eintrag speichern" class="btn btn-primary" />
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+
+    </section><!-- /.content -->
+
+
+{% endblock %}
