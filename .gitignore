@@ -21,7 +21,7 @@ composer.lock
 
 # Package Managers
 node_modules
-web/assets/bower_components
+/web/assets/vendor/
 /vendor/
 
 # Uploads

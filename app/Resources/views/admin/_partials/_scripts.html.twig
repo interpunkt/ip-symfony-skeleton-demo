@@ -2,19 +2,22 @@
     Partial: JS files for layout
 #################################################}
 
-{# Check for DEV mode #}
+{# check for dev mode #}
 {% if app.environment == "dev" %}
 
-    {# DEV FILES: Vendor #}
+    {# dev files list #}
+
+    {# vendor: dependencies via bower.json --> bower install --save [Modulname] #}
     <script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js') }}"></script>
     <script src="{{ asset('assets/vendor/ckeditor/ckeditor.js') }}"></script>
+
     {# DataTables Buttons for Export: CSV, Excel, PDF, Print and Copy #}
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.colVis.js') }}"></script>
@@ -23,7 +26,7 @@
     <script src="{{ asset('assets/vendor/pdfmake/build/vfs_fonts.js') }}"></script>
 
 
-    {# DEV FILES: Own #}
+    {# ip: interpunkt css file --> build trough gulp task #}
     <script src="{{ asset('assets/admin/js/characterCounter/characterCounter.js') }}"></script>
     <script src="{{ asset('assets/admin/js/datatables/dataTables.js') }}"></script>
     <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
@@ -38,20 +41,20 @@
 
 {% else %}
 
-    {# PROD FILE: Vendor & Own #}
+    {# create production file #}
     {% javascripts
-        'assets/vendor/jquery/jquery.js'
+        'assets/vendor/jquery/dist/jquery.min.js'
         'assets/vendor/jquery-ui/jquery-ui.min.js'
-        'assets/vendor/bootstrap/dist/js/bootstrap.js'
-        'assets/vendor/datatables.net/js/jquery.dataTables.js'
-        'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js'
+        'assets/vendor/bootstrap/dist/js/bootstrap.min.js'
+        'assets/vendor/datatables.net/js/jquery.dataTables.min.js'
+        'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.min.js'
         'assets/vendor/ckeditor/ckeditor.js'
-        'assets/vendor/datatables.net-buttons/js/dataTables.buttons.js'
+        'assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js'
         'assets/vendor/datatables.net-buttons/js/buttons.flash.min.js'
-        'assets/vendor/datatables.net-buttons/js/buttons.html5.js'
-        'assets/vendor/datatables.net-buttons/js/buttons.print.js'
-        'assets/vendor/jszip/dist/jszip.js'
-        'assets/vendor/pdfmake/build/pdfmake.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.html5.min.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.print.min.js'
+        'assets/vendor/jszip/dist/jszip.min.js'
+        'assets/vendor/pdfmake/build/pdfmake.min.js'
         'assets/vendor/pdfmake/build/vfs_fonts.js'
 
         'assets/admin/js/datatables/dataTables.js'
