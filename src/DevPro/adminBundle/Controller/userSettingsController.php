@@ -31,7 +31,7 @@ class userSettingsController extends Controller
         }
 
         $html = $this->renderView(
-            'admin/User/settings/index.html.twig', array(
+            'admin/user/settings/index.html.twig', array(
                 'data' => $data,
                 'title' => 'user_settings'
             )
@@ -59,7 +59,7 @@ class userSettingsController extends Controller
         }
 
         $html = $this->renderView(
-            'admin/User/settings/update.html.twig', array(
+            'admin/user/settings/update.html.twig', array(
                 "form" => $form->createView(),
                 'id' => $id,
                 'title' => 'Benutzer'

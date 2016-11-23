@@ -16,11 +16,11 @@ class BlogSeoType extends AbstractType
     {
         $builder
             ->add('seo_titel', TextType::class, array(
-                'label' => 'Seo Titel',
+                'label' => 'seo Titel',
                 'required' => true
             ))
             ->add('seo_description', TextareaType::class, array(
-                'label' => 'Seo Description',
+                'label' => 'seo Description',
                 'required' => true,
                 'attr' => array('rows' => '10', 'id' => 'seoCharCounter'),
             ))

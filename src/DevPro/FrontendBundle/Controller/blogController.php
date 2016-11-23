@@ -29,7 +29,7 @@ class blogController extends Controller
 
 
         $blog = $this->getDoctrine()
-            ->getRepository('DevProadminBundle:Blog')
+            ->getRepository('DevProadminBundle:blog')
             ->findAll();
 
         $seo = $this->getDoctrine()
@@ -37,7 +37,7 @@ class blogController extends Controller
             ->findAll();
 
         $html = $this->container->get('templating')->render(
-            'Frontend/Blog/index.html.twig', array(
+            'frontend/blog/index.html.twig', array(
                 "data" => $blog,
                 "seotitel" => $seo[0]->getSeoTitel(),
                 "seodescription" => $seo[0]->getSeoDescription(),

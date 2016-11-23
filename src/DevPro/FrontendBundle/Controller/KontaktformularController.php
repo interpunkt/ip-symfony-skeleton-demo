@@ -40,7 +40,7 @@ class KontaktformularController extends Controller
         }
 */
         $html = $this->container->get('templating')->render(
-            'Frontend/Kontakt/kontaktformular.html.twig', array(
+            'frontend/kontakt/kontaktformular.html.twig', array(
                 "data" => ''
             )
         );

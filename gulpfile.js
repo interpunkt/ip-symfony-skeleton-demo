@@ -32,29 +32,29 @@ gulp.task('serve', ['less'], function () {
     proxy: 'localhost:8000'
   });
 
-  gulp.watch('web/assets/backend/_build/**/*.less', ['less']);
+  gulp.watch('web/assets/admin/_build/**/*.less', ['less']);
   gulp.watch('app/Resources/views/**/*.twig').on('change', browserSync.reload);
 });
 
 //  task: less
 gulp.task('less', function () {
   gulp.src([
-    'web/assets/backend/_build/less/AdminLTE.less',
-    'web/assets/backend/_build/less/skins/skin-interpunkt.less'])
+    'web/assets/admin/_build/less/AdminLTE.less',
+    'web/assets/admin/_build/less/skins/skin-interpunkt.less'])
     .pipe(sourcemaps.init())
     .pipe(less({
       plugins: [autoprefix]
     }))
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('web/assets/backend/_build/css'))
+    .pipe(gulp.dest('web/assets/admin/_build/css'))
     .pipe(browserSync.stream());
 });
 
 //  build-task: styles
 gulp.task('styles', function () {
   gulp.src([
-    'web/assets/backend/_build/less/AdminLTE.less',
-    'web/assets/backend/_build/less/skins/skin-interpunkt.less'])
+    'web/assets/admin/_build/less/AdminLTE.less',
+    'web/assets/admin/_build/less/skins/skin-interpunkt.less'])
     .pipe(less({
       plugins: [autoprefix, cleancss]
     }))
@@ -62,18 +62,18 @@ gulp.task('styles', function () {
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('web/assets/backend/css'));
+    .pipe(gulp.dest('web/assets/admin/css'));
 });
 
 //  build-task: scripts
 gulp.task('scripts', function () {
-  gulp.src(['web/assets/backend/_build/js/**/*.js'])
+  gulp.src(['web/assets/admin/_build/js/**/*.js'])
     .pipe(concat('app.js'))
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('web/assets/backend/js'));
+    .pipe(gulp.dest('web/assets/admin/js'));
 });
 
 //  tasks: gulp

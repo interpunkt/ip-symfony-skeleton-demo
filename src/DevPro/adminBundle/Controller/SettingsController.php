@@ -27,7 +27,7 @@ class SettingsController extends Controller
 
 
         $html = $this->container->get('templating')->render(
-            'admin/Settings/index.html.twig',
+            'admin/settings/index.html.twig',
             array(
                 'user' => $user,
                 'form' => $form->createView(),
@@ -88,7 +88,7 @@ class SettingsController extends Controller
             $em->flush();
 
             $settings = $this->getDoctrine()
-                ->getRepository('DevProBackendBundle:Settings')
+                ->getRepository('DevProBackendBundle:settings')
                 ->find(1);
 
             $settings->setLogopath($Imageupload->getImageName());
@@ -107,7 +107,7 @@ class SettingsController extends Controller
     public function getlogoAction()
     {
          $settings = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Settings')
+            ->getRepository('DevProBackendBundle:settings')
             ->find(1);
 
         if (!$settings) {
@@ -118,7 +118,7 @@ class SettingsController extends Controller
         return new Response($path);
 
         //return $this->render(
-        //    'Frontend/layout_backend.html.twig',
+        //    'frontend/layoutAdmin.html.twig',
         //    array('settings_logo' => $settings)
         //);
     }
@@ -131,7 +131,7 @@ class SettingsController extends Controller
 
 
         $html = $this->container->get('templating')->render(
-            'admin/Settings/setless.html.twig',array(
+            'admin/settings/setless.html.twig',array(
                 "form" => $form->createView()
             )
         );

@@ -31,7 +31,7 @@ class NewsletterPersonenController extends Controller
             ->findBy([], ['nachname' => 'ASC']);
 
         $html = $this->container->get('templating')->render(
-            'admin/Newsletter/Personen/index.html.twig', array(
+            'admin/newsletter/personen/index.html.twig', array(
                 "data" => $data
             )
         );
@@ -56,7 +56,7 @@ class NewsletterPersonenController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'admin/Newsletter/Personen/new.html.twig', array(
+            'admin/newsletter/personen/new.html.twig', array(
                 "data" => '',
                 "form" => $form->createView()
             )
@@ -83,7 +83,7 @@ class NewsletterPersonenController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'admin/Newsletter/Personen/edit.html.twig', array(
+            'admin/newsletter/personen/edit.html.twig', array(
                 "form" => $form->createView()
             )
         );

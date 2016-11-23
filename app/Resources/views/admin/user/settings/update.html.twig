@@ -1,0 +1,36 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+
+{% block title %}Blog - Artikel editieren{% endblock %}
+
+{# Navbar Side + active Link #}
+{% block navbar %}
+    {{ parent() }}
+    {% block navActiveUser %}class="active"{% endblock %}
+    {% block navActiveUserSettings %}class="active"{% endblock %}
+{% endblock %}
+
+{# Content-Header, hier Titel und optionalen Text setzen #}
+{% block pageHeader %}
+    {{ parent() }}
+    {% block pageHeaderDescription %}Artikel bearbeiten{% endblock %}
+    {% block pageHeaderTitel %}Blog - {% endblock %}
+    {% block BreadcrumbMainLevel %}<li><a href="{{ path('admin_blog') }}"><i class="fa fa-dashboard"></i> Blog</a></li>{% endblock %}
+    {% block BreadcrumbMainLevelSubOne %}<li class="active">Artikel bearbeiten</li>{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Your Page Content Here -->
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <input type="submit" value="speichern" class="btn btn-default">
+        {{ form_end(form) }}
+
+    </section><!-- /.content -->
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{################################################
+    Layout Definition & Variables
+#################################################}
+
+{# Layout #}
+{% extends 'layoutAdmin.html.twig' %}
+
+{# Sidebar: Aktiver Link #}
+{% block navActiveBlog %}class="active"{% endblock %}
+
+{# Content-Header: Titel und optionale Description + Breadcrumps #}
+{% block pageHeader %}
+    {{ parent() }}
+
+    {# Seitentitel #}
+    {% block pageHeaderTitel %}Profil{% endblock %}
+
+    {# Beschreibung neben Seitentitel #}
+    {% block pageHeaderDescription %}Eine Beschreibung{% endblock %}
+
+    {# Breadcrumb: Toplevel #}
+    {% block BreadcrumbMainLevel %}
+        <li><a href="{{ path('admin_'~title) }}"><i class="fa fa-sitemap"></i> {{ title }}</a></li>
+    {% endblock %}
+
+    {# Breadcrumb: Sublevel #}
+    {% block BreadcrumbMainLevelSubOne %}{% endblock %} {# No Sublevel here #}
+{% endblock %}
+
+
+{################################################
+    Block: content
+#################################################}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Profil</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                            <input type="submit" value="speichern" class="btn btn-default">
+                        {{ form_end(form) }}
+
+                        <h3>Passwort ändern</h3>
+                        <a href="{{ path('admin_user_profil_change_password') }}">Passwort ändern</a>
+
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+
+
+    </section><!-- /.content -->
+{% endblock %}

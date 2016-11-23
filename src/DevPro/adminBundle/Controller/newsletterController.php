@@ -24,11 +24,11 @@ class newsletterController extends Controller
     {
 
         $data = $this->getDoctrine()
-            ->getRepository("DevProBackendBundle:Newsletter")
+            ->getRepository("DevProBackendBundle:newsletter")
             ->findBy([], ['sort' => 'DESC']);
 
         $html = $this->container->get('templating')->render(
-            'admin/Newsletter/index.html.twig', array(
+            'admin/newsletter/index.html.twig', array(
                 "data" => $data
             )
         );
@@ -53,7 +53,7 @@ class newsletterController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'admin/Blog/new.html.twig', array(
+            'admin/blog/new.html.twig', array(
                 "data" => '',
                 "form" => $form->createView()
             )
@@ -68,7 +68,7 @@ class newsletterController extends Controller
     public function editAction(Request $request, $id)
     {
         $data = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
+            ->getRepository('DevProBackendBundle:blog')
             ->find($id);
 
         $form = $this->createForm(NewsletterType::class, $data);
@@ -80,7 +80,7 @@ class newsletterController extends Controller
         }
 
         $html = $this->container->get('templating')->render(
-            'admin/Blog/edit.html.twig', array(
+            'admin/blog/edit.html.twig', array(
                 "form" => $form->createView()
             )
         );
@@ -96,7 +96,7 @@ class newsletterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $data = $em
-            ->getRepository('DevProBackendBundle:Newsletter')
+            ->getRepository('DevProBackendBundle:newsletter')
             ->find($id);
 
         $em->remove($data);
@@ -112,17 +112,17 @@ class newsletterController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $data = $em
-            ->getRepository('DevProBackendBundle:Newsletter')
+            ->getRepository('DevProBackendBundle:newsletter')
             ->find($id);
 
-        // get Newsletter Personen
+        // get newsletter personen
         $recipient = $this->getNewsletterPersonen();
 
         $mailer = $this->get('app.mailer');
         $result = $mailer->sendmail($data->getContent(), $data->getAbsender(), $recipient);
 
         $html = $this->container->get('templating')->render(
-            'admin/Newsletter/sendStatus.html.twig', array(
+            'admin/newsletter/sendStatus.html.twig', array(
                 'result' => $result
             )
         );
@@ -146,10 +146,10 @@ class newsletterController extends Controller
     public function sortupAction($id)
     {
         $data = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Blog')
+            ->getRepository('DevProBackendBundle:blog')
             ->find($id);
 
-        $sorter = new singleSorter($this->container, 'Newsletter', 'DevProBackendBundle');
+        $sorter = new singleSorter($this->container, 'newsletter', 'DevProBackendBundle');
         $sorter->setSort($data, 'sortup');
         $sorter->flushSort();
 
@@ -162,10 +162,10 @@ class newsletterController extends Controller
     public function sortdownAction($id)
     {
         $data = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Newsletter')
+            ->getRepository('DevProBackendBundle:newsletter')
             ->find($id);
 
-        $sorter = new singleSorter($this->container, 'Newsletter', 'DevProBackendBundle');
+        $sorter = new singleSorter($this->container, 'newsletter', 'DevProBackendBundle');
         $sorter->setSort($data, 'sortdown');
         $sorter->flushSort();
 
@@ -197,7 +197,7 @@ class newsletterController extends Controller
     public function getSetSort()
     {
         $data = $this->getDoctrine()
-            ->getRepository('DevProBackendBundle:Newsletter')
+            ->getRepository('DevProBackendBundle:newsletter')
             ->findOneby([], ["id" => "DESC"]);
 
         if($data)
