@@ -26,5 +26,5 @@ Im Controller Flash Message setzen
 $request->getSession()
         ->getFlashBag()
         ->add('success', 'Das Passwort wurde erfolgreich geändert!')
-        ;            
+                    
 ```
