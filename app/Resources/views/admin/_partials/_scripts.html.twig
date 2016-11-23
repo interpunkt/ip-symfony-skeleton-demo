@@ -8,8 +8,9 @@
     {# dev files list #}
 
     {# vendor: dependencies via bower.json --> bower install --save [Modulname] #}
-    <script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets/vendor/AdminLTE/dist/js/app.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js') }}"></script>
@@ -29,7 +30,6 @@
     {# ip: interpunkt css file --> build trough gulp task #}
     <script src="{{ asset('assets/admin/js/characterCounter/characterCounter.js') }}"></script>
     <script src="{{ asset('assets/admin/js/datatables/dataTables.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
     <script src="{{ asset('assets/admin/js/flashMessages.js') }}"></script>
 
     <script>
@@ -45,6 +45,7 @@
     {% javascripts
         'assets/vendor/jquery/dist/jquery.min.js'
         'assets/vendor/jquery-ui/jquery-ui.min.js'
+        'assets/vendor/AdminLTE/dist/js/app.min.js'
         'assets/vendor/bootstrap/dist/js/bootstrap.min.js'
         'assets/vendor/datatables.net/js/jquery.dataTables.min.js'
         'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.min.js'
@@ -59,7 +60,6 @@
 
         'assets/admin/js/datatables/dataTables.js'
         'assets/admin/js/characterCounter/characterCounter.js'
-        'assets/admin/js/admin.js'
         'assets/admin/js/flashMessages.js'
 
         output='assets/compiled/adminApp.min.js' %}
