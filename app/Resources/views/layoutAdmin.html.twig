@@ -15,7 +15,7 @@
     <title>{% block title %}Backend Skeleton: inter-punkt. ag{% endblock %}</title>
 
     {% block layoutCss %}
-        {% include '/admin/_partials/_layout-css.html.twig'%}
+        {% include '/admin/_partials/_layoutCss.twig'%}
     {% endblock %}
 
 </head>
@@ -190,7 +190,7 @@
 
             {# Flash Message Block #}
             {% block flashMessage %}
-                {% include ':admin/_partials:_layout-flash-message.html.twig' %}
+                {% include ':admin/_partials:_layoutMessages.twig' %}
             {% endblock %}
 
             {# Start: Content Main #}
@@ -201,7 +201,7 @@
 
         {# Start: Layout Footer #}
         {% block footer %}
-            {% include '/admin/_partials/_layout-footer.html.twig'%}
+            {% include '/admin/_partials/_layoutFooter.twig'%}
         {% endblock %}
         {# End: Layout Footer #}
 
@@ -209,7 +209,7 @@
     {# End: Layout Wrapper #}
 
 {% block layoutScripts %}
-    {% include '/admin/_partials/_layout-scripts.html.twig'%}
+    {% include '/admin/_partials/_scripts.twig'%}
 {% endblock %}
 </body>
 </html>
