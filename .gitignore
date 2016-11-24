@@ -24,6 +24,10 @@ node_modules
 /web/assets/vendor/
 /vendor/
 
+# Assets (Dev)
+/web/assets/admin/css/
+/web/assets/frontend/css/
+
 # Uploads
 /web/uploads/
 !/web/uploads/documents/.gitkeep

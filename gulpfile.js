@@ -21,33 +21,50 @@ var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
 
 //  task: browsersync
-gulp.task('serve', ['sass'], function () {
+gulp.task('serve', ['sassAdmin', 'sassFrontend'], function () {
     browserSync.init({
-        proxy: '127.0.0.1:u80'
+        proxy: '127.0.0.1:8000'
     });
 
-    gulp.watch('public/dev/src/**/*.scss', ['sass']);
-    gulp.watch('templates/**/*.twig').on('change', browserSync.reload);
+    gulp.watch('web/assets/**/*.scss', ['sassAdmin', 'sassFrontend']);
+    gulp.watch('app/Resources/**/*.twig').on('change', browserSync.reload);
 });
 
-//  task: sass
-gulp.task('sass', function () {
-    gulp.src('public/dev/src/**/*.scss')
+//  task: sass admin
+gulp.task('sassAdmin', function () {
+    gulp.src('web/assets/admin/scss/adminApp.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
             outputStyle: 'expanded', precision: 10, includePaths: ['.']
         }).on('error', sass.logError))
-        .pipe(autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+        .pipe(autoprefixer({
+            browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
+        }))
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('public/dev/styles'))
+        .pipe(gulp.dest('web/assets/admin/css'))
         .pipe(browserSync.stream());
 });
 
-//  build-task: styles
+//  task: sass frontend
+gulp.task('sassFrontend', function () {
+    gulp.src('web/assets/frontend/scss/frontendApp.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass.sync({
+            outputStyle: 'expanded', precision: 10, includePaths: ['.']
+        }).on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
+        }))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('web/assets/frontend/css'))
+        .pipe(browserSync.stream());
+});
+
+//  build-task: frontend styles
 gulp.task('styles', function () {
-    gulp.src('public/dev/src/main.scss')
+    gulp.src('web/assets/frontend/scss/frontendApp.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(concat('main.css'))
+        .pipe(concat('frontendApp.css'))
         .pipe(autoprefixer({
             browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
         }))
@@ -59,32 +76,32 @@ gulp.task('styles', function () {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('public/assets/styles'));
+        .pipe(gulp.dest('web/assets/compiled'));
 });
 
-//  build-task: fallback
+//  build-task: frontend fallback
 gulp.task('fallback', function () {
-    gulp.src('public/dev/src/fallback.scss')
+    gulp.src('web/assets/frontend/scss/frontendFallback.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(concat('fallback.css'))
+        .pipe(concat('frontendFallback.css'))
         .pipe(autoprefixer({
             browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
         }))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('public/assets/styles'));
+        .pipe(gulp.dest('web/assets/compiled'));
 });
 
-//  build-task: scripts
-gulp.task('scripts', function () {
-    gulp.src(['public/dev/bower_components/webfontloader/webfontloader.js', 'public/dev/bower_components/lazysizes/lazysizes.js', 'public/dev/bower_components/lazysizes/plugins/respimg/ls.respimg.min.js', 'public/dev/bower_components/lazysizes/plugins/bgset/ls.bgset.min.js', 'public/dev/scripts/main.js'])
-        .pipe(concat('app.js'))
+//  build-task: frontend js
+gulp.task('js', function () {
+    gulp.src(['web/assets/frontend/js/main.js'])
+        .pipe(concat('frontendApp.js'))
         .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('public/assets/scripts'));
+        .pipe(gulp.dest('web/assets/compiled'));
 });
 
 //  tasks: gulp
@@ -94,4 +111,4 @@ gulp.task('scripts', function () {
 gulp.task('default', ['serve']);
 
 //  task: build
-gulp.task('build', ['styles', 'fallback', 'scripts']);
+gulp.task('build', ['styles', 'fallback', 'js']);
