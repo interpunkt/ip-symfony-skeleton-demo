@@ -1,0 +1,177 @@
+//  --------------------------------------------------------
+//  override AdminLTE skin
+//  copyright 2015 - 2016 by inter-punkt.ag
+//  autor: selim imoberdorf
+//  --------------------------------------------------------
+
+.skin-blue .main-header .navbar {
+    background-color : $color-pirmary;
+}
+
+.skin-blue .main-header .navbar .nav > li > a {
+    color : $color-white;
+}
+
+.skin-blue .main-header .navbar .nav > li > a:hover,
+.skin-blue .main-header .navbar .nav > li > a:active,
+.skin-blue .main-header .navbar .nav > li > a:focus,
+.skin-blue .main-header .navbar .nav .open > a,
+.skin-blue .main-header .navbar .nav .open > a:hover,
+.skin-blue .main-header .navbar .nav .open > a:focus,
+.skin-blue .main-header .navbar .nav > .active > a {
+    background : rgba($color-black, 0.1);
+    color      : $color-white;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color : $color-white;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    color      : $color-white;
+    background : rgba($color-black, 0.1);
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color        : $color-white;
+    border-right : 1px solid $color-pirmary;
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color : $color-pirmary;
+}
+
+@media (max-width : 767px) {
+    .skin-blue .main-header .navbar .dropdown-menu li.divider {
+        background-color : rgba($color-white, 0.1);
+    }
+    .skin-blue .main-header .navbar .dropdown-menu li a {
+        color : $color-white;
+    }
+    .skin-blue .main-header .navbar .dropdown-menu li a:hover {
+        background : $color-pirmary;
+    }
+}
+
+.skin-blue .main-header .logo {
+    background-color : $color-pirmary;
+    color            : $color-white;
+    border-bottom    : 0 solid transparent;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color : $color-pirmary;
+}
+
+.skin-blue .main-header li.user-header {
+    background-color : $color-pirmary;
+}
+
+.skin-blue .navbar-custom-menu li {
+    border-left : 1px solid $color-pirmary;
+}
+
+.skin-blue .content-header {
+    background : transparent;
+}
+
+.skin-blue .wrapper,
+.skin-blue .main-sidebar,
+.skin-blue .left-side {
+    background-color : $color-accent-dark;
+}
+
+.skin-blue .user-panel > .info,
+.skin-blue .user-panel > .info > a {
+    color : $color-white;
+}
+
+.skin-blue .sidebar-menu > li.header {
+    color      : $color-accent-medium;
+    background : $color-accent-dark;
+}
+
+.skin-blue .sidebar-menu > li > a {
+    border-left : 3px solid transparent;
+}
+
+.skin-blue .sidebar-menu > li:hover > a,
+.skin-blue .sidebar-menu > li.active > a {
+    color             : $color-white;
+    background        : $color-accent-dark;
+    border-left-color : $color-pirmary;
+}
+
+.skin-blue .sidebar-menu > li > .treeview-menu {
+    margin     : 0 1px;
+    background : $color-accent-dark;
+}
+
+.skin-blue .sidebar a {
+    color : $color-accent-light;
+}
+
+.skin-blue .sidebar a:hover {
+    text-decoration : none;
+}
+
+.skin-blue .treeview-menu > li > a {
+    color : $color-accent-light;
+}
+
+.skin-blue .treeview-menu > li.active > a,
+.skin-blue .treeview-menu > li > a:hover {
+    color : $color-white;
+}
+
+.skin-blue .sidebar-form {
+    border-radius : 3px;
+    border        : 1px solid $color-accent-medium;
+    margin        : 10px 10px;
+}
+
+.skin-blue .sidebar-form input[type="text"],
+.skin-blue .sidebar-form .btn {
+    box-shadow         : none;
+    background-color   : $color-accent-medium;
+    border             : 1px solid transparent;
+    height             : 35px;
+    -webkit-transition : all 0.3s ease-in-out;
+    transition         : all 0.3s ease-in-out;
+}
+
+.skin-blue .sidebar-form input[type="text"] {
+    color                      : $color-gray-medium;
+    border-top-left-radius     : 2px;
+    border-top-right-radius    : 0;
+    border-bottom-right-radius : 0;
+    border-bottom-left-radius  : 2px;
+}
+
+.skin-blue .sidebar-form input[type="text"]:focus,
+.skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color : $color-white;
+    color            : $color-gray-medium;
+}
+
+.skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color : $color-white;
+}
+
+.skin-blue .sidebar-form .btn {
+    color                      : $color-gray-light;
+    border-top-left-radius     : 0;
+    border-top-right-radius    : 2px;
+    border-bottom-right-radius : 2px;
+    border-bottom-left-radius  : 0;
+}
+
+.skin-blue.layout-top-nav .main-header > .logo {
+    background-color : $color-pirmary;
+    color            : $color-white;
+    border-bottom    : 0 solid transparent;
+}
+
+.skin-blue.layout-top-nav .main-header > .logo:hover {
+    background-color : $color-pirmary;
+}

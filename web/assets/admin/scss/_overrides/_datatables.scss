@@ -1,24 +1,21 @@
-.flash-message{
-    width: 98%;
-    margin: 0 auto;
-}
-
-/*------------------------------------*\
-    Mods for DataTables
-\*------------------------------------*/
+//  --------------------------------------------------------
+//  override datatables
+//  copyright 2015 - 2016 by inter-punkt.ag
+//  autor: selim imoberdorf
+//  --------------------------------------------------------
 
 .dataTables_info,
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    margin-top: 20px;
-    margin-bottom: 0;
+    margin-top    : 20px;
+    margin-bottom : 0;
 }
 
 .dataTables_info {
-    padding: 7px 0;
+    padding : 7px 0;
 }
 
 .pagination {
-    float: right;
+    float : right;
 }
 
 /* pagination color */
@@ -28,13 +25,13 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-    background-color: #367fa9;
-    border-color: #367fa9;
+    background-color : $color-pirmary;
+    border-color     : $color-pirmary;
 }
 
 .pagination > li > a:hover,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-    color: #367fa9;
+    color : $color-pirmary;
 }

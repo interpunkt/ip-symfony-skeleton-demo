@@ -32,7 +32,7 @@ gulp.task('serve', ['sassAdmin', 'sassFrontend'], function () {
 
 //  task: sass admin
 gulp.task('sassAdmin', function () {
-    gulp.src('web/assets/admin/scss/adminApp.scss')
+    gulp.src('web/assets/admin/scss/ip-admin.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
             outputStyle: 'expanded', precision: 10, includePaths: ['.']
@@ -47,7 +47,7 @@ gulp.task('sassAdmin', function () {
 
 //  task: sass frontend
 gulp.task('sassFrontend', function () {
-    gulp.src('web/assets/frontend/scss/frontendApp.scss')
+    gulp.src('web/assets/frontend/scss/main.scss')
         .pipe(sourcemaps.init())
         .pipe(sass.sync({
             outputStyle: 'expanded', precision: 10, includePaths: ['.']
@@ -62,7 +62,7 @@ gulp.task('sassFrontend', function () {
 
 //  build-task: frontend styles
 gulp.task('styles', function () {
-    gulp.src('web/assets/frontend/scss/frontendApp.scss')
+    gulp.src('web/assets/frontend/scss/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('frontendApp.css'))
         .pipe(autoprefixer({
@@ -81,7 +81,7 @@ gulp.task('styles', function () {
 
 //  build-task: frontend fallback
 gulp.task('fallback', function () {
-    gulp.src('web/assets/frontend/scss/frontendFallback.scss')
+    gulp.src('web/assets/frontend/scss/fallback.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('frontendFallback.css'))
         .pipe(autoprefixer({
