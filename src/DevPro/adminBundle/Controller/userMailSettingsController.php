@@ -12,14 +12,17 @@ use DevPro\adminBundle\DependencyInjection\PWGen;
 use DevPro\adminBundle\Form\Type\userProfilChangePasswordType;
 use DevPro\adminBundle\Form\Type\userSettingsType;
 use DevPro\adminBundle\Entity\userMailSettings;
+use DevPro\adminBundle\Form\Type\mailSettingsType;
 
 class userMailSettingsController extends Controller
 {
     /**
      * @Route("/admin/user/mailsettings/{id}", name="admin_user_mailsettings")
+     * @param Request $request
+     * @param userMailSettings $userMailSettings
      * @return Response
      */
-    public function userMailSettingsAction(userMailSettings $userMailSettings)
+    public function userMailSettingsAction(Request $request, userMailSettings $userMailSettings)
     {
 
         if( ! $userMailSettings)
@@ -30,18 +33,30 @@ class userMailSettingsController extends Controller
             throw $this->createNotFoundException('Keine Datensätze gefunden!');
         }
 
+        $form = $this->createForm(mailSettingsType::class, $userMailSettings);
+        $result = $this->handleFormUpload($form, $request);
+
+        if($result)
+        {
+            $this->addFlash('success', 'update erfolgreich!');
+            return $this->redirectToRoute('admin_user');
+        }
+
         $html = $this->renderView(
-            'admin/user/settings/index.html.twig', array(
+            'admin/user/mailSettings/index.html.twig', array(
                 'data' => $userMailSettings,
-                'title' => 'user_settings'
+                'title' => 'user_settings',
+                "form" => $form->createView(),
             )
         );
 
         return new Response($html);
     }
+
     /**
      * @Route("/admin/user/settings/update/{id}", name="admin_user_settings_update")
      * @param Request $request
+     * @param userSettings $userSettings
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */

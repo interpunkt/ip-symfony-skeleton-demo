@@ -109,7 +109,6 @@
                         <li class="header">Seiten</li>
                         <!-- Optionally, you can add icons to the links -->
                         <li {% block navActiveIndex %}{% endblock %}><a href="{{ path('admin_index') }}"><i class="fa fa-home"></i> <span>Startseite</span></a> </li>
-                        <li {% block navActiveBlog %}{% endblock %}><a href="{{ path('admin_blog') }}"><i class="fa fa-newspaper-o"></i> <span>Blog</span></a></li>
                         <li {% block navActiveMedia %}{% endblock %}><a href="{{ path('admin_mediamanager') }}"><i class="fa fa-folder"></i> <span>Media Manager</span></a></li>
 
                         <li {% block navActiveUser %}{% endblock %} class="treeview">

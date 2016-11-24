@@ -42,27 +42,24 @@
         <div class="box box-default">
             <div class="box-body">
                 <div class="btn-group">
-                    <a class="btn btn-primary" href="{{ path('admin_'~title~'_insert') }}">{{ title }} erstellen</a>
+
                 </div>
             </div>
         </div>
 
-        <div class="box box-default">
-            <div class="box-header">
-                <h3 class="box-title">Suche</h3>
-            </div>
-            <div class="box-body">
-                <input type="search" id="searchDefault" class="form-control" placeholder="Bentuzer durchsuchen">
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-sm-12">
                 <div class="box box-default">
                     <div class="box-header with-border">
-                        <h3 class="box-title">{{ title }}</h3>
+                        <h3 class="box-title">E-Mail Einstellungen</h3>
+                        <p>Hier können </p>
                     </div><!-- /.box-header -->
                     <div class="box-body">
+
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
 
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
