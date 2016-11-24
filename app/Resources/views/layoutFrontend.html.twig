@@ -1,21 +1,22 @@
+{#
+########################################################
+    template: frontend
+########################################################
+#}
 
-{% block title %}{% endblock %}
+<!DOCTYPE html>
+<html lang="de">
 
-{% block navbar %}
+{# include: head #}
+{% include '/frontend/_partials/_head.html.twig' %}
+<body>
 
-{% endblock %}
+{# include: fallback text #}
+{% include '/frontend/_partials/_fallback.html.twig' %}
 
+<h1>Your IP Symfony Skeleton is working!</h1>
 
-{% block content %}
-    <body>
-    <p>Start here juhuu</p>
-    </body>
-
-{% endblock %}
-
-
-
-{%  block footer %}
-
-{% endblock %}
-
+{# include: scripts (libs & js) #}
+{% include '/frontend/_partials/_scripts.html.twig' %}
+</body>
+</html>

@@ -17,7 +17,6 @@
 /composer.phar
 /web/bundles/
 composer.lock
-/web/assets/compiled/*
 
 # Package Managers
 node_modules
@@ -27,6 +26,8 @@ node_modules
 # Assets (Dev)
 /web/assets/admin/css/
 /web/assets/frontend/css/
+/web/assets/compiled/
+!/web/assets/compiled/.gitkeep
 
 # Uploads
 /web/uploads/

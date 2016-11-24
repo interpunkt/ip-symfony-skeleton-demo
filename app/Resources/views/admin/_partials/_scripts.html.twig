@@ -28,9 +28,9 @@
 
 
     {# ip: interpunkt css file --> build trough gulp task #}
-    <script src="{{ asset('assets/admin/js/characterCounter/characterCounter.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/datatables/dataTables.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/flashMessages.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ip-characterCounter.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ip-dataTables.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ip-flashMessages.js') }}"></script>
 
     <script>
         $("#blog_image").change(function(){
@@ -58,9 +58,9 @@
         'assets/vendor/pdfmake/build/pdfmake.min.js'
         'assets/vendor/pdfmake/build/vfs_fonts.js'
 
-        'assets/admin/js/datatables/dataTables.js'
-        'assets/admin/js/characterCounter/characterCounter.js'
-        'assets/admin/js/flashMessages.js'
+        'assets/admin/js/ip-dataTables.js'
+        'assets/admin/js/ip-characterCounter.js'
+        'assets/admin/js/ip-flashMessages.js'
 
         output='assets/compiled/adminApp.min.js' %}
     <script src="{{ asset_url }}"></script>

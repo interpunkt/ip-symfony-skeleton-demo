@@ -175,3 +175,14 @@
 .skin-blue.layout-top-nav .main-header > .logo:hover {
     background-color : $color-pirmary;
 }
+
+//  --------------------------------------------------------
+//  typo overrides
+//  --------------------------------------------------------
+
+a,
+a:active,
+a:focus,
+a:hover {
+    text-decoration: none;
+}
