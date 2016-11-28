@@ -32,7 +32,7 @@ Installation vom neu angelegten Repository
 4. Datenbank Name setzen in parameters_dev.yml
 4.1 php app/console doctrine:database:create
 5. php app/console doctrine:schema:update --force
-6. Create a Admin User via Console -> console Command "php app/console fos:user:create USERNAME --super-admin"
+6. php app/console doctrine:migrations:execute 20161123164830
 7. Start local Server -> console Command "php app/console server:run"
 ```
 
