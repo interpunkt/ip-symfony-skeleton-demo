@@ -1,0 +1,50 @@
+### Ordner Struktur
+
+#### Bei der Ordner Struktur sind die 3 obersten Ordner, "app", "src" und "web", wichtig !
+
+* <b>app</b>
+  * Resources
+    * FOSUserBundle/views
+      * Resetting
+      * Security
+    * TwigBundle/views/Exeption
+    * translations
+    * views
+      * Frontend
+        * Blog 
+        * Index 
+        * Kontakt 
+        * User
+      * admin
+        * Blog 
+        * Index 
+        * Newsletter 
+          * Personen
+        * Seo 
+        * Settings 
+        * User 
+          * mailSettings
+          * settings
+        * _partials 
+        * update
+  * cache
+  * config
+  * logs
+* <b>src</b>
+  * DevPro
+    * FrontendBundle
+      * Controller
+      * Entity
+      * Form/Type
+    * adminBundle
+      * Controller
+      * Entity
+      * Form/Type
+* <b>web</b>
+  * assets
+    * backend
+      * css
+      * js
+      * img
+      * less
+    * uploads/pdf
