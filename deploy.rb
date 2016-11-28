@@ -1,36 +1,81 @@
-# deploy.rb
-set :symfony_directory_structure, 2
-set :sensio_distribution_version, 4
+set :application, "ip-symfony-skeleton"
+set :domain,      "ssh.netzone.ch"
+set :deploy_to,   "/htdocs/ip-symfony-skeleton-update.interpunkt-test.ch"
+set :app_path,    "app"
 
-set :permission_method, :acl
-set :file_permissions_users, ["nginx"]
-set :file_permissions_paths, ["app/cache", "app/logs", "app/sessions"]
+set :repository,  "git@github.com:interpunkt/ip-symfony-skeleton.git"
+set :scm,         :git
 
-# Give our application a name
-set :application, 'app'
+set :model_manager, "doctrine"
 
-# The repository path, must be accessible from the remote server
-set :repo_url, 'ssh://domain.tld/repositories/project.git'
+role :web,        domain                         # Your HTTP server, Apache/etc
+role :app,        domain, :primary => true       # This may be the same as your `Web` server
 
-# The path where to deploy things
-set :deploy_to, '/htdocs/toggenburger-update.interpunkt-test.ch'
+# does not work on netzone servers
+# set  :keep_releases,  3
+# after "deploy:update", "deploy:cleanup"
 
-# The default tasks shipped by the install task
+# Strategy
+set :deploy_via, :capifony_copy_local
+
+# COMPOSER Settings Capifony
+set :composer_options, "--no-dev --verbose --optimize-autoloader"
+set :use_composer, true
+set :update_vendors, true
+
+# set :shared_files,      ["app/config/parameters.yml"]
+set :shared_children,   [app_path + "/sessions"]
+
+# ASSETS
+set :dump_assetic_assets, false
+
+set :use_sudo,      false
+set :user, "interpunkt-test.ch0"
+
+set :writable_dirs,       ["app/cache", "app/logs", "app/sessions"]
+set :webserver_user,      "www-data"
+set :permission_method,   :acl
+set :use_set_permissions, false
+set :use_sudo,            false
+
+logger.level = Logger::MAX_LEVEL
+
+ssh_options[:forward_agent] = true
+
+set :copy_remote_dir, deploy_to
+set :deploy_via, :copy
+
 namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+  task :create_symlink, :except => { :no_release => true } do
+    deploy_to_pathname = Pathname.new(deploy_to)
+
+    previous_release_pathname = Pathname.new(previous_release)
+    relative_previous_release = previous_release_pathname.relative_path_from(deploy_to_pathname)
+
+    on_rollback do
+      if previous_release
+        run "rm -f #{current_path}; ln -s #{relative_previous_release} #{current_path}; true"
+      else
+        logger.important "no previous release to rollback to, rollback of symlink skipped"
+      end
     end
-  end
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+
+    latest_release_pathname = Pathname.new(latest_release)
+    relative_latest_release = latest_release_pathname.relative_path_from(deploy_to_pathname)
+    run "rm -f #{current_path} && ln -s #{relative_latest_release} #{current_path}"
+
+    # copy frontend assets and uploads from previous releases
+    if previous_release
+      run "cp -r #{deploy_to}/#{relative_previous_release}/web/assets/vendor #{current_path}/web/assets/"
+      run "cp #{deploy_to}/#{relative_previous_release}/web/uploads/documents/* #{current_path}/web/uploads/documents/"
+      run "cp #{deploy_to}/#{relative_previous_release}/web/uploads/images/* #{current_path}/web/uploads/images/"
+      run "cp #{deploy_to}/#{relative_previous_release}/web/uploads/media/* #{current_path}/web/uploads/media/"
+    else
+      logger.important "No previous release, /web/assets has to be copied manually to the server"
     end
+
+    # delete cache, to avoid error when loading for the first time
+    run "rm -rf #{current_path}/app/cache/prod/"
   end
-  after :finishing, 'deploy:cleanup'
 end
+
