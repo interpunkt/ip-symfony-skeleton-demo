@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+   ____      __                                  __    __         ___   _____
+  /  _/___  / /_ ___   ____   ___  __ __  ___   / /__ / /_       / _ | / ___/
+ _/ / / _ \/ __// -_) / __/  / _ \/ // / / _ \ /  '_// __/      / __ |/ (_ /
+/___//_//_/\__/ \__/ /_/    / .__/\_,_/ /_//_//_/\_\ \__/      /_/ |_|\___/
+
+-->
+
+<html lang="de">
+{% block head %}
+    {% include '/admin/_partials/_head.html.twig' %}
+{% endblock %}
+
+<body class="login">
+
+{# START: Content Main #}
+{% block content %}{% endblock %}
+{# END: Content Main #}
+
+{% block layoutScripts %}
+    {% include '/admin/_partials/_scripts.html.twig'%}
+{% endblock %}
+</body>
+</html>
