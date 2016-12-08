@@ -7,6 +7,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: de
+    image_path: uploads/images/
+    image_path_cropped: uploads/images/cropped/
 
 framework:
     #esi:             ~
@@ -33,6 +35,13 @@ framework:
 
 # Twig Configuration
 twig:
+    # ...
+    globals:
+        image_path: '/uploads/images/'
+        image_path_cropped: '/uploads/images/cropped/'
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form:
@@ -141,17 +150,30 @@ jms_i18n_routing:
     locales: [de, en]
     strategy: prefix_except_default
 
+knp_gaufrette:
+    stream_wrapper: ~
+
+    adapters:
+        product_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/uploads/images
+
+    filesystems:
+        product_image_fs:
+            adapter:    product_adapter
+
 vich_uploader:
     db_driver: orm
+    storage:   gaufrette
     mappings:
         imageupload_image:
-            uri_prefix:         /img/uploads
-            upload_destination: %kernel.root_dir%/../web/assets/img/uploads
-            namer:              vich_uploader.namer_origname
+            uri_prefix:         /uploads/images
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
 
-            inject_on_load:     false
-            delete_on_update:   false
-            delete_on_remove:   false
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true
 
 
 ivory_ck_editor:
@@ -159,6 +181,3 @@ ivory_ck_editor:
     configs:
         default:
             toolbar: [ [ "Bold", "-", "Link", "-", "Unlink", "-", "Image" , "-", "Maximize" ] ]
-            filebrowserBrowseRoute: elfinder
-            filebrowserBrowseRouteParameters:
-                instance: default
