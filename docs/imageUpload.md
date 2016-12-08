@@ -20,6 +20,23 @@ https://github.com/dustin10/VichUploaderBundle/blob/master/Resources/doc/usage.m
 
 Für das Filesystem wird Gaufrette benutzt, hier muss nix weiter eingestellt werden.
 
+## Twig
+
+In Twig kann das Orginal Bild oder das gecroppte über variablen angesprochen werden. Die Vars sind 
+in der config.yml hinterlegt.
+
+```
+# Twig Configuration
+twig:
+    # ...
+    globals:
+        image_path: '/uploads/images/'
+        image_path_cropped: '/uploads/images/cropped/'
+```
+```
+<img src="{{ asset(image_path_cropped~items.bildName) }}" alt="{{ bildName }}">
+```
+
 ## Forms
 
 Im Form Type den Vich Type verwenden.
@@ -27,19 +44,12 @@ Im Form Type den Vich Type verwenden.
 ```
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class Form extends AbstractType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        // ...
-
-        $builder->add('imageFile', VichImageType::class, array(
-            'required'      => false,
-            'allow_delete'  => true, // not mandatory, default is true
-            'download_link' => true, // not mandatory, default is true
-        ));
-    }
-}
+            ->add('bildDatei', VichImageType::class, array(
+                'label' => 'Bild',
+                'required' => false,
+                'allow_delete'  => true, // not mandatory, default is true
+                'download_link' => true, // not mandatory, default is true
+            ))
 ```
 
 ## EventListener
