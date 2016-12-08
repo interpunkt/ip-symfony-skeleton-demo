@@ -1,31 +1,60 @@
+{################################################
+    Layout Definition & Variables
+#################################################}
+
+{# Layout #}
+{% extends 'layoutAdmin.html.twig' %}
+
+{# Sidebar: Aktiver Link #}
+{% block navActiveIndex %}class="active"{% endblock %}
+
+{# Content-Header: Titel und optionale Description + Breadcrumps #}
+{% block pageHeader %}
+    {{ parent() }}
+
+    {# Seitentitel #}
+    {% block pageHeaderTitel %}Seite nicht gefunden{% endblock %}
+
+    {# Beschreibung neben Seitentitel #}
+    {% block pageHeaderDescription %}{% endblock %}
+
+    {# Breadcrumb: Toplevel #}
+    {% block BreadcrumbMainLevel %}
+        <li><a href="#"><i class="fa fa-sitemap"></i> Seite nicht gefunden</a></li>
+    {% endblock %}
+
+    {# Breadcrumb: Sublevel #}
+    {% block BreadcrumbMainLevelSubOne %}{% endblock %} {# No Sublevel here #}
+{% endblock %}
 
 
+{################################################
+    Block: content
+#################################################}
 
+{% block content %}
 
-<section class="content">
-    <div class="error-page">
-        <h2 class="headline text-yellow"> 404</h2>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
 
-        <div class="error-content">
-            <h3><i class="fa fa-warning text-yellow"></i> Oops! Seite nicht gefunden.</h3>
-
-            <p>
-                Wir konnten die gesuchte Seite nicht finden.
-                Zurück zur Startseite <a href="#">Startseite</a> oder benutze unsere Suche
-            </p>
-
-            <form class="search-form">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search">
-
-                    <div class="input-group-btn">
-                        <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
-                        </button>
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <i class="fa fa-warning"></i>
+                        <h3 class="box-title">Seite nicht gefunden</h3>
+                    </div>
+                    <div class="box-body">
+                        <p><strong>Wir konnten die gesuchte Seite nicht finden.</strong> Navigiersen Sie über die linke Navigation zu
+                            einer anderen Seite oder kehren zur <a href="{{ path('admin_index') }}">Startseite</a>
+                            zurück.
+                        </p>
+                    </div>
+                    <div class="box-footer">
+                        <a href="{{ path('admin_index') }}" class="btn btn-primary pull-right">Startseite</a>
                     </div>
                 </div>
-                <!-- /.input-group -->
-            </form>
+            </div>
         </div>
-        <!-- /.error-content -->
-    </div>
-    <!-- /.error-page -->
+    </section>
+
+{% endblock %}

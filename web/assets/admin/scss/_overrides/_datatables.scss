@@ -25,13 +25,13 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-    background-color : $color-pirmary;
-    border-color     : $color-pirmary;
+    background-color : $color-primary;
+    border-color     : $color-primary;
 }
 
 .pagination > li > a:hover,
 .pagination > li > span:hover,
 .pagination > li > a:focus,
 .pagination > li > span:focus {
-    color : $color-pirmary;
+    color : $color-primary;
 }

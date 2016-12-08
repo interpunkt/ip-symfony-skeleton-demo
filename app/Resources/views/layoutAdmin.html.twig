@@ -8,206 +8,152 @@
 -->
 
 <html lang="de">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block head %}
+    {% include '/admin/_partials/_head.html.twig' %}
+{% endblock %}
 
-    <title>{% block title %}Backend Skeleton: inter-punkt. ag{% endblock %}</title>
+<body class="hold-transition sidebar-mini ip-skin">
 
-    {% block layoutCss %}
-        {% include '/admin/_partials/_layoutCss.html.twig'%}
-    {% endblock %}
+{# START: Layout Wrapper #}
+<div class="wrapper">
 
-</head>
+    {# START: Layout Header #}
+    {% block layoutHeader %}
 
-<body class="hold-transition skin-blue sidebar-mini">
+        <header class="main-header">
+            <a href="{{ path('admin_index') }}" class="logo">
+                <span class="logo-mini"><b>ip</b></span>
+                <span class="logo-lg"><b>inter-punkt.</b> ag</span>
+            </a>
 
-    {# Start: Layout Wrapper #}
-    <div class="wrapper">
-
-        {# Start: Layout Header #}
-        {% block layoutHeader %}
-            <!-- Main Header -->
-            <header class="main-header">
-
-                <!-- Logo -->
-                <a href="{{ path('admin_index') }}" class="logo">
-                    <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>ip</b></span>
-                    <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>inter-punkt.</b> ag</span>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
                 </a>
 
-                <!-- Header Navbar -->
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="{{ path('admin_user_profil') }}">{{ app.user.email }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    {% endblock %}
+    {# END: Layout Header #}
 
-                    <!-- Navbar Right Menu -->
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- Notifications Menu -->
-                            {#<li class="dropdown notifications-menu">
-                                <!-- Menu toggle button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">10</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 10 notifications</li>
-                                    <li>
-                                        <!-- Inner Menu: contains the notifications -->
-                                        <ul class="menu">
-                                            <li><!-- start notification -->
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                                </a>
-                                            </li><!-- end notification -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#">View all</a></li>
-                                </ul>
-                            </li>#}
-                            <!-- user Account Menu -->
-                            <li class="dropdown user user-menu">
-                                    <a href="{{ path('admin_user_profil') }}">{{ app.user.email }}</a>{# {{ user.username }} #}
+    {# START: Layout NavBar #}
+    {% block layoutNavBar %}
+
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header">Seiten</li>
+                    <li {% block navActiveUser %}{% endblock %} class="treeview">
+                        <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i
+                                    class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li {% block navActiveUserUser %}{% endblock %}>
+                                <a href="{{ path('admin_user') }}"><i class="fa fa-user-o"></i>
+                                    <span>Benutzer</span></a>
                             </li>
-                            <!-- Control Sidebar Toggle Button -->
-                            <li>
-                                <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a>
+                            <li {% block navActiveUserSettings %}{% endblock %}>
+                                <a href="{{ path('admin_user_settings') }}"><i class="fa fa-french"></i> <span>Einstellungen</span></a>
+                            </li>
+                            <li {% block navActiveUserMailSettings %}{% endblock %}><a
+                                        href="{{ path('admin_user_mailsettings', { 'id' : 1 }) }}"><i
+                                            class="fa fa-send"></i> <span>E-Mail Einstellungen</span></a>
                             </li>
                         </ul>
-                    </div>
-                </nav>
-            </header>
-        {% endblock %}
-        {# End: Layout Header #}
+                    </li>
 
-        {# Start: Layout NavBar #}
-        {% block layoutNavBar %}
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
+                    {#
+                    ########################################################
+                        menu interpunkt: ROLE_SUPER_ADMIN
+                    ########################################################
+                    #}
 
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-
-                    <!-- search form (default: disabled) -->
-                    {# <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form> #}
-                    <!-- /.search form -->
-
-                    <!-- Sidebar Menu -->
-                    {# Linke Navigation Start #}
-                    <ul class="sidebar-menu">
-                        <li class="header">Seiten</li>
-                        <!-- Optionally, you can add icons to the links -->
-
-                        <li {% block navActiveUser %}{% endblock %} class="treeview">
-                            <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    {% if is_granted("ROLE_SUPER_ADMIN") %}
+                        <li class="header">Einstellugnen</li>
+                        <li {% block navActiveLess %}{% endblock %} class="treeview">
+                            <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i
+                                        class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-
-                                <li {% block navActiveUserUser %}{% endblock %}><a href="{{ path('admin_user') }}"><i class="fa fa-user-o"></i> <span>Benutzer</span></a></li>
-                                <li {% block navActiveUserSettings %}{% endblock %}><a href="{{ path('admin_user_settings') }}"><i class="fa fa-french"></i> <span>Einstellungen</span></a></li>
-                                <li {% block navActiveUserMailSettings %}{% endblock %}><a href="{{ path('admin_user_mailsettings', { 'id' : 1 }) }}"><i class="fa fa-send"></i> <span>E-Mail Einstellungen</span></a></li>
+                                <li>
+                                    <a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><span>Basiskonfiguration</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><span>Typographie</span></a>
+                                </li>
                             </ul>
                         </li>
-
-                        {# Weitere Seiten, die aktiviert werden können #}
-                        {# <li {% block navActiveEinstellungen %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>Einstellungen</span></a></li>
-                        <li {% block navActiveMediaManager %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>media Manager</span></a></li>
-                        <li {% block navActiveSeo %}{% endblock %}><a href=""><i class="fa fa-link"></i> <span>SEO</span></a></li>
-                        <!-- newsletter Manager -->
-                        <li {% block navActiveNewsletter %}{% endblock %} class="treeview">
-                            <a href="#"><i class="fa fa-link"></i> <span>newsletter Manager</span> <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-link"></i> <span>Blacklist</span></a></li>
-                                    <li><a href="{{ path('backend_newsletter') }}"><i class="fa fa-link"></i> <span>newsletter</span></a></li>
-                                <li><a href="{{ path('backend_newsletter_personen') }}"><i class="fa fa-link"></i> <span>newsletter Empfänger</span></a></li>
-                            </ul>
-                        </li> #}
-
-                        {# ########################################################
-                         # Interpunkt internes Menu für ROLE_SUPER_ADMIN
-                         ######################################################## #}
-                        {% if is_granted("ROLE_SUPER_ADMIN") %}
-
-                            <li class="header">Einstellugnen</li>
-                            <li {% block navActiveLess %}{% endblock %} class="treeview">
-                                <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i class="fa fa-angle-left pull-right"></i></a>
-                                <ul class="treeview-menu">
-
-                                    <li><a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><span>Basiskonfiguration</span></a></li>
-                                    <li><a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><span>Typographie</span></a></li>
-
-                                </ul>
-                            </li>
-                        {% endif %}
+                    {% endif %}
 
 
-                        <li class="treeview">
-                            <a href="#"><i class="fa fa-cogs"></i> <span>SEO</span> <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><span>Link</span></a></li>
-                            </ul>
-                        </li>
-                        <li {% block navActiveUpdate %}{% endblock %}><a href="{{ path('admin_update') }}"><i class="fa fa-cogs"></i> <span>Update Skeleton</span></a></li>
-                    </ul><!-- /.sidebar-menu -->
+                    <li class="treeview">
+                        <a href="#"><i class="fa fa-cogs"></i> <span>SEO</span> <i
+                                    class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><span>Link</span></a></li>
+                        </ul>
+                    </li>
+                    <li {% block navActiveUpdate %}{% endblock %}>
+                        <a href="{{ path('admin_update') }}"><i class="fa fa-cogs"></i> <span>Update Skeleton</span></a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+    {% endblock %}
+    {# END: Layout NavBar #}
 
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+    {# START: Content Wrapper #}
+    <div class="content-wrapper">
+
+        {# START: Content Header #}
+        {% block contentHeader %}
+            <section class="content-header">
+                <h1>
+                    {% block pageHeaderTitel %}Page Header{% endblock %}
+                    <small>{% block pageHeaderDescription %}Optional description{% endblock %}</small>
+                </h1>
+                <ol class="breadcrumb">
+                    {% block BreadcrumbMainLevel %}
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap"></i> Level</a>
+                        </li>{% endblock %}
+                    {% block BreadcrumbMainLevelSubOne %}
+                        <li class="active">Here</li>{% endblock %}
+                </ol>
+            </section>
         {% endblock %}
-        {# End: Layout NavBar #}
+        {# END: Content Header #}
 
-        {# Start: Content Wrapper #}
-        <div class="content-wrapper">
+        {# START: Content Main #}
+        {% block content %}{% endblock %}
+        {# END: Content Main #}
 
-            {# Start: Content Header #}
-            {% block contentHeader %}
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        {% block pageHeaderTitel %}Page Header{% endblock %}
-                        <small>{% block pageHeaderDescription %}Optional description{% endblock %}</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        {% block BreadcrumbMainLevel %}<li><a href="#"><i class="fa fa-sitemap"></i> Level</a></li>{% endblock %}
-                        {% block BreadcrumbMainLevelSubOne %}<li class="active">Here</li>{% endblock %}
-                    </ol>
-                </section>
-            {% endblock %}
-            {# End: Content Header #}
-
-            {# Flash Message Block #}
-            {% block flashMessage %}
-                {% include ':admin/_partials:_layoutMessages.html.twig' %}
-            {% endblock %}
-
-            {# Start: Content Main #}
-            {% block content %}{% endblock %}
-            {# End: Content Main #}
-        </div>
-        {# End: Content Wrapper #}
-
-        {# Start: Layout Footer #}
-        {% block footer %}
-            {% include '/admin/_partials/_layoutFooter.html.twig'%}
+        {# Flash Message Block #}
+        {% block flashMessage %}
+            {% include '/admin/_partials/_layoutMessages.html.twig' %}
         {% endblock %}
-        {# End: Layout Footer #}
-
     </div>
-    {# End: Layout Wrapper #}
+    {# END: Content Wrapper #}
+
+    {# START: Layout Footer #}
+    {% block footer %}
+        {% include '/admin/_partials/_layoutFooter.html.twig' %}
+    {% endblock %}
+    {# END: Layout Footer #}
+
+</div>
+{# END: Layout Wrapper #}
 
 {% block layoutScripts %}
-    {% include '/admin/_partials/_scripts.html.twig'%}
+    {% include '/admin/_partials/_scripts.html.twig' %}
 {% endblock %}
 </body>
 </html>
