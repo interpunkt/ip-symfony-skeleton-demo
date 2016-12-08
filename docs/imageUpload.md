@@ -23,7 +23,13 @@ Für das Filesystem wird Gaufrette benutzt, hier muss nix weiter eingestellt wer
 ## Twig
 
 In Twig kann das Orginal Bild oder das gecroppte über variablen angesprochen werden. Die Vars sind 
-in der config.yml hinterlegt.
+in der config.yml an 2 Stellen hinterlegt.
+
+```
+parameters:
+    image_path: uploads/images/
+    image_path_cropped: uploads/images/cropped/
+```
 
 ```
 # Twig Configuration
@@ -33,6 +39,7 @@ twig:
         image_path: '/uploads/images/'
         image_path_cropped: '/uploads/images/cropped/'
 ```
+
 ```
 <img src="{{ asset(image_path_cropped~items.bildName) }}" alt="{{ bildName }}">
 ```
