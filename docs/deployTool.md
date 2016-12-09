@@ -25,11 +25,17 @@ cap deploy:setup
 ```
 
 ## Deploy
-Mit dem nachfolgenden Befehl kann Release auf dem Testserver gepushed werden. Nach dem 1. Release muss noch die Datenbank 
- migriert werden.
+1.
+Mit dem nachfolgenden Befehl kann Release auf dem Testserver gepushed werden.
 ```
 cap deploy
 ```
+
+2. assets/vendor
+Das DevTool kann auf dem Bower nicht ausführen, daher muss der "assets/vendor" Folder via FTP in das 1. Release 
+hochgeladen werden.
+
+3.
 Datenbank Migration nach 1. Release.
 ```
 cap deploy:doctrine:migrations:execute 20160909225036
