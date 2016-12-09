@@ -41,9 +41,9 @@ class userController extends Controller
      */
      public function insertAction(Request $request)
      {
-        $user = new user();
+         $user = new user();
          $user->setPlainPassword(uniqid());
-        $form = $this->createForm(userType::class, $user);
+         $form = $this->createForm(new userType($this->get('service_container')), $user);
 
         $result = $this->handleFormUploadNewUser($form, $request);
 
@@ -75,7 +75,7 @@ class userController extends Controller
      */
       public function updateAction(Request $request, User $user, $id)
       {
-            $form = $this->createForm(userType::class, $user);
+            $form = $this->createForm(new userType($this->get('service_container')), $user);
 
             $result = $this->handleFormUpload($form, $request);
 
