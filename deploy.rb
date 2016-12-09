@@ -49,8 +49,10 @@ namespace :deploy do
   task :create_symlink, :except => { :no_release => true } do
     deploy_to_pathname = Pathname.new(deploy_to)
 
-    previous_release_pathname = Pathname.new(previous_release)
-    relative_previous_release = previous_release_pathname.relative_path_from(deploy_to_pathname)
+  if previous_release
+      previous_release_pathname = Pathname.new(previous_release)
+      relative_previous_release = previous_release_pathname.relative_path_from(deploy_to_pathname)
+  end
 
     on_rollback do
       if previous_release
