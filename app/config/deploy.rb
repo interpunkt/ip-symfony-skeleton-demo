@@ -69,9 +69,15 @@ namespace :deploy do
     # copy frontend assets and uploads from previous releases
     if previous_release
       run "cp -r #{deploy_to}/#{relative_previous_release}/web/assets/vendor #{current_path}/web/assets/"
-      run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/documents/* #{current_path}/web/uploads/documents/"
-      run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/images/* #{current_path}/web/uploads/images/"
-      run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/media/* #{current_path}/web/uploads/media/"
+            if ! Dir['#{deploy_to}/#{relative_previous_release}/web/uploads/media/*'].empty?
+              run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/documents/* #{current_path}/web/uploads/documents/"
+            end
+            if ! Dir['#{deploy_to}/#{relative_previous_release}/web/uploads/media/*'].empty?
+              run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/images/* #{current_path}/web/uploads/images/"
+            end
+            if ! Dir['#{deploy_to}/#{relative_previous_release}/web/uploads/media/*'].empty?
+              run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/media/* #{current_path}/web/uploads/media/"
+            end
     else
       logger.important "No previous release, /web/assets has to be copied manually to the server"
     end
