@@ -69,9 +69,9 @@ namespace :deploy do
     # copy frontend assets and uploads from previous releases
     if previous_release
       run "cp -r #{deploy_to}/#{relative_previous_release}/web/assets/vendor #{current_path}/web/assets/"
-      run "cp #{deploy_to}/#{relative_previous_release}/web/uploads/documents/* #{current_path}/web/uploads/documents/"
-      run "cp #{deploy_to}/#{relative_previous_release}/web/uploads/images/* #{current_path}/web/uploads/images/"
-      run "cp #{deploy_to}/#{relative_previous_release}/web/uploads/media/* #{current_path}/web/uploads/media/"
+      run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/documents/* #{current_path}/web/uploads/documents/"
+      run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/images/* #{current_path}/web/uploads/images/"
+      run "cp -r #{deploy_to}/#{relative_previous_release}/web/uploads/media/* #{current_path}/web/uploads/media/"
     else
       logger.important "No previous release, /web/assets has to be copied manually to the server"
     end
