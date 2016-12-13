@@ -138,6 +138,7 @@ Damit der Cropper im View nach Auswahl des Bildes angezeigt wird, nachfolgenden 
             max-width: 100%;
         }
     </style>
+{% endblock %}
 ```
 
 
