@@ -74,7 +74,10 @@ src/DevPro/adminBundle/EventListener/UploadedFileListener.php
 Damit der Cropper im View nach Auswahl des Bildes angezeigt wird, nachfolgenden Code in das Twig File einfügen.
 
 ```
-<script>
+{% block layoutScripts %}
+    {{ parent() }}
+    
+    <script>
         $(document).ready(function () {
             function previewImage(input, imgOrigId, hiddenContainerId, isCrop) {
                 if (input.files && input.files[0]) {
@@ -135,6 +138,7 @@ Damit der Cropper im View nach Auswahl des Bildes angezeigt wird, nachfolgenden 
             max-width: 100%;
         }
     </style>
+{% endblock %}
 ```
 
 
