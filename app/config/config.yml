@@ -100,7 +100,6 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-    disable_delivery:  true
 
 services:
     twig.text_extension:

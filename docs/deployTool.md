@@ -25,6 +25,11 @@ Einmalig in der Konsole das Setup aufrufen.
 cap deploy:setup
 ```
 
+Assetic ausführen für min Files.
+```
+php app/console assetic:dump --env=prod --no-debug
+```
+
 ## Deploy
 1.
 Mit dem nachfolgenden Befehl kann Release auf dem Testserver gepushed werden.

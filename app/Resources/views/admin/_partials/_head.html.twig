@@ -29,14 +29,14 @@
     {% else %}
 
         {# create production file #}
-        {% stylesheets filter='cssrewrite' output='assets/compiled/adminApp.min.css'
-
-        'assets/vendor/bootstrap/dist/css/bootstrap.min.css'
-        'assets/vendor/AdminLTE/dist/css/AdminLTE.min.css'
-        'assets/vendor/datatables/media/css/dataTables.bootstrap.min.css'
-        'assets/vendor/font-awesome/css/font-awesome.css'
-        'assets/vendor/datatables.net-buttons-bs/css/buttons.bootstrap.min.css'
-        'assets/admin/css/ip-admin.css' %}
+        {% stylesheets output='assets/compiled/adminApp.min.css'
+            'assets/vendor/bootstrap/dist/css/bootstrap.min.css'
+            'assets/vendor/AdminLTE/dist/css/AdminLTE.min.css'
+            'assets/vendor/datatables/media/css/dataTables.bootstrap.min.css'
+            'assets/vendor/font-awesome/css/font-awesome.css'
+            'assets/vendor/datatables.net-buttons-bs/css/buttons.bootstrap.min.css'
+            'assets/admin/css/ip-admin.css'
+        %}
 
         <link rel="stylesheet" href="{{ asset_url }}">
         {% endstylesheets %}

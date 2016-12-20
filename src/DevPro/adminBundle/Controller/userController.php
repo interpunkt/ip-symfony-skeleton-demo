@@ -194,6 +194,11 @@ class userController extends Controller
            'id' => $id
         ));
 
+        if( ! $user)
+        {
+            throw $this->createNotFoundException('User not found on Password Reset Request!');
+        }
+
         $user->setConfirmationToken(uniqid());
         $user->setPasswordRequestedAt(new \DateTime("now"));
         $userManager->updateUser($user);
