@@ -184,10 +184,11 @@ class userController extends Controller
 //////////////////////////////////////////////////////////////////////////
     /**
      * @Route("/admin/user/password/resetrequest/{id}", name="admin_password_reset_request")
+     * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function requestNewPassword($id)
+    public function requestNewPassword(Request $request, $id)
     {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserBy(array(
@@ -204,6 +205,8 @@ class userController extends Controller
         $userManager->updateUser($user);
 
         $this->sendEmailForNewPasswordRequest($user);
+
+
 
         return $this->redirectToRoute('admin_user');
     }
