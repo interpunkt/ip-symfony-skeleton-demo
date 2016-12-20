@@ -205,7 +205,7 @@ class userController extends Controller
         $userManager->updateUser($user);
 
         $this->sendEmailForNewPasswordRequest($user);
-
+        $request->getSession()->getFlashBag()->add('success', 'Passwort Request erfolgt!');
 
 
         return $this->redirectToRoute('admin_user');
