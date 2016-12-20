@@ -19,13 +19,21 @@ class updateController extends Controller
      {
 
          $id = 1;
-        $data = $this->getDoctrine()->getRepository('DevProinterpunktBundle:update')
+         $data = $this->getDoctrine()->getRepository('DevProinterpunktBundle:update')
                 ->find($id);
 
          if( ! $data)
          {
-             throw $this->createNotFoundException('keine Daten gefunden');
+             // Insert row 1
+             $newVersion = new update();
+             $newVersion->setVersion(1);
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($newVersion);
+             $em->flush();
          }
+
+         $data = $this->getDoctrine()->getRepository('DevProinterpunktBundle:update')
+             ->find($id);
 
          $jsonResponse = $this->updateCheck($data);
 

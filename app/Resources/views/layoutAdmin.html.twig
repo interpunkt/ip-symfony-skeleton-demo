@@ -34,7 +34,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
-                            <a href="{{ path('admin_user_profil') }}">{{ app.user.email }}</a>
+                            <a href="{{ path('admin_user_update', { 'id' : app.user.id }) }}">{{ app.user.email }}</a>
                         </li>
                         <li>
                             <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a>
@@ -52,7 +52,7 @@
         <aside class="main-sidebar">
             <section class="sidebar">
                 <ul class="sidebar-menu">
-                    <li class="header">Seiten</li>
+                    <li class="header">Admin (Role)</li>
                     <li {% block navActiveUser %}{% endblock %} class="treeview">
                         <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i
                                     class="fa fa-angle-left pull-right"></i></a>
@@ -73,12 +73,11 @@
 
                     {#
                     ########################################################
-                        menu interpunkt: ROLE_SUPER_ADMIN
+                        menu interpunkt: ROLE_INTERPUNKT
                     ########################################################
                     #}
-
-                    {% if is_granted("ROLE_SUPER_ADMIN") %}
-                        <li class="header">Einstellugnen</li>
+                    {% if is_granted("ROLE_INTERPUNKT") %}
+                        <li class="header">Interpunkt (Role)</li>
                         <li {% block navActiveLess %}{% endblock %} class="treeview">
                             <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i
                                         class="fa fa-angle-left pull-right"></i></a>
