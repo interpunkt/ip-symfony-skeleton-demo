@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 class userType extends AbstractType

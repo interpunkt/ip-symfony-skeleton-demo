@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
