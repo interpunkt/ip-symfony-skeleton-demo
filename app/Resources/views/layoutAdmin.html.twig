@@ -61,9 +61,6 @@
                                 <a href="{{ path('admin_user') }}"><i class="fa fa-user-o"></i>
                                     <span>Benutzer</span></a>
                             </li>
-                            <li {% block navActiveUserSettings %}{% endblock %}>
-                                <a href="{{ path('admin_user_settings') }}"><i class="fa fa-french"></i> <span>Einstellungen</span></a>
-                            </li>
                             <li {% block navActiveUserMailSettings %}{% endblock %}><a
                                         href="{{ path('admin_user_mailsettings', { 'id' : 1 }) }}"><i
                                             class="fa fa-send"></i> <span>E-Mail Einstellungen</span></a>
@@ -78,31 +75,10 @@
                     #}
                     {% if is_granted("ROLE_INTERPUNKT") %}
                         <li class="header">Interpunkt (Role)</li>
-                        <li {% block navActiveLess %}{% endblock %} class="treeview">
-                            <a href="#"><i class="fa fa-cogs"></i> <span>Backend Styling</span> <i
-                                        class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="{{ path('admin_settings_less_edit', { id : 1 }) }}"><span>Basiskonfiguration</span></a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('admin_settings_less_typographie_edit', { id : 1 }) }}"><span>Typographie</span></a>
-                                </li>
-                            </ul>
-                        </li>
+                            <li {% block navActiveUpdate %}{% endblock %}>
+                                <a href="{{ path('admin_update') }}"><i class="fa fa-cogs"></i> <span>Update Skeleton</span></a>
+                            </li>
                     {% endif %}
-
-
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-cogs"></i> <span>SEO</span> <i
-                                    class="fa fa-angle-left pull-right"></i></a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><span>Link</span></a></li>
-                        </ul>
-                    </li>
-                    <li {% block navActiveUpdate %}{% endblock %}>
-                        <a href="{{ path('admin_update') }}"><i class="fa fa-cogs"></i> <span>Update Skeleton</span></a>
-                    </li>
                 </ul>
             </section>
         </aside>

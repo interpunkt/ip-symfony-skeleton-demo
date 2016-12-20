@@ -1,6 +1,6 @@
 set :application, "ip-symfony-skeleton"
 set :domain,      "ssh.netzone.ch"
-set :deploy_to,   "/htdocs/ip-symfony-skeleton-update.interpunkt-test.ch"
+set :deploy_to,   "/htdocs/skeleton.interpunkt-test.ch"
 set :app_path,    "app"
 
 set :repository,  "git@github.com:interpunkt/ip-symfony-skeleton.git"

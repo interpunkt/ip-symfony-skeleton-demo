@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: upload.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -149,32 +150,6 @@ jms_i18n_routing:
     default_locale: de
     locales: [de, en]
     strategy: prefix_except_default
-
-knp_gaufrette:
-    stream_wrapper: ~
-
-    adapters:
-        product_adapter:
-            local:
-                directory: %kernel.root_dir%/../web/uploads/images
-
-    filesystems:
-        product_image_fs:
-            adapter:    product_adapter
-
-vich_uploader:
-    db_driver: orm
-    storage:   gaufrette
-    mappings:
-        imageupload_image:
-            uri_prefix:         /uploads/images
-            upload_destination: product_image_fs
-            namer:              vich_uploader.namer_uniqid
-
-            inject_on_load:     true
-            delete_on_update:   true
-            delete_on_remove:   true
-
 
 ivory_ck_editor:
     default_config: default
