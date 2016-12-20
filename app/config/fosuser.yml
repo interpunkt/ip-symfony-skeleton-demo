@@ -1,0 +1,27 @@
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: DevPro\adminBundle\Entity\User
+    from_email:
+            address:        webmaster@example.com
+            sender_name:    webmaster
+    resetting:
+            token_ttl: 86400
+            email:
+                from_email: # Use this node only if you don't want the global email address for the resetting email
+                    address:        info@inter-punkt.ch
+                    sender_name:    Webmaster
+                template:   FOSUserBundle:Resetting:email.txt.twig
+            form:
+                type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
+                name:               fos_user_resetting_form
+                validation_groups:  [ResetPassword, Default]
+    service:
+            mailer:                 fos_user.mailer.default
+            email_canonicalizer:    fos_user.util.canonicalizer.default
+            username_canonicalizer: fos_user.util.canonicalizer.default
+            token_generator:        fos_user.util.token_generator.default
+            user_manager:           fos_user.user_manager.default
+    change_password:
+            form:
+                validation_groups: [myChangePassword]
