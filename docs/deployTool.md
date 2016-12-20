@@ -11,9 +11,10 @@ Als Deploy Tool wird Capifony verwendet.
 
 #### Testserver
 
-Auf dem Netzone Testserver die Subdomain anlegen. Root Ziel im Netzone Panel ist der Path 
-
+Auf dem Netzone Testserver die Subdomain anlegen. Root Ziel im Netzone Panel ist der Path: 
+```
 "htdocs/url/current/web"
+```
 
 #### Konsole
 
@@ -36,7 +37,4 @@ Das DevTool kann auf dem Bower nicht ausführen, daher muss der "assets/vendor" 
 hochgeladen werden.
 
 3.
-Datenbank Migration nach 1. Release.
-```
-cap deploy:doctrine:migrations:execute 20160909225036
-```
+Eure Datenbank am besten Manuel in PHPMyAdmin auf dem Testserver einspielen.
