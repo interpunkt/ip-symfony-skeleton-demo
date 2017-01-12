@@ -23,6 +23,10 @@ security:
             logout:
               path:   /logout
               target: /login
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /admin
 
 
     access_control:
@@ -31,5 +35,3 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/admin/interpunkt/, role: ROLE_INTERPUNKT }
-        - { path: ^/efconnect, role: ROLE_ADMIN }
-        - { path: ^/elfinder, role: ROLE_ADMIN }

@@ -41,11 +41,14 @@ class userController extends Controller
      */
      public function insertAction(Request $request)
      {
-         $user = new user();
-         $user->setPlainPassword(uniqid());
+         $userManager = $this->container->get('fos_user.user_manager');
+         $user = $userManager->createUser();
+         //$user = new user();
+         //$user->setPlainPassword(uniqid());
+
          $form = $this->createForm(new userType($this->get('service_container')), $user);
 
-        $result = $this->handleFormUploadNewUser($form, $request);
+        $result = $this->handleFormUploadNewUser($form, $request, $user);
 
         if($result)
         {
@@ -145,33 +148,36 @@ class userController extends Controller
      * @param $request
      * @return array
      */
-    public function handleFormUploadNewUser($form, $request)
+    public function handleFormUploadNewUser($form, $request, $user)
     {
         $form->handleRequest($request);
 
         if ($form->isValid() && $form->isSubmitted())
         {
-
+            $userManager = $this->container->get('fos_user.user_manager');
             $data = $form->getData();
 
             // generate a new Password with PWGen, Password length 6
             $password = $this->generateNewPassword(6);
 
             // get Usermanager
-            $userManager = $this->container->get('fos_user.user_manager');
-            $user = $userManager->createUser();
+            //$userManager = $this->container->get('fos_user.user_manager');
+            //$user = $userManager->createUser();
             $user->addRole('ROLE_ADMIN');
             $user->setEmail($data->getEmail());
             $user->setEnabled(true);
             $user->setUsername(uniqid());
             $user->setPlainPassword($password);
+            // $user->setSalt(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
+
+
+            $userManager->updateUser($user);
+            $this->getDoctrine()->getManager()->flush();
 
             $userData = array(
                 'email' => $data->getEmail(),
                 'password' => $password
             );
-
-            $userManager->updateUser($user);
 
             return $userData;
         }
