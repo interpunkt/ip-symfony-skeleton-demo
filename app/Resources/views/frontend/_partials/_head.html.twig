@@ -1,0 +1,28 @@
+{#
+########################################################
+    partial: head
+########################################################
+#}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {% block siteTitle %}
+        <title>IP Symfony Skeleton</title>
+    {% endblock %}
+
+    {# check for DEV mode #}
+    {% if app.environment == "dev" %}
+
+        <link rel="stylesheet" href="{{ asset('assets/frontend/css/main.css') }}">
+
+    {% else %}
+
+        <link rel="stylesheet" href="{{ asset('assets/compiled/frontendApp.min.css') }}">
+        <!--[if lt IE 10]>
+        <link rel="stylesheet" href="{{ asset('assets/compiled/frontendFallback.min.css') }}">
+        <![endif]-->
+
+    {% endif %}
+</head>

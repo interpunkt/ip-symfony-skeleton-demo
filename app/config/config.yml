@@ -2,11 +2,15 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: upload.yml }
+    - { resource: fosuser.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: de
+    image_path: uploads/images/
+    image_path_cropped: uploads/images/cropped/
 
 framework:
     #esi:             ~
@@ -33,6 +37,13 @@ framework:
 
 # Twig Configuration
 twig:
+    # ...
+    globals:
+        image_path: '/uploads/images/'
+        image_path_cropped: '/uploads/images/cropped/'
+    form_themes:
+        # other form themes
+        - 'VichUploaderBundle:Form:fields.html.twig'
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form:
@@ -90,41 +101,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-    disable_delivery:  true
 
 services:
     twig.text_extension:
         class: Twig_Extensions_Extension_Text
         tags:
-            - name: twig.extension
-
-fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: DevPro\adminBundle\Entity\User
-    from_email:
-            address:        webmaster@example.com
-            sender_name:    webmaster
-    resetting:
-            token_ttl: 86400
-            email:
-                from_email: # Use this node only if you don't want the global email address for the resetting email
-                    address:        info@inter-punkt.ch
-                    sender_name:    Webmaster
-                template:   FOSUserBundle:Resetting:email.txt.twig
-            form:
-                type:               FOS\UserBundle\Form\Type\ResettingFormType # or 'fos_user_resetting' on Symfony < 2.8
-                name:               fos_user_resetting_form
-                validation_groups:  [ResetPassword, Default]
-    service:
-            mailer:                 fos_user.mailer.default
-            email_canonicalizer:    fos_user.util.canonicalizer.default
-            username_canonicalizer: fos_user.util.canonicalizer.default
-            token_generator:        fos_user.util.token_generator.default
-            user_manager:           fos_user.user_manager.default
-    change_password:
-            form:
-                validation_groups: [myChangePassword]
+            - name: twig.extensiona
 
 jms_translation:
     configs:
@@ -141,106 +123,8 @@ jms_i18n_routing:
     locales: [de, en]
     strategy: prefix_except_default
 
-vich_uploader:
-    db_driver: orm
-    mappings:
-        imageupload_image:
-            uri_prefix:         /img/uploads
-            upload_destination: %kernel.root_dir%/../web/assets/img/uploads
-            namer:              vich_uploader.namer_origname
-
-            inject_on_load:     false
-            delete_on_update:   false
-            delete_on_remove:   false
-
-knp_paginator:
-    page_range: 5                      # default page range used in pagination control
-    default_options:
-        page_name: page                # page query parameter name
-        sort_field_name: sort          # sort field query parameter name
-        sort_direction_name: direction # sort direction query parameter name
-        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
-    template:
-        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig     # sliding pagination controls template
-        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
-
-
-fm_elfinder:
-    assets_path: /assets/vendor # default is /assets, this is where css/js elfinder files are
-    instances:
-        default:
-            locale: %locale% # defaults to current request locale
-            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
-            #editor_template: custom template for your editor # default null
-            path_prefix: '' # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
-            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
-            #theme: smoothness # jquery theme, default is 'smoothness'
-            include_assets: true # disable if you want to manage loading of javascript and css assets manually
-            #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
-            connector:
-                debug: true # defaults to false
-                binds:
-                  upload.presave:
-                      - Plugin.AutoResize.onUpLoadPreSave
-                  plugins:
-                    AutoResize: # global resize options, applies to root which don't have his own resize configuraion
-                        enable: true
-                        maxWidth: 400
-                        maxHeight: 400
-                        quality: 95 # JPEG image save quality
-                roots:       # at least one root must be defined, defines root filemanager directories
-                    uploads:
-                        #show_hidden: true|false # defaults to false, hides dotfiles
-                        driver: LocalFileSystem
-                        path: assets/uploads
-                        plugins:
-                            AutoResize:
-                                enable: true # For control by volume driver
-                                maxWidth: 300 # Path to Water mark image
-                                maxHeight: 300 # Margin right pixel
-                                quality: 95 # JPEG image save quality
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'application/pdf']
-                        upload_deny: ['all']
-                        upload_max_size: 2M # also file upload sizes restricted in php.ini
-                        #attributes: example of setting attributes permission
-                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
-                        url: /uploads
-
-        form:
-            locale: %locale% # defaults to current request locale
-            editor: form # other choices are tinymce or simple, and form
-            fullscreen: true # defaults true, applies to simple and ckeditor editors
-            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
-            connector:
-                binds:
-                      upload.presave:
-                          - Plugin.AutoResize.onUpLoadPreSave
-                          - Plugin.Thumbnails.generateThumbs
-                debug: false # defaults to false
-                roots:       # at least one root must be defined
-                    uploads:
-                        driver: LocalFileSystem
-                        path: assets/uploads
-                        plugins:
-                             AutoResize:
-                                 enable: true # For control by volume driver
-                                 maxWidth: 400 # Path to Water mark image
-                                 maxHeight: 400 # Margin right pixel
-                                 quality: 95 # JPEG image save quality
-                             Thumbnails:
-                                 enable: true
-                                 thumb_path: assets/uploads/ # root upload folder
-                                 thumb: 200|400|600
-                                 # thumb4: 400 # No folder will be created
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'application/pdf']
-                        upload_deny: ['all']
-                        upload_max_size: 2M
-
 ivory_ck_editor:
     default_config: default
     configs:
         default:
             toolbar: [ [ "Bold", "-", "Link", "-", "Unlink", "-", "Image" , "-", "Maximize" ] ]
-            filebrowserBrowseRoute: elfinder
-            filebrowserBrowseRouteParameters:
-                instance: default

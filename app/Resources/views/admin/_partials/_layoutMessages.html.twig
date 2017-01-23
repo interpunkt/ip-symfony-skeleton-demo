@@ -1,0 +1,41 @@
+{#
+########################################################
+    partial: flash-messages
+########################################################
+#}
+
+{% if app.session.flashBag.has('success') %}
+    <div class="flash-message">
+        <div class="alert alert-success alert-dismissible flash-message__wrapper">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> Success</h4>
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if app.session.flashBag.has('warning') %}
+    <div class="flash-message">
+        <div class="alert alert-warning alert-dismissible flash-message__wrapper">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-warning"></i> Warning</h4>
+            {% for msg in app.session.flashBag.get('warning') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if app.session.flashBag.has('failed') %}
+    <div class="flash-message">
+        <div class="alert alert-danger alert-dismissible flash-message__wrapper">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> Failure</h4>
+            {% for msg in app.session.flashBag.get('failed') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

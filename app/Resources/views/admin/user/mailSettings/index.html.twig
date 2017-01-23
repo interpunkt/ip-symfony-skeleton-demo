@@ -1,0 +1,70 @@
+{################################################
+    Layout Definition & Variables
+#################################################}
+
+{# Layout #}
+{% extends 'layoutAdmin.html.twig' %}
+
+{# Sidebar: Aktiver Link #}
+{% block navActiveUser %}class="active"{% endblock %}
+{% block navActiveUserMailSettings %}class="active"{% endblock %}
+
+{# Content-Header: Titel und optionale Description + Breadcrumps #}
+{% block pageHeader %}
+    {{ parent() }}
+
+    {# Seitentitel #}
+    {% block pageHeaderTitel %}{{ title }}{% endblock %}
+
+    {# Beschreibung neben Seitentitel #}
+    {% block pageHeaderDescription %}Eine Beschreibung{% endblock %}
+
+    {# Breadcrumb: Toplevel #}
+    {% block BreadcrumbMainLevel %}
+        <li><a href=""><i class="fa fa-sitemap"></i> {{ title }}</a></li>
+    {% endblock %}
+
+    {# Breadcrumb: Sublevel #}
+    {% block BreadcrumbMainLevelSubOne %}{% endblock %} {# No Sublevel here #}
+{% endblock %}
+
+
+{################################################
+    Block: content
+#################################################}
+
+{% block content %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        {# Button erstellen #}
+        <div class="box box-default">
+            <div class="box-body">
+                <div class="btn-group">
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">E-Mail Einstellungen</h3>
+                        <p>Hier können </p>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+    </section><!-- /.content -->
+{% endblock %}

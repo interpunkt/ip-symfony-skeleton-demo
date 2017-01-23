@@ -1,0 +1,32 @@
+//  --------------------------------------------------------
+//  global button overrides
+//  copyright 2015 - 2016 by inter-punkt.ag
+//  autor: selim imoberdorf
+//  --------------------------------------------------------
+
+//  --------------------------------------------------------
+//  overrides
+//  --------------------------------------------------------
+
+.btn-social > :first-child {
+    font-size: 1.2em;
+}
+
+//  --------------------------------------------------------
+//  default
+//  --------------------------------------------------------
+
+.btn-ip {
+    color            : #ffffff;
+    font-weight      : bold;
+    background-color : $color-primary;
+    border-color     : darken($color-primary, 5);
+    
+    &:active,
+    &:focus,
+    &:hover {
+        color            : #ffffff;
+        background-color : darken($color-primary, 5);
+        border-color     : darken($color-primary, 10);
+    }
+}

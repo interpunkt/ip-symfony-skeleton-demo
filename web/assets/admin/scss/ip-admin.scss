@@ -1,0 +1,27 @@
+//  --------------------------------------------------------
+//  global admin app scss
+//  copyright 2015 - 2016 by inter-punkt.ag
+//  autor: selim imoberdorf
+//  --------------------------------------------------------
+
+@charset "UTF-8";
+
+//  --------------------------------------------------------
+//  01: settings
+//  --------------------------------------------------------
+@import "_settings/colors";
+@import "_settings/layouts";
+
+//  --------------------------------------------------------
+//  02: components
+//  --------------------------------------------------------
+@import "_components/login";
+@import "_components/flashMessages";
+
+//  --------------------------------------------------------
+//  03: overrides
+//  --------------------------------------------------------
+@import "_overrides/adminlteSkin";
+@import "_overrides/links";
+@import "_overrides/buttons";
+@import "_overrides/datatables";

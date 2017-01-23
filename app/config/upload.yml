@@ -1,0 +1,25 @@
+# Vich Upload Bundle Config File, Gaufrette File System included
+knp_gaufrette:
+    stream_wrapper: ~
+
+    adapters:
+        product_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/uploads/images
+
+    filesystems:
+        product_image_fs:
+            adapter:    product_adapter
+
+vich_uploader:
+    db_driver: orm
+    storage:   gaufrette
+    mappings:
+        imageupload_image:
+            uri_prefix:         /uploads/images
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
+
+            inject_on_load:     true
+            delete_on_update:   true
+            delete_on_remove:   true

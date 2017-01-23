@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+   ____      __                                  __    __         ___   _____
+  /  _/___  / /_ ___   ____   ___  __ __  ___   / /__ / /_       / _ | / ___/
+ _/ / / _ \/ __// -_) / __/  / _ \/ // / / _ \ /  '_// __/      / __ |/ (_ /
+/___//_//_/\__/ \__/ /_/    / .__/\_,_/ /_//_//_/\_\ \__/      /_/ |_|\___/
+
+-->
+
+<html lang="de">
+{% block head %}
+    {% include '/admin/_partials/_head.html.twig' %}
+{% endblock %}
+
+<body class="hold-transition sidebar-mini ip-skin">
+
+{# START: Layout Wrapper #}
+<div class="wrapper">
+
+    {# START: Layout Header #}
+    {% block layoutHeader %}
+
+        <header class="main-header">
+            <a href="{{ path('admin_index') }}" class="logo">
+                <span class="logo-mini"><b>ip</b></span>
+                <span class="logo-lg"><b>inter-punkt.</b> ag</span>
+            </a>
+
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a href="{{ path('admin_user_update', { 'id' : app.user.id }) }}">{{ app.user.email }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    {% endblock %}
+    {# END: Layout Header #}
+
+    {# START: Layout NavBar #}
+    {% block layoutNavBar %}
+
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="header">Admin (Role)</li>
+                    <li {% block navActiveUser %}{% endblock %} class="treeview">
+                        <a href="#"><i class="fa fa-user"></i> <span>Benutzerverwaltung</span> <i
+                                    class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li {% block navActiveUserUser %}{% endblock %}>
+                                <a href="{{ path('admin_user') }}"><i class="fa fa-user-o"></i>
+                                    <span>Benutzer</span></a>
+                            </li>
+                            <li {% block navActiveUserMailSettings %}{% endblock %}><a
+                                        href="{{ path('admin_user_mailsettings', { 'id' : 1 }) }}"><i
+                                            class="fa fa-send"></i> <span>E-Mail Einstellungen</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {#
+                    ########################################################
+                        menu interpunkt: ROLE_INTERPUNKT
+                    ########################################################
+                    #}
+                    {% if is_granted("ROLE_INTERPUNKT") %}
+                        <li class="header">Interpunkt (Role)</li>
+                            <li {% block navActiveUpdate %}{% endblock %}>
+                                <a href="{{ path('admin_update') }}"><i class="fa fa-cogs"></i> <span>Update Skeleton</span></a>
+                            </li>
+                    {% endif %}
+                </ul>
+            </section>
+        </aside>
+    {% endblock %}
+    {# END: Layout NavBar #}
+
+    {# START: Content Wrapper #}
+    <div class="content-wrapper">
+
+        {# START: Content Header #}
+        {% block contentHeader %}
+            <section class="content-header">
+                <h1>
+                    {% block pageHeaderTitel %}Page Header{% endblock %}
+                    <small>{% block pageHeaderDescription %}Optional description{% endblock %}</small>
+                </h1>
+                <ol class="breadcrumb">
+                    {% block BreadcrumbMainLevel %}
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap"></i> Level</a>
+                        </li>{% endblock %}
+                    {% block BreadcrumbMainLevelSubOne %}
+                        <li class="active">Here</li>{% endblock %}
+                </ol>
+            </section>
+        {% endblock %}
+        {# END: Content Header #}
+
+        {# START: Content Main #}
+        {% block content %}{% endblock %}
+        {# END: Content Main #}
+
+        {# Flash Message Block #}
+        {% block flashMessage %}
+            {% include '/admin/_partials/_layoutMessages.html.twig' %}
+        {% endblock %}
+    </div>
+    {# END: Content Wrapper #}
+
+    {# START: Layout Footer #}
+    {% block footer %}
+        {% include '/admin/_partials/_layoutFooter.html.twig' %}
+    {% endblock %}
+    {# END: Layout Footer #}
+
+</div>
+{# END: Layout Wrapper #}
+
+{% block layoutScripts %}
+    {% include '/admin/_partials/_scripts.html.twig' %}
+{% endblock %}
+</body>
+</html>

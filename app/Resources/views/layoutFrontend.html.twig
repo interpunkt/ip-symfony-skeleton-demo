@@ -1,0 +1,22 @@
+{#
+########################################################
+    template: frontend
+########################################################
+#}
+
+<!DOCTYPE html>
+<html lang="de">
+
+{# include: head #}
+{% include '/frontend/_partials/_head.html.twig' %}
+<body>
+
+{# include: fallback text #}
+{% include '/frontend/_partials/_fallback.html.twig' %}
+
+<h1>Your IP Symfony Skeleton is working!</h1>
+
+{# include: scripts (libs & js) #}
+{% include '/frontend/_partials/_scripts.html.twig' %}
+</body>
+</html>

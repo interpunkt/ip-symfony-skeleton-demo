@@ -1,0 +1,72 @@
+{################################################ 
+    Partial: JS files for layout
+#################################################}
+
+{# check for dev mode #}
+{% if app.environment == "dev" %}
+
+    {# dev files list #}
+
+    {# vendor: dependencies via bower.json --> bower install --save [Modulname] #}
+    <script src="{{ asset('assets/vendor/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery-ui/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/vendor/AdminLTE/dist/js/app.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/vendor/webfontloader/webfontloader.js') }}"></script>
+
+    {# DataTables Buttons for Export: CSV, Excel, PDF, Print and Copy #}
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.html5.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.print.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.colVis.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jszip/dist/jszip.js') }}"></script>
+    <script src="{{ asset('assets/vendor/pdfmake/build/pdfmake.js') }}"></script>
+    <script src="{{ asset('assets/vendor/pdfmake/build/vfs_fonts.js') }}"></script>
+
+
+    {# ip: interpunkt css file --> build trough gulp task #}
+    <script src="{{ asset('assets/admin/js/ip-characterCounter.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ip-dataTables.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/ip-flashMessages.js') }}"></script>
+
+    <script>
+        $("#blog_image").change(function () {
+            console.log('image changed!');
+            $("#img_preview").attr('src', $("#blog_image").val());
+        });
+    </script>
+
+{% else %}
+
+    {# create production file #}
+    {% javascripts
+        'assets/vendor/jquery/dist/jquery.min.js'
+        'assets/vendor/jquery-ui/jquery-ui.min.js'
+        'assets/vendor/bootstrap/dist/js/bootstrap.min.js'
+        'assets/vendor/AdminLTE/dist/js/app.min.js'
+        'assets/vendor/datatables.net/js/jquery.dataTables.min.js'
+        'assets/vendor/datatables-bootstrap/3/dataTables.bootstrap.min.js'
+        'assets/vendor/ckeditor/ckeditor.js'
+        'assets/vendor/webfontloader/webfontloader.js'
+        'assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.flash.min.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.html5.min.js'
+        'assets/vendor/datatables.net-buttons/js/buttons.print.min.js'
+        'assets/vendor/jszip/dist/jszip.min.js'
+        'assets/vendor/pdfmake/build/pdfmake.min.js'
+        'assets/vendor/pdfmake/build/vfs_fonts.js'
+
+        'assets/admin/js/ip-main.js'
+        'assets/admin/js/ip-dataTables.js'
+        'assets/admin/js/ip-characterCounter.js'
+        'assets/admin/js/ip-flashMessages.js'
+
+    output='assets/compiled/adminApp.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endif %}

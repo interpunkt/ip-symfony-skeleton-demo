@@ -1,0 +1,222 @@
+//  --------------------------------------------------------
+//  override AdminLTE skin
+//  copyright 2015 - 2016 by inter-punkt.ag
+//  autor: selim imoberdorf
+//  --------------------------------------------------------
+
+//  --------------------------------------------------------
+//  default elements
+//  --------------------------------------------------------
+
+body {
+    background : $color-white;
+}
+
+//  --------------------------------------------------------
+//  ip-skins
+//  --------------------------------------------------------
+
+.ip-skin .main-header .navbar {
+    background-color : $color-primary;
+}
+
+.ip-skin .main-header .navbar .nav > li {
+    font-weight : bold;
+    border-left : 1px solid darken($color-primary, 5);
+}
+
+.ip-skin .main-header .navbar .nav > li > a {
+    color : $color-white;
+}
+
+.ip-skin .main-header .navbar .nav > li > a:hover,
+.ip-skin .main-header .navbar .nav > li > a:active,
+.ip-skin .main-header .navbar .nav > li > a:focus,
+.ip-skin .main-header .navbar .nav .open > a,
+.ip-skin .main-header .navbar .nav .open > a:hover,
+.ip-skin .main-header .navbar .nav .open > a:focus,
+.ip-skin .main-header .navbar .nav > .active > a {
+    background : darken($color-primary, 5);
+    color      : $color-white;
+}
+
+.ip-skin .main-header .navbar .sidebar-toggle {
+    color : $color-white;
+}
+
+.ip-skin .main-header .navbar .sidebar-toggle:hover {
+    color      : $color-white;
+    background : rgba($color-black, 0.1);
+}
+
+.ip-skin .main-header .navbar .sidebar-toggle {
+    color        : $color-white;
+    border-right : 1px solid darken($color-primary, 5);
+}
+
+.ip-skin .main-header .navbar .sidebar-toggle:hover {
+    background-color : darken($color-primary, 5);
+}
+
+@media (max-width : 767px) {
+    .ip-skin .main-header .navbar .dropdown-menu li.divider {
+        background-color : rgba($color-white, 0.1);
+    }
+    .ip-skin .main-header .navbar .dropdown-menu li a {
+        color : $color-white;
+    }
+    .ip-skin .main-header .navbar .dropdown-menu li a:hover {
+        background : $color-primary;
+    }
+}
+
+.ip-skin .main-header .logo {
+    color            : $color-white;
+    border-right     : 1px solid darken($color-primary, 5);
+    background-color : $color-primary;
+}
+
+.ip-skin .main-header .logo:hover {
+    background-color : darken($color-primary, 5);
+}
+
+.ip-skin .main-header li.user-header {
+    background-color : $color-primary;
+}
+
+.ip-skin .navbar-custom-menu li {
+    border-left : 1px solid $color-primary;
+}
+
+.ip-skin .content-header {
+    background : transparent;
+}
+
+.ip-skin .wrapper,
+.ip-skin .main-sidebar,
+.ip-skin .left-side {
+    background-color : $color-accent-dark;
+}
+
+.ip-skin .user-panel > .info,
+.ip-skin .user-panel > .info > a {
+    color : $color-white;
+}
+
+.ip-skin .sidebar-menu > li.header {
+    color            : rgba($color-white, 0.5);
+    background-color : darken($color-accent-dark, 5);
+}
+
+.ip-skin .sidebar-menu > li > a {
+    border-left : 3px solid transparent;
+}
+
+.ip-skin .sidebar-menu > li:hover > a,
+.ip-skin .sidebar-menu > li.active > a {
+    color             : $color-white;
+    background        : $color-accent-dark;
+    border-left-color : $color-primary;
+}
+
+.ip-skin .sidebar-menu > li > .treeview-menu {
+    margin     : 0 1px;
+    background : lighten($color-accent-dark, 5);
+}
+
+.ip-skin .sidebar a {
+    color : $color-accent-light;
+}
+
+.ip-skin .sidebar a:hover {
+    text-decoration : none;
+}
+
+.ip-skin .treeview-menu > li > a {
+    color : $color-accent-light;
+}
+
+.ip-skin .treeview-menu > li.active > a,
+.ip-skin .treeview-menu > li > a:hover {
+    color : $color-white;
+}
+
+.ip-skin .sidebar-form {
+    border-radius : 3px;
+    border        : 1px solid $color-accent-medium;
+    margin        : 10px 10px;
+}
+
+.ip-skin .sidebar-form input[type="text"],
+.ip-skin .sidebar-form .btn {
+    box-shadow         : none;
+    background-color   : $color-accent-medium;
+    border             : 1px solid transparent;
+    height             : 35px;
+    -webkit-transition : all 0.3s ease-in-out;
+    transition         : all 0.3s ease-in-out;
+}
+
+.ip-skin .sidebar-form input[type="text"] {
+    color                      : $color-gray-medium;
+    border-top-left-radius     : 2px;
+    border-top-right-radius    : 0;
+    border-bottom-right-radius : 0;
+    border-bottom-left-radius  : 2px;
+}
+
+.ip-skin .sidebar-form input[type="text"]:focus,
+.ip-skin .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color : $color-white;
+    color            : $color-gray-medium;
+}
+
+.ip-skin .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    border-left-color : $color-white;
+}
+
+.ip-skin .sidebar-form .btn {
+    color                      : $color-gray-light;
+    border-top-left-radius     : 0;
+    border-top-right-radius    : 2px;
+    border-bottom-right-radius : 2px;
+    border-bottom-left-radius  : 0;
+}
+
+.ip-skin.layout-top-nav .main-header > .logo {
+    background-color : $color-primary;
+    color            : $color-white;
+    border-bottom    : 0 solid transparent;
+}
+
+.ip-skin.layout-top-nav .main-header > .logo:hover {
+    background-color : $color-primary;
+}
+
+//  --------------------------------------------------------
+//  box layouts
+//  --------------------------------------------------------
+
+.box.box-default {
+    border-top-color : $color-primary;
+}
+
+.box-header > .fa,
+.box-header > .glyphicon,
+.box-header > .ion,
+.box-header .box-title {
+    line-height : 1.5;
+}
+
+//  --------------------------------------------------------
+//  tables
+//  --------------------------------------------------------
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    vertical-align : middle;
+}

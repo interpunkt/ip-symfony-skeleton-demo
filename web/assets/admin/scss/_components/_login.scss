@@ -1,0 +1,70 @@
+//  --------------------------------------------------------
+//  component login site
+//  copyright 2015 - 2016 by inter-punkt.ag
+//  autor: selim imoberdorf
+//  --------------------------------------------------------
+
+.login {
+    height           : 100vh;
+    display          : flex;
+    flex-flow        : row nowrap;
+    justify-content  : center;
+    align-items      : center;
+    position         : relative;
+    
+    background-color : $color-white;
+    background       : linear-gradient(-45deg, $color-accent-dark 0%, $color-primary 100%) no-repeat fixed;
+    background-size  : cover;
+    
+    &__content {
+        flex      : 0 1 640px;
+        max-width : 640px;
+        padding   : 20px;
+    }
+    
+    &__box {
+        &:after {
+            content  : '';
+            top      : 0;
+            right    : 0;
+            bottom   : 0;
+            left     : 0;
+            position : absolute;
+        }
+        
+        &:after {
+            top        : 50%;
+            right      : 40px;
+            left       : 40px;
+            z-index    : -2;
+            box-shadow : 0px 2px 60px 0px rgba($color-black, 0.8), 0px 2px 60px 0px rgba($color-primary, 0.8);
+        }
+    }
+    
+    &__badge {
+        position  : fixed;
+        display   : block;
+        overflow  : hidden;
+        padding   : 2px;
+        left      : 50%;
+        bottom    : 40px;
+        opacity   : 0.75;
+        transform : translateX(-50%);
+        
+        &:focus,
+        &:hover {
+            opacity : 1;
+        }
+        
+        > svg {
+            fill    : $color-white;
+            display : block;
+            width   : 40px;
+            height  : 40px;
+        }
+    }
+    
+    input {
+        @extend %transition;
+    }
+}

@@ -8,72 +8,100 @@
 //  dependencies
 var gulp = require('gulp');
 
+//  packages
+var autoprefixer = require('gulp-autoprefixer');
+var concat = require('gulp-concat');
+var nano = require('gulp-cssnano');
+var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
+
 //  browsersync
 var browserSync = require('browser-sync').create();
 
-//  packages
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var less = require('gulp-less');
-
-//  definition: for less files
-var LessPluginCleanCSS = require('less-plugin-clean-css'),
-    LessPluginAutoPrefix = require('less-plugin-autoprefix'),
-    cleancss = new LessPluginCleanCSS({ advanced: true }),
-    autoprefix = new LessPluginAutoPrefix({ browsers: ['> 2%', 'last 2 versions', 'Firefox ESR'] });
-
-
 //  task: browsersync
-gulp.task('serve', ['less'], function () {
-  browserSync.init({
-    proxy: 'localhost:8000'
-  });
+gulp.task('serve', ['sassAdmin', 'sassFrontend'], function () {
+    browserSync.init({
+        proxy: '127.0.0.1:8000'
+    });
 
-  gulp.watch('web/assets/backend/_build/**/*.less', ['less']);
-  gulp.watch('app/Resources/views/**/*.twig').on('change', browserSync.reload);
+    gulp.watch('web/assets/**/*.scss', ['sassAdmin', 'sassFrontend']);
+    gulp.watch('app/Resources/**/*.twig').on('change', browserSync.reload);
 });
 
-//  task: less
-gulp.task('less', function () {
-  gulp.src([
-    'web/assets/backend/_build/less/AdminLTE.less',
-    'web/assets/backend/_build/less/skins/skin-interpunkt.less'])
-    .pipe(sourcemaps.init())
-    .pipe(less({
-      plugins: [autoprefix]
-    }))
-    .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('web/assets/backend/_build/css'))
-    .pipe(browserSync.stream());
+//  task: sass admin
+gulp.task('sassAdmin', function () {
+    gulp.src('web/assets/admin/scss/ip-admin.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass.sync({
+            outputStyle: 'expanded', precision: 10, includePaths: ['.']
+        }).on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
+        }))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('web/assets/admin/css'))
+        .pipe(browserSync.stream());
 });
 
-//  build-task: styles
+//  task: sass frontend
+gulp.task('sassFrontend', function () {
+    gulp.src('web/assets/frontend/scss/main.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass.sync({
+            outputStyle: 'expanded', precision: 10, includePaths: ['.']
+        }).on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
+        }))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(gulp.dest('web/assets/frontend/css'))
+        .pipe(browserSync.stream());
+});
+
+//  build-task: frontend styles
 gulp.task('styles', function () {
-  gulp.src([
-    'web/assets/backend/_build/less/AdminLTE.less',
-    'web/assets/backend/_build/less/skins/skin-interpunkt.less'])
-    .pipe(less({
-      plugins: [autoprefix, cleancss]
-    }))
-    .pipe(concat('main.css'))
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('web/assets/backend/css'));
+    gulp.src('web/assets/frontend/scss/main.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('frontendApp.css'))
+        .pipe(autoprefixer({
+            browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
+        }))
+        .pipe(nano({
+            discardComments: {
+                removeAll: true
+            }
+        }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('web/assets/compiled'));
 });
 
-//  build-task: scripts
-gulp.task('scripts', function () {
-  gulp.src(['web/assets/backend/_build/js/**/*.js'])
-    .pipe(concat('app.js'))
-    .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('web/assets/backend/js'));
+//  build-task: frontend fallback
+gulp.task('fallback', function () {
+    gulp.src('web/assets/frontend/scss/fallback.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('frontendFallback.css'))
+        .pipe(autoprefixer({
+            browsers: ['> 2%', 'last 2 versions', 'Firefox ESR']
+        }))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('web/assets/compiled'));
+});
+
+//  build-task: frontend js
+gulp.task('js', function () {
+    gulp.src(['web/assets/frontend/js/main.js'])
+        .pipe(concat('frontendApp.js'))
+        .pipe(uglify())
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('web/assets/compiled'));
 });
 
 //  tasks: gulp
@@ -83,4 +111,4 @@ gulp.task('scripts', function () {
 gulp.task('default', ['serve']);
 
 //  task: build
-gulp.task('build', ['styles', 'scripts']);
+gulp.task('build', ['styles', 'fallback', 'js']);
