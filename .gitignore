@@ -32,3 +32,4 @@ node_modules
 !/web/uploads/documents/.gitkeep
 !/web/uploads/images/.gitkeep
 !/web/uploads/media/.gitkeep
+!/web/uploads/images/cropped/.gitkeep
