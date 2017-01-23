@@ -29,6 +29,8 @@ Installation vom neu angelegten Repository
 1. git clone https://github.com/interpunkt/new-repositoy
 2. bower install
 3. composer install
+3.1 npm install
+3.2 gulp
 4. Datenbank Name setzen in parameters_dev.yml
 4.1 php app/console doctrine:database:create
 5. php app/console doctrine:schema:update --force
@@ -39,6 +41,5 @@ Installation vom neu angelegten Repository
 ### Use
 localhost:8000 -> Frontend
 localhost:8000/admin/ -> Backend/admin
-localhost:8000/register/ -> register a new User (need to set a higher ROLE if he need access to the backend
 localhost:8000/login/ -> Login Window
 localhost:8000/_trans/ -> translationUI to set your translations
