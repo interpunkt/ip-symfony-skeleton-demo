@@ -14,7 +14,7 @@ use DevPro\adminBundle\DependencyInjection\PWGen;
 class userController extends Controller
 {
     /**
-     * @Route("/admin/user", name="admin_user")
+     * @Route(" /admin/user", name="admin_user")
      * @return RedirectResponse|Response
      */
      public function indexAction()
@@ -342,7 +342,7 @@ class userController extends Controller
         $data = $this->getDoctrine()->getRepository('DevProadminBundle:user')
             ->find($this->getUser()->getId());
 
-        $form = $this->createForm(userType::class, $data);
+        $form = $this->createForm(profileType::class, $data);
 
         $result = $this->handleFormUpload($form, $request);
 
