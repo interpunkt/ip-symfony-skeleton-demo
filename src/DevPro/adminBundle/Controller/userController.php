@@ -3,35 +3,35 @@ namespace DevPro\adminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use DevPro\adminBundle\Form\Type\userType;
 use DevPro\adminBundle\Entity\User;
 use DevPro\adminBundle\DependencyInjection\PWGen;
-use DevPro\adminBundle\Form\Type\userProfilChangePasswordType;
-
 
 class userController extends Controller
 {
     /**
      * @Route("/admin/user", name="admin_user")
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
      public function indexAction()
      {
         $data = $this->getDoctrine()->getRepository('DevProadminBundle:user')
-                ->findBy(array(), array(
-                    'id' => 'DESC'
-                ));
+            ->findBy(array(), array(
+                'id' => 'DESC'
+            ));
 
-                $html = $this->renderView(
-                    'admin/user/index.html.twig', array(
-                        'data' => $data,
-                        'title' => 'user'
-                    )
-                );
+            $html = $this->renderView(
+                'admin/user/index.html.twig', array(
+                    'data' => $data,
+                    'title' => 'user'
+                )
+            );
 
-                return new Response($html);
+        return new Response($html);
      }
 
     /**
@@ -39,14 +39,14 @@ class userController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-     public function insertAction(Request $request)
-     {
-         $userManager = $this->container->get('fos_user.user_manager');
-         $user = $userManager->createUser();
-         //$user = new user();
-         //$user->setPlainPassword(uniqid());
+    public function insertAction(Request $request)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        //$user = new user();
+        //$user->setPlainPassword(uniqid());
 
-         $form = $this->createForm(new userType($this->get('service_container')), $user);
+        $form = $this->createForm(new userType($this->get('service_container')), $user);
 
         $result = $this->handleFormUploadNewUser($form, $request, $user);
 
@@ -68,87 +68,87 @@ class userController extends Controller
         );
 
         return new Response($html);
-     }
+    }
+
     /**
-     * @Route("/admin/user/update/{id}", name="admin_user_update")
-     * @param Request $request
-     * @param User $user
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     */
-      public function updateAction(Request $request, User $user, $id)
-      {
-            $form = $this->createForm(new userType($this->get('service_container')), $user);
+    * @Route("/admin/user/update/{id}", name="admin_user_update")
+    * @param Request $request
+    * @param User $user
+    * @param $id
+    * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+    */
+    public function updateAction(Request $request, User $user, $id)
+    {
+        $form = $this->createForm(new userType($this->get('service_container')), $user);
 
-            $result = $this->handleFormUpload($form, $request);
+        $result = $this->handleFormUpload($form, $request);
 
-            if($result)
-            {
-                $this->addFlash('success', 'Benutzer erfolgreich gespeichert');
-                return $this->redirectToRoute('admin_user');
-            }
-
-            $html = $this->renderView(
-                'admin/user/update.html.twig', array(
-                    "form" => $form->createView(),
-                    'id' => $id,
-                    'title' => 'Benutzer'
-                )
-            );
-
-            return new Response($html);
+        if($result)
+        {
+            $this->addFlash('success', 'Benutzer erfolgreich gespeichert');
+            return $this->redirectToRoute('admin_user');
         }
-    
-    
 
+        $html = $this->renderView(
+            'admin/user/update.html.twig', array(
+                "form" => $form->createView(),
+                'id' => $id,
+                'title' => 'Benutzer'
+            )
+        );
+
+        return new Response($html);
+    }
 
     /**
      * @Route("/admin/user/delete/{id}", name="admin_user_delete")
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-       public function deleteAction($id, User $user)
-       {
-           if( ! $user)
-           {
-               throw $this->createNotFoundException('user nicht gefunden, ID: ' . $id);
-           }
+    public function deleteAction($id, User $user)
+    {
+        if(!$user)
+        {
+           throw $this->createNotFoundException('user nicht gefunden, ID: ' . $id);
+        }
 
-           $em = $this->getDoctrine()->getManager();
-           $em->remove($user);
-           $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
 
-           $this->addFlash('success', 'Benutzer wurde gelöscht');
+        $this->addFlash('success', 'Benutzer wurde gelöscht');
 
-           return $this->redirectToRoute('admin_user');
-       }
+        return $this->redirectToRoute('admin_user');
+    }
 
     /**
-     * @param $form
+     * @param Form $form
      * @param $request
      * @return bool
      */
-    public function handleFormUpload($form, $request)
+    public function handleFormUpload(Form $form, $request)
+    {
+        $form->handleRequest($request);
+
+        if ($form->isValid() && $form->isSubmitted())
         {
-            $form->handleRequest($request);
-            if ($form->isValid() && $form->isSubmitted())
-            {
-                $data = $form->getData();
+            $data = $form->getData();
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($data);
-                $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
 
-                return true;
-            }
+            return true;
         }
+    }
 
     /**
-     * @param $form
-     * @param $request
+     * @param Form $form
+     * @param Request $request
+     * @param User $user
      * @return array
      */
-    public function handleFormUploadNewUser($form, $request, $user)
+    public function handleFormUploadNewUser(Form $form, Request $request, User $user)
     {
         $form->handleRequest($request);
 
@@ -170,7 +170,6 @@ class userController extends Controller
             $user->setPlainPassword($password);
             // $user->setSalt(base_convert(sha1(uniqid(mt_rand(), true)), 16, 36));
 
-
             $userManager->updateUser($user);
             $this->getDoctrine()->getManager()->flush();
 
@@ -184,10 +183,10 @@ class userController extends Controller
     }
 
 
-//////////////////////////////////////////////////////////////////////////
-// Erweiterung UserController spezifisch
-// Da eine Benutzerverwaltung in allen Projekten vorhanden ist befindet sich dieser teil im Core der Applikation.
-//////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////
+    // Erweiterung UserController spezifisch
+    // Da eine Benutzerverwaltung in allen Projekten vorhanden ist befindet sich dieser teil im Core der Applikation.
+    //////////////////////////////////////////////////////////////////////////
     /**
      * @Route("/admin/user/password/resetrequest/{id}", name="admin_password_reset_request")
      * @param Request $request
@@ -400,11 +399,11 @@ class userController extends Controller
     }
 
     /**
-     * @param $form
+     * @param Form $form
      * @param $request
      * @return bool
      */
-    public function handleFormUploadChangePassword($form, $request)
+    public function handleFormUploadChangePassword(Form $form, Request $request)
     {
         $form->handleRequest($request);
         if ($form->isValid() && $form->isSubmitted())
