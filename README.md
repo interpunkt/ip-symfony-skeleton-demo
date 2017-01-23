@@ -15,7 +15,7 @@ MySQL
 ip-symfony-skeleton in ein neues Repository auf Github pushen.
 
 ```
-1. git clone --bare https://github.com/benblub/devpro_page
+1. git clone --bare https://github.com/interpunkt/ip-symfony-skeleton
 2. cd old-repository.git
 3. git push --mirror https://github.com/exampleuser/new-repository.git
 4. cd ..
