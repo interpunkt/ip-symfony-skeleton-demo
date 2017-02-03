@@ -88,11 +88,12 @@ doctrine:
 
     orm:
         entity_managers:
-                    default:
-                        mappings:
-                            FOSUserBundle: ~
-                            DevProadminBundle: ~
-                            DevProinterpunktBundle: ~
+            default:
+                mappings:
+                    FOSUserBundle: ~
+                    DevProadminBundle: ~
+                    DevProinterpunktBundle: ~
+                    DevProFrontendBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
