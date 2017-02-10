@@ -26,7 +26,7 @@ ip-symfony-skeleton in ein neues Repository auf Github pushen.
 
 Installation vom neu angelegten Repository
 ```
-1. git clone https://github.com/interpunkt/new-repositoy
+1. git clone https://github.com/interpunkt/new-repositoy ./
 2. bower install
 3. composer install
 3.1 npm install
