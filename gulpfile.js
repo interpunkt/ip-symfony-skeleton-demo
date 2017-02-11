@@ -21,14 +21,14 @@ var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
 
 //  task: browsersync
-gulp.task('serve', ['sassAdmin', 'sassFrontend'], function () {
-    browserSync.init({
-        proxy: '127.0.0.1:8000'
-    });
+//gulp.task('serve', ['sassAdmin', 'sassFrontend'], function () {
+//    browserSync.init({
+//        proxy: '127.0.0.1:8000'
+//    });
 
-    gulp.watch('web/assets/**/*.scss', ['sassAdmin', 'sassFrontend']);
-    gulp.watch('app/Resources/**/*.twig').on('change', browserSync.reload);
-});
+//    gulp.watch('web/assets/**/*.scss', ['sassAdmin', 'sassFrontend']);
+//    gulp.watch('app/Resources/**/*.twig').on('change', browserSync.reload);
+//});
 
 //  task: sass admin
 gulp.task('sassAdmin', function () {
@@ -111,4 +111,4 @@ gulp.task('js', function () {
 gulp.task('default', ['serve']);
 
 //  task: build
-gulp.task('build', ['styles', 'fallback', 'js']);
+gulp.task('build', ['styles', 'fallback', 'js', 'sassAdmin', 'sassFrontend']);
