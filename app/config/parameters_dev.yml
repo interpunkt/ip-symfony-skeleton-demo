@@ -2,9 +2,9 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: ip-symfony-skeleton
-    database_user: root
-    database_password: null
+    database_name: ip_symfony_skeleton
+    database_user: interpunkt
+    database_password: interpunkt
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
