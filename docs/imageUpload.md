@@ -44,6 +44,15 @@ twig:
 <img src="{{ asset(image_path_cropped~items.bildName) }}" alt="{{ bildName }}">
 ```
 
+## Twig Filter Erweiterung intervention.io
+### resize
+width or height angeben. Aktuell eingestellt prevent upsize & aspectRatio.
+
+Twig Filter: resize
+```
+<img src="{{ asset('uploads/images/image.jpg'|resize(500, null)) }}">
+```
+
 ## Forms
 
 Im Form Type den Vich Type verwenden.
