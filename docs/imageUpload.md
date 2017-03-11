@@ -78,7 +78,7 @@ Twig Filter: fit( $width, $height )
 
 Im Form Type den Vich Type verwenden.
 
-```
+```php
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
             ->add('bildDatei', VichImageType::class, array(
@@ -95,7 +95,7 @@ In der Config.yml kann der Image Path für die zugeschnittenen Bilder angepasst 
 gesetzt. Der EventListener speichert das zugeschnittene Bild. Im Standard Controller müssen keine weiteren Einstellungen vorgenommen werden.
 
 Pfad zum EventListener
-```
+```php
 src/DevPro/adminBundle/EventListener/UploadedFileListener.php
 ```
 
@@ -103,7 +103,7 @@ src/DevPro/adminBundle/EventListener/UploadedFileListener.php
 
 Damit der Cropper im View nach Auswahl des Bildes angezeigt wird, nachfolgenden Code in das Twig File einfügen.
 
-```
+```javascript
 {% block layoutScripts %}
     {{ parent() }}
     
