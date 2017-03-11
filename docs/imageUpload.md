@@ -44,7 +44,11 @@ twig:
 <img src="{{ asset(image_path_cropped~items.bildName) }}" alt="{{ bildName }}">
 ```
 
-## Twig Filter Erweiterung intervention.io
+## Twig Filter Erweiterung intervention Image
+Intervention Image is an open source PHP image handling and manipulation library. It provides an easier and expressive way to create, edit, and compose images and supports currently the two most common image processing libraries GD Library and Imagick.
+
+http://image.intervention.io
+
 ### resize
 width or height angeben. Aktuell eingestellt prevent upsize & aspectRatio.
 
