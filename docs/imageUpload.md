@@ -53,8 +53,18 @@ http://image.intervention.io
 width or height angeben. Aktuell eingestellt prevent upsize & aspectRatio.
 
 Twig Filter: resize( $width, $height )
+```html
+  <img src="{{ asset('uploads/images/image.jpg'|resize(500, null)) }}">
 ```
-<img src="{{ asset('uploads/images/image.jpg'|resize(500, null)) }}">
+
+Nutzung mit srcset
+```html
+  <img src="{{ asset('uploads/images/sandra.jpg') }}"
+    srcset="
+      {{ asset('uploads/images/sandra.jpg'|resize(200, null)) }} 200w,
+      {{ asset('uploads/images/sandra.jpg'|resize(400, null)) }} 400w,
+      {{ asset('uploads/images/sandra.jpg'|resize(600, null)) }} 600w
+    ">
 ```
 
 ### fit - Crop and resize combined as Twig Filter
