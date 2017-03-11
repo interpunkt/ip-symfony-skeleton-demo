@@ -48,9 +48,16 @@ twig:
 ### resize
 width or height angeben. Aktuell eingestellt prevent upsize & aspectRatio.
 
-Twig Filter: resize
+Twig Filter: resize( $width, $height )
 ```
 <img src="{{ asset('uploads/images/image.jpg'|resize(500, null)) }}">
+```
+
+### fit - Crop and resize combined as Twig Filter
+
+Twig Filter: fit( $width, $height )
+```
+<img src="{{ asset('uploads/images/image.jpg'|fit(500, 500)) }}">
 ```
 
 ## Forms
