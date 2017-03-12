@@ -64,10 +64,11 @@ assetic:
                             preserve_comments: false
                             presets:
                                 my_variable: "#000"
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        uglifyjs2:
+            # the path to the uglifyjs executable
+            bin:  C:\Users\benjamin\AppData\Roaming\npm\node_modules\uglify-js\bin\uglifyjs
+        uglifycss:
+            bin: C:\Users\benjamin\AppData\Roaming\npm\node_modules\uglifycss
 
 # Doctrine Configuration
 doctrine:

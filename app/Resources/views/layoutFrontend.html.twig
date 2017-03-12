@@ -1,22 +1,9 @@
-{#
-########################################################
-    template: frontend
-########################################################
-#}
-
 <!DOCTYPE html>
 <html lang="de">
-
-{# include: head #}
 {% include '/frontend/_partials/_head.html.twig' %}
 <body>
-
-{# include: fallback text #}
 {% include '/frontend/_partials/_fallback.html.twig' %}
-
 {% block content %}{% endblock %}
-
-{# include: scripts (libs & js) #}
 {% include '/frontend/_partials/_scripts.html.twig' %}
 </body>
 </html>

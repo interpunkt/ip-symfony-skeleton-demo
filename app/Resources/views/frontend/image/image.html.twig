@@ -1,12 +1,8 @@
-{# app/Resources/views/demo/about/base.html.twig #}
 {% extends 'layoutFrontend.html.twig' %}
-
 {% block title %}index{% endblock %}
-
 {% block navbar %}
     {{ parent() }}
 {% endblock %}
-
 {% block content %}
     <style>
         .center-box{
@@ -17,19 +13,15 @@
             padding: 50px;
         }
     </style>
-
-    <!-- .container is main centered wrapper -->
     <div class="container">
-
         <div class="row">
             <h1>Twig Images showcase</h1>
         </div>
         <div class="row">
             <div class="one-half column center-box">
-                <h3>Responsive Image with srcset & lazyload & resize Twig Filter</h3>
+                <h3>Responsive Image with srcset, lazyload & resize Twig Filter</h3>
             </div>
             <div class="one-half column">
-                <!-- responsive example: -->
                 <img
                         data-sizes="auto"
                         data-src="{{ asset('uploads/images/sunset.jpg'|resize(600, null)) }}"
@@ -43,10 +35,26 @@
                         class="lazyload" />
             </div>
         </div>
-
+    <br><br>
+    <row>
+        <div class="center-box">
+            <img
+                    data-sizes="auto"
+                    data-src="{{ asset('uploads/images/code.jpg'|resize(800, null)) }}"
+                    data-srcset="
+                        {{ asset('uploads/images/code.jpg'|resize(600, null)) }} 600w,
+                        {{ asset('uploads/images/code.jpg'|resize(200, null)) }} 200w,
+                        {{ asset('uploads/images/code.jpg'|resize(400, null)) }} 400w,
+                        {{ asset('uploads/images/code.jpg'|resize(800, null)) }} 800w,
+                        {{ asset('uploads/images/code.jpg'|resize(1280, null)) }} 1280w
+                        "
+                    class="lazyload" />
+        </div>
+    </row>
+    <br><br>
+    <hr>
         <div class="row">
             <div class="one-half column">
-                    <!-- responsive example: -->
                     <img
                             data-sizes="auto"
                             data-src="{{ asset('uploads/images/sunset.jpg'|fit(600, 600)) }}"
@@ -64,14 +72,20 @@
             </div>
         </div>
 
+    <div class="row">
+        <br><br>
+        <h3>Googe Page Speed</h3>
+        <p>Mit einfachen Mitteln im grünen Bereich.</p>
+        <img
+                data-sizes="auto"
+                data-src="{{ asset('uploads/images/google.png'|resize(800, null)) }}"
+                data-srcset="
+                        {{ asset('uploads/images/google.png'|resize(600, null)) }} 600w,
+                        {{ asset('uploads/images/google.png'|resize(200, null)) }} 200w,
+                        {{ asset('uploads/images/google.png'|resize(400, null)) }} 400w,
+                        {{ asset('uploads/images/google.png'|resize(800, null)) }} 800w,
+                        {{ asset('uploads/images/google.png'|resize(1280, null)) }} 1280w
+                        "
+                class="lazyload" />
     </div>
-
-    <!-- Note: columns can be nested, but it's not recommended since Skeleton's grid has %-based gutters, meaning a nested grid results in variable with gutters (which can end up being *really* small on certain browser/device sizes) -->
-
-
-
 {% endblock %}
-
-
-
-

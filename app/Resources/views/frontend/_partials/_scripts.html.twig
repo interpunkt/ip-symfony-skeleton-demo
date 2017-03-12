@@ -1,18 +1,11 @@
-{#
-########################################################
-    partial: scripts
-########################################################
-#}
-
-{# check for DEV mode #}
 {% if app.environment == "dev" %}
-
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     <script src="{{ asset('assets/vendor/lazysizes/lazysizes.min.js') }}" async=""></script>
-
 {% else %}
-
-    <script src="{{ asset('assets/compiled/frontendApp.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/lazysizes/lazysizes.min.js') }}" async=""></script>
-
+    {% javascripts output="assets/compiled/frontendApp.min.js"
+        'assets/frontend/js/main.js'
+        'assets/vendor/lazysizes/lazysizes.min.js'
+    %}
+        <script src="{{ asset_url }}" async></script>
+    {% endjavascripts %}
 {% endif %}
