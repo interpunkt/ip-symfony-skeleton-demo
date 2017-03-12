@@ -8,9 +8,11 @@
 {% if app.environment == "dev" %}
 
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lazysizes/lazysizes.min.js') }}" async=""></script>
 
 {% else %}
 
     <script src="{{ asset('assets/compiled/frontendApp.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/lazysizes/lazysizes.min.js') }}" async=""></script>
 
 {% endif %}
